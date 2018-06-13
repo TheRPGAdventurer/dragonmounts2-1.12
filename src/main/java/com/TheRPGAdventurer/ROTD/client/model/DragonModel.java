@@ -257,7 +257,7 @@ public class DragonModel extends ModelBase {
         tailScaleMiddle = tail.addChildBox("scale", -1, -8, -3, 2, 4, 6).setAngles(0, 0, 0);
         tailScaleRight = tail.addChildBox("scale", -1, -8, -3, 2, 4, 6).setAngles(0, 0, -scaleRotZ);
         
-        boolean sapphire = breed == EnumDragonBreed.SAPPHIRE;
+        boolean sapphire = breed == EnumDragonBreed.SYLPHID;
         
         tailScaleMiddle.showModel = !sapphire;
         tailScaleLeft.showModel = sapphire;

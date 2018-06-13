@@ -306,15 +306,15 @@ public class DragonLifeStageHelper extends DragonHelper {
         	return EnumParticleTypes.PORTAL;
         case NETHER:
         	return EnumParticleTypes.DRIP_LAVA;
-        case JADE:
+        case FOREST:
         	return EnumParticleTypes.TOWN_AURA;
-        case AMETHYST:
+        case ICE:
         	return EnumParticleTypes.TOWN_AURA;
-        case SAPPHIRE:
+        case FIRE:
         	return EnumParticleTypes.TOWN_AURA;
-        case GARNET:
+        case SYLPHID:
         	return EnumParticleTypes.TOWN_AURA;
-        case RUBY:
+        case AETHER:
         	return EnumParticleTypes.TOWN_AURA;
         case SKELETON:
         	return EnumParticleTypes.TOWN_AURA;

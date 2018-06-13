@@ -158,11 +158,11 @@ public class DragonBreedHelper extends DragonHelper {
         SharedMonsterAttributes att = new SharedMonsterAttributes();
         if (currentType == EnumDragonBreed.NETHER) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(95.0D);}
         if (currentType == EnumDragonBreed.END) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);}
-        if (currentType == EnumDragonBreed.GARNET) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
-        if (currentType == EnumDragonBreed.JADE) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
-        if (currentType == EnumDragonBreed.SAPPHIRE) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
-        if (currentType == EnumDragonBreed.RUBY) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D); }
-        if (currentType == EnumDragonBreed.AMETHYST) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
+        if (currentType == EnumDragonBreed.FIRE) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
+        if (currentType == EnumDragonBreed.FOREST) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
+        if (currentType == EnumDragonBreed.ICE) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
+        if (currentType == EnumDragonBreed.SYLPHID) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D); }
+        if (currentType == EnumDragonBreed.AETHER) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85.0D);}
         if (currentType == EnumDragonBreed.SKELETON) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(65.0D); }
         if (currentType == EnumDragonBreed.WITHER) {dragon.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);}
     }

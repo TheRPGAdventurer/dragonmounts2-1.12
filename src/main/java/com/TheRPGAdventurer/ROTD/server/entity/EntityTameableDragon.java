@@ -1317,15 +1317,15 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 			return DragonMountsLootTables.ENTITIES_DRAGON_END;
 		case NETHER:
 			return DragonMountsLootTables.ENTITIES_DRAGON_NETHER;
-		case JADE:
+		case FOREST:
 			return DragonMountsLootTables.ENTITIES_DRAGON_JADE;
-		case GARNET:
+		case ICE:
 			return DragonMountsLootTables.ENTITIES_DRAGON_GARNET;
-		case RUBY:
+		case FIRE:
 			return DragonMountsLootTables.ENTITIES_DRAGON_RUBY;
-		case SAPPHIRE:
+		case SYLPHID:
 			return DragonMountsLootTables.ENTITIES_DRAGON_SAPPHIRE;
-		case AMETHYST:
+		case AETHER:
 			return DragonMountsLootTables.ENTITIES_DRAGON_AMETHYST;
 		case SKELETON:
 			return DragonMountsLootTables.ENTITIES_DRAGON_SKELETON;
@@ -1345,15 +1345,15 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 			return ModItems.EnderDragonScales;
 		case NETHER:
 			return ModItems.NetherDragonScales;
-		case JADE:
+		case FOREST:
 			return ModItems.JadeDragonScales;
-		case GARNET:
+		case ICE:
 			return ModItems.GarnetDragonScales;
-		case RUBY:
+		case FIRE:
 			return ModItems.RubyDragonScales;
-		case SAPPHIRE:
+		case SYLPHID:
 			return ModItems.SapphireDragonScales;
-		case AMETHYST:
+		case AETHER:
 			return ModItems.AmethystDragonScales;
 		default:
 			return null;
@@ -1444,7 +1444,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		Biome biome = this.world.getBiome(new BlockPos(this));
 
 		 if (world.provider.getDimension() == 0) {
-			 this.setBreedType(EnumDragonBreed.AMETHYST);
+			 this.setBreedType(EnumDragonBreed.AETHER);
 		 }
 		
 		return null;
