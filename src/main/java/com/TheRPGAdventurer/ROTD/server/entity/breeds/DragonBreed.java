@@ -40,7 +40,7 @@ public abstract class DragonBreed {
         this.color = color;
         
         // ignore suffocation damage
-        addImmunity(DamageSource.DROWN);
+//        addImmunity(DamageSource.DROWN);
         addImmunity(DamageSource.IN_WALL);
         
         // assume that cactus needles don't do much damage to animals with horned scales

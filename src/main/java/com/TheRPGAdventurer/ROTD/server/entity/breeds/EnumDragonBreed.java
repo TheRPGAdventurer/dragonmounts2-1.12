@@ -16,11 +16,11 @@ import net.minecraft.util.ResourceLocation;
 
 public enum EnumDragonBreed implements IStringSerializable {
     
-    AMETHYST(0, DragonBreedAmethyst::new),
-    RUBY(1, DragonBreedRuby::new),
-    JADE(2, DragonBreedJade::new),
-    SAPPHIRE(3, DragonBreedSapphire::new),
-    GARNET(4, DragonBreedGarnet::new),
+    AETHER(0, DragonBreedAir::new),
+    FIRE(1, DragonBreedFire::new),
+    FOREST(2, DragonBreedForest::new),
+    SYLPHID(3, DragonBreedWater::new),
+    ICE(4, DragonBreedIce::new),
     END(5, DragonBreedEnd::new),
     NETHER(6, DragonBreedNether::new),
 	SKELETON(7, DragonBreedSkeleton::new),
