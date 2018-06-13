@@ -48,7 +48,9 @@ public class DragonBreedNether extends DragonBreed {
    }
 
     @Override
-    public void onDeath(EntityTameableDragon dragon) {}
+    public void onDeath(EntityTameableDragon dragon) {
+    	dragon.world.createExplosion(dragon, dragon.posX, dragon.posY, dragon.posZ, 25, true); 
+    }
     
     @Override
     public SoundEvent getLivingSound() {

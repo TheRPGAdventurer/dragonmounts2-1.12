@@ -74,19 +74,16 @@ public class DragonBreedIce extends DragonBreed {
 
 	@Override
 	public void onEnable(com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onDisable(com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onDeath(com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
 		
 	}
 }
