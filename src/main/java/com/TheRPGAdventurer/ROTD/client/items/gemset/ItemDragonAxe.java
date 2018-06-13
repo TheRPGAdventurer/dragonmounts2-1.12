@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import com.TheRPGAdventurer.ROTD.DragonMounts;
-import com.TheRPGAdventurer.ROTD.client.items.EnumItemBreedTypes;
+import com.TheRPGAdventurer.ROTD.client.initialization.EnumItemBreedTypes;
 import com.TheRPGAdventurer.ROTD.client.userinput.StatCollector;
 import com.google.common.collect.Sets;
 

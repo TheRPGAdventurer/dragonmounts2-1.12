@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.TheRPGAdventurer.ROTD.DragonMounts;
+import com.TheRPGAdventurer.ROTD.client.initialization.EnumItemBreedTypes;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModItems;
-import com.TheRPGAdventurer.ROTD.client.items.EnumItemBreedTypes;
 import com.TheRPGAdventurer.ROTD.client.userinput.StatCollector;
 
 import net.minecraft.client.util.ITooltipFlag;

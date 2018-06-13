@@ -1,14 +1,14 @@
-package com.TheRPGAdventurer.ROTD.client.items;
+package com.TheRPGAdventurer.ROTD.client.initialization;
 
 import net.minecraft.util.text.TextFormatting;
 
 public enum EnumItemBreedTypes {
 	
-	AMETHYST(TextFormatting.DARK_PURPLE), 
-	GARNET(TextFormatting.GOLD), 
-	RUBY(TextFormatting.DARK_RED), 
-	SAPPHIRE(TextFormatting.DARK_BLUE), 
-	EMERALD(TextFormatting.DARK_GREEN),
+	AETHER(TextFormatting.BLUE), 
+	WATER(TextFormatting.AQUA), 
+	ICE(TextFormatting.WHITE), 
+	FIRE(TextFormatting.DARK_RED), 
+	FOREST(TextFormatting.DARK_GREEN),
 	NETHER(TextFormatting.GOLD),
 	END(TextFormatting.LIGHT_PURPLE);
 	

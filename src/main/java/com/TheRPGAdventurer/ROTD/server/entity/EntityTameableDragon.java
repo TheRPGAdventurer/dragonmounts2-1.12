@@ -1346,15 +1346,15 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		case NETHER:
 			return ModItems.NetherDragonScales;
 		case FOREST:
-			return ModItems.JadeDragonScales;
+			return ModItems.ForestDragonScales;
 		case ICE:
-			return ModItems.GarnetDragonScales;
+			return ModItems.IceDragonScales;
 		case FIRE:
-			return ModItems.RubyDragonScales;
+			return ModItems.FireDragonScales;
 		case SYLPHID:
-			return ModItems.SapphireDragonScales;
+			return ModItems.WaterDragonScales;
 		case AETHER:
-			return ModItems.AmethystDragonScales;
+			return ModItems.AetherDragonScales;
 		default:
 			return null;
 

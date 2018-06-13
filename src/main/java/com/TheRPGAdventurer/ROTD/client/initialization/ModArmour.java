@@ -1,9 +1,9 @@
 package com.TheRPGAdventurer.ROTD.client.initialization;
 
 import com.TheRPGAdventurer.ROTD.DragonMounts;
-import com.TheRPGAdventurer.ROTD.client.items.EnumItemBreedTypes;
 import com.TheRPGAdventurer.ROTD.client.items.ItemDragonArmor;
-import com.TheRPGAdventurer.ROTD.client.items.gemset.ItemGemDragonArmour;
+import com.TheRPGAdventurer.ROTD.client.items.gemset.ItemDragonArmour;
+import com.TheRPGAdventurer.ROTD.client.items.gemset.ItemDragonArmour;
 import com.TheRPGAdventurer.ROTD.client.items.specialset.ItemEnderDragonArmour;
 import com.TheRPGAdventurer.ROTD.client.items.specialset.ItemNetherDragonArmour;
 
@@ -19,43 +19,43 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ModArmour {
 	
-	public static final ArmorMaterial JadeDragonScaleMaterial     = EnumHelper.addArmorMaterial("jadeDragonScale", DragonMounts.MODID + ":jadeDragonScale", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial RubyDragonScaleMaterial     = EnumHelper.addArmorMaterial("rubyDragonScale", DragonMounts.MODID + ":rubyDragonScale", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial GarnetDragonScaleMaterial   = EnumHelper.addArmorMaterial("garnetDragonScale", DragonMounts.MODID + ":garnetDragonScale", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial AmethystDragonScaleMaterial = EnumHelper.addArmorMaterial("amethystDragonScale", DragonMounts.MODID + ":amethystDragonScale", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial SapphireDragonScaleMaterial = EnumHelper.addArmorMaterial("sapphireDragonScale", DragonMounts.MODID + ":sapphireDragonScale", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial NetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("netherDragonScale", DragonMounts.MODID + ":netherDragonScale", 47, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 6.0F);
-	public static final ArmorMaterial EnderDragonScaleMaterial    = EnumHelper.addArmorMaterial("enderDragonScale", DragonMounts.MODID + ":enderDragonScale", 50, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 7.0F);
+	public static final ArmorMaterial ForestDragonScaleMaterial     = EnumHelper.addArmorMaterial("forest", DragonMounts.MODID + ":forest", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial FireDragonScaleMaterial     = EnumHelper.addArmorMaterial("fire", DragonMounts.MODID + ":fire", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial AetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("aether", DragonMounts.MODID + ":aether", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial WaterDragonScaleMaterial = EnumHelper.addArmorMaterial("water", DragonMounts.MODID + ":water", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial IceDragonScaleMaterial = EnumHelper.addArmorMaterial("ice", DragonMounts.MODID + ":ice", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial NetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("nether", DragonMounts.MODID + ":nether", 47, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 6.0F);
+	public static final ArmorMaterial EnderDragonScaleMaterial    = EnumHelper.addArmorMaterial("ender", DragonMounts.MODID + ":ender", 50, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 7.0F);
 	
-	public static ItemGemDragonArmour jadeDragonScaleHelmet;
-	public static ItemGemDragonArmour jadeDragonScaleCap;
-	public static ItemGemDragonArmour jadeDragonScaleChestplate;
-	public static ItemGemDragonArmour jadeDragonScaleLeggings;
-	public static ItemGemDragonArmour jadeDragonScaleBoots;
+	public static ItemDragonArmour forestDragonScaleHelmet;
+	public static ItemDragonArmour forestDragonScaleCap;
+	public static ItemDragonArmour forestDragonScaleChestplate;
+	public static ItemDragonArmour forestDragonScaleLeggings;
+	public static ItemDragonArmour forestDragonScaleBoots;
 	
-	public static ItemGemDragonArmour rubyDragonScaleHelmet;
-	public static ItemGemDragonArmour rubyDragonScaleCap;
-	public static ItemGemDragonArmour rubyDragonScaleChestplate;
-	public static ItemGemDragonArmour rubyDragonScaleLeggings;
-	public static ItemGemDragonArmour rubyDragonScaleBoots;
+	public static ItemDragonArmour fireDragonScaleHelmet;
+	public static ItemDragonArmour fireDragonScaleCap;
+	public static ItemDragonArmour fireDragonScaleChestplate;
+	public static ItemDragonArmour fireDragonScaleLeggings;
+	public static ItemDragonArmour fireDragonScaleBoots;
 	
-	public static ItemGemDragonArmour garnetDragonScaleHelmet;
-	public static ItemGemDragonArmour garnetDragonScaleCap;
-	public static ItemGemDragonArmour garnetDragonScaleChestplate;
-	public static ItemGemDragonArmour garnetDragonScaleLeggings;
-	public static ItemGemDragonArmour garnetDragonScaleBoots;
+	public static ItemDragonArmour aetherDragonScaleHelmet;
+	public static ItemDragonArmour aetherDragonScaleCap;
+	public static ItemDragonArmour aetherDragonScaleChestplate;
+	public static ItemDragonArmour aetherDragonScaleLeggings;
+	public static ItemDragonArmour aetherDragonScaleBoots;
 	
-	public static ItemGemDragonArmour amethystDragonScaleHelmet;
-	public static ItemGemDragonArmour amethystDragonScaleCap;
-	public static ItemGemDragonArmour amethystDragonscaleChesplate;
-	public static ItemGemDragonArmour amethystDragonScaleLeggings;
-	public static ItemGemDragonArmour amethystDragonScaleBoots;
+	public static ItemDragonArmour waterDragonScaleHelmet;
+	public static ItemDragonArmour waterDragonScaleCap;
+	public static ItemDragonArmour waterDragonscaleChesplate;
+	public static ItemDragonArmour waterDragonScaleLeggings;
+	public static ItemDragonArmour waterDragonScaleBoots;
 	
-	public static ItemGemDragonArmour sapphireDragonScaleHelmet;
-	public static ItemGemDragonArmour sapphireDragonScaleCap;
-	public static ItemGemDragonArmour sapphireDragonScaleChestplate;
-	public static ItemGemDragonArmour sapphireDragonScaleLeggings;
-	public static ItemGemDragonArmour sapphireDragonScaleBoots;
+	public static ItemDragonArmour iceDragonScaleHelmet;
+	public static ItemDragonArmour iceDragonScaleCap;
+	public static ItemDragonArmour iceDragonScaleChestplate;
+	public static ItemDragonArmour iceDragonScaleLeggings;
+	public static ItemDragonArmour iceDragonScaleBoots;
 	
 	public static ItemNetherDragonArmour netherDragonScaleHelmet;
 	public static ItemNetherDragonArmour netherDragonScaleCap;
@@ -75,30 +75,30 @@ public class ModArmour {
 	public static ItemDragonArmor dragonarmor_iron;
 	
 	public static final Item[] ARMOR =  {
-		jadeDragonScaleCap = new ItemGemDragonArmour(JadeDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "jade_dragonscale_cap", EnumItemBreedTypes.EMERALD),
-		jadeDragonScaleChestplate = new ItemGemDragonArmour(JadeDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "jade_dragonscale_chestplate", EnumItemBreedTypes.EMERALD),
-		jadeDragonScaleLeggings = new ItemGemDragonArmour(JadeDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "jade_dragonscale_leggings", EnumItemBreedTypes.EMERALD),
-		jadeDragonScaleBoots = new ItemGemDragonArmour(JadeDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "jade_dragonscale_boots", EnumItemBreedTypes.EMERALD),
+		forestDragonScaleCap = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "forest_dragonscale_cap", EnumItemBreedTypes.FOREST),
+		forestDragonScaleChestplate = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "forest_dragonscale_chestplate", EnumItemBreedTypes.FOREST),
+		forestDragonScaleLeggings = new ItemDragonArmour(ForestDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "forest_dragonscale_leggings", EnumItemBreedTypes.FOREST),
+		forestDragonScaleBoots = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "forest_dragonscale_boots", EnumItemBreedTypes.FOREST),
 		
-		rubyDragonScaleCap = new ItemGemDragonArmour(RubyDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "ruby_dragonscale_cap", EnumItemBreedTypes.RUBY),
-		rubyDragonScaleChestplate = new ItemGemDragonArmour(RubyDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "ruby_dragonscale_chestplate", EnumItemBreedTypes.RUBY),
-		rubyDragonScaleLeggings = new ItemGemDragonArmour(RubyDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "ruby_dragonscale_leggings", EnumItemBreedTypes.RUBY),
-		rubyDragonScaleBoots = new ItemGemDragonArmour(RubyDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "ruby_dragonscale_boots", EnumItemBreedTypes.RUBY),
+		fireDragonScaleCap = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "fire_dragonscale_cap", EnumItemBreedTypes.FIRE),
+		fireDragonScaleChestplate = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "fire_dragonscale_chestplate", EnumItemBreedTypes.FIRE),
+		fireDragonScaleLeggings = new ItemDragonArmour(FireDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "fire_dragonscale_leggings", EnumItemBreedTypes.FIRE),
+		fireDragonScaleBoots = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "fire_dragonscale_boots", EnumItemBreedTypes.FIRE),
 		
-		garnetDragonScaleCap = new ItemGemDragonArmour(GarnetDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "garnet_dragonscale_cap", EnumItemBreedTypes.GARNET),
-		garnetDragonScaleChestplate = new ItemGemDragonArmour(GarnetDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "garnet_dragonscale_chestplate", EnumItemBreedTypes.GARNET),
-		garnetDragonScaleLeggings = new ItemGemDragonArmour(GarnetDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "garnet_dragonscale_leggings", EnumItemBreedTypes.GARNET),
-		garnetDragonScaleBoots = new ItemGemDragonArmour(GarnetDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "garnet_dragonscale_boots", EnumItemBreedTypes.GARNET),
+		aetherDragonScaleCap = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "aether_dragonscale_cap", EnumItemBreedTypes.AETHER),
+		aetherDragonScaleChestplate = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "aether_dragonscale_chestplate", EnumItemBreedTypes.AETHER),
+		aetherDragonScaleLeggings = new ItemDragonArmour(AetherDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "aether_dragonscale_leggings", EnumItemBreedTypes.AETHER),
+		aetherDragonScaleBoots = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "aether_dragonscale_boots", EnumItemBreedTypes.AETHER),
 		
-		amethystDragonScaleCap = new ItemGemDragonArmour(AmethystDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "amethyst_dragonscale_cap", EnumItemBreedTypes.AMETHYST),
-		amethystDragonscaleChesplate = new ItemGemDragonArmour(AmethystDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "amethyst_dragonscale_chestplate", EnumItemBreedTypes.AMETHYST),
-		amethystDragonScaleLeggings = new ItemGemDragonArmour(AmethystDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "amethyst_dragonscale_leggings", EnumItemBreedTypes.AMETHYST),
-		amethystDragonScaleBoots = new ItemGemDragonArmour(AmethystDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "amethyst_dragonscale_boots", EnumItemBreedTypes.AMETHYST),
+		waterDragonScaleCap = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "water_dragonscale_cap", EnumItemBreedTypes.WATER),
+		waterDragonscaleChesplate = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "water_dragonscale_chestplate", EnumItemBreedTypes.WATER),
+		waterDragonScaleLeggings = new ItemDragonArmour(WaterDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "water_dragonscale_leggings", EnumItemBreedTypes.WATER),
+		waterDragonScaleBoots = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "water_dragonscale_boots", EnumItemBreedTypes.WATER),
 		
-		sapphireDragonScaleCap = new ItemGemDragonArmour(SapphireDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "sapphire_dragonscale_cap", EnumItemBreedTypes.SAPPHIRE),
-		sapphireDragonScaleChestplate = new ItemGemDragonArmour(SapphireDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "sapphire_dragonscale_chestplate", EnumItemBreedTypes.SAPPHIRE),
-		sapphireDragonScaleLeggings = new ItemGemDragonArmour(SapphireDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "sapphire_dragonscale_leggings", EnumItemBreedTypes.SAPPHIRE),
-		sapphireDragonScaleBoots = new ItemGemDragonArmour(SapphireDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "sapphire_dragonscale_boots", EnumItemBreedTypes.SAPPHIRE),
+		iceDragonScaleCap = new ItemDragonArmour(IceDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "ice_dragonscale_cap", EnumItemBreedTypes.ICE),
+		iceDragonScaleChestplate = new ItemDragonArmour(IceDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "ice_dragonscale_chestplate", EnumItemBreedTypes.ICE),
+		iceDragonScaleLeggings = new ItemDragonArmour(IceDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "ice_dragonscale_leggings", EnumItemBreedTypes.ICE),
+		iceDragonScaleBoots = new ItemDragonArmour(IceDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "ice_dragonscale_boots", EnumItemBreedTypes.ICE),
 		
 		netherDragonScaleCap = new ItemNetherDragonArmour(NetherDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "nether_dragonscale_cap", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
 		netherDragonScaleChestplate = new ItemNetherDragonArmour(NetherDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "nether_dragonscale_chestplate", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
@@ -117,11 +117,11 @@ public class ModArmour {
 	};
 	
 	public static void initRepairs() {
-		AmethystDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.AmethystDragonScales));
-		GarnetDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.GarnetDragonScales));
-		JadeDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.JadeDragonScales));
-		RubyDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.RubyDragonScales));
-		SapphireDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.SapphireDragonScales));
+		WaterDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.WaterDragonScales));
+		AetherDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.AetherDragonScales));
+		ForestDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.ForestDragonScales));
+		FireDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.FireDragonScales));
+		IceDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.IceDragonScales));
 		NetherDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.NetherDragonScales));
 		EnderDragonScaleMaterial.setRepairItem(new ItemStack(ModItems.EnderDragonScales));
 	}

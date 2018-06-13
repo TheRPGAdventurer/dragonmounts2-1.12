@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.TheRPGAdventurer.ROTD.DragonMounts;
-import com.TheRPGAdventurer.ROTD.client.items.EnumItemBreedTypes;
+import com.TheRPGAdventurer.ROTD.client.initialization.EnumItemBreedTypes;
 import com.TheRPGAdventurer.ROTD.client.userinput.StatCollector;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,11 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemGemDragonArmour extends ItemArmor {
+public class ItemDragonArmour extends ItemArmor {
 	
     public EnumItemBreedTypes type;
 
-	public ItemGemDragonArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, String unlocalizedName,  EnumItemBreedTypes type) {
+	public ItemDragonArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, String unlocalizedName,  EnumItemBreedTypes type) {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
 		this.setUnlocalizedName(unlocalizedName);
 		this.setRegistryName(new ResourceLocation(DragonMounts.MODID, unlocalizedName));
