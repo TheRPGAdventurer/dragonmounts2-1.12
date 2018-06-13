@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
 	"textures": {
-	    "layer0": "rotd:entities/breath_fire"
+	    "layer0": "dragonmounts:entities/breath_fire"
 	}
 }
