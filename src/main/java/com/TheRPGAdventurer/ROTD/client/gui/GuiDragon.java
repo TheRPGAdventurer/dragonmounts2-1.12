@@ -1,5 +1,6 @@
 package com.TheRPGAdventurer.ROTD.client.gui;
 
+import com.TheRPGAdventurer.ROTD.DragonMounts;
 import com.TheRPGAdventurer.ROTD.client.inventory.ContainerDragon;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiDragon extends GuiContainer {
-	private static final ResourceLocation texture = new ResourceLocation("rotd:textures/gui/dragon.png");
+	private static final ResourceLocation texture = new ResourceLocation(DragonMounts.MODID, "textures/gui/dragon.png");
 	private IInventory playerInventory;
 	private IInventory dragonInv;
 	private EntityTameableDragon dragon;
