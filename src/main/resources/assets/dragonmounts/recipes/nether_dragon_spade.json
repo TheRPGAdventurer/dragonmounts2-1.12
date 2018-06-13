@@ -10,11 +10,11 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "rotd:nether_dragonscales"
+      "item": "dragonmounts:nether_dragonscales"
     }
   },
   "result": {
-    "item": "rotd:nether_dragon_shovel"
+    "item": "dragonmounts:nether_dragon_shovel"
   }
 }
 

@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "dragonmounts:nether_dragonscales"
+      "item": "dragonmounts:forest_dragonscales"
     }
   },
   "result": {
-    "item": "dragonmounts:nether_dragonscale_chestplate"
+    "item": "dragonmounts:forest_dragonscale_chestplate"
   }
 }
 

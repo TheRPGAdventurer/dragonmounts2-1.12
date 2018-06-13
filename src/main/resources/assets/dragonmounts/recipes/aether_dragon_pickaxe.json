@@ -10,11 +10,11 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "dragonmounts:nether_dragonscales"
+      "item": "dragonmounts:aether_dragonscales"
     }
   },
   "result": {
-    "item": "dragonmounts:nether_dragon_pickaxe"
+    "item": "dragonmounts:aether_dragon_pickaxe"
   }
 }
 

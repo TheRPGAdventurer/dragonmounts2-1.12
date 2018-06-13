@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XXX",
-    " # ",
-    " # "
+    "XX",
+    "X#",
+    " #"
   ],
   "key": {
     "#": {
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "dragonmounts:nether_dragonscales"
+      "item": "dragonmounts:fire_dragonscales"
     }
   },
   "result": {
-    "item": "dragonmounts:nether_dragon_pickaxe"
+    "item": "dragonmounts:fire_dragon_axe"
   }
 }
 

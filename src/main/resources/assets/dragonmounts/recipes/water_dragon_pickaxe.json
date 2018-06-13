@@ -2,16 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "XXX",
-    "XXX",
-    "XXX"
+    " # ",
+    " # "
   ],
   "key": {
-    "X": {
+    "#": {
       "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "dragonmounts:water_dragonscales"
     }
   },
   "result": {
-    "item": "dragonmounts:pileofsticks"
+    "item": "dragonmounts:water_dragon_pickaxe"
   }
 }
 

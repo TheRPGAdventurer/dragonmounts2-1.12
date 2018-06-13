@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XXX",
-    " # ",
-    " # "
+    "X",
+    "#",
+    "#"
   ],
   "key": {
     "#": {
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "dragonmounts:nether_dragonscales"
+      "item": "dragonmounts:water_dragonscales"
     }
   },
   "result": {
-    "item": "dragonmounts:nether_dragon_pickaxe"
+    "item": "dragonmounts:water_dragon_shovel"
   }
 }
 

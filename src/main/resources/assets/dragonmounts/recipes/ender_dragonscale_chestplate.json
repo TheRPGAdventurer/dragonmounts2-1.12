@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "rotd:ender_dragonscales"
+      "item": "dragonmounts:ender_dragonscales"
     }
   },
   "result": {
-    "item": "rotd:ender_dragonscale_chestplate"
+    "item": "dragonmounts:ender_dragonscale_chestplate"
   }
 }
 

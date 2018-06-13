@@ -10,11 +10,11 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "rotd:ender_dragonscales"
+      "item": "dragonmounts:ender_dragonscales"
     }
   },
   "result": {
-    "item": "rotd:ender_dragon_shovel"
+    "item": "dragonmounts:ender_dragon_shovel"
   }
 }
 
