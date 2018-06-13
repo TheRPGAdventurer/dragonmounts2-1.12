@@ -1,0 +1,123 @@
+itemGroup.rotd=Realm Of The Dragons
+
+entity.dragon.amethyst.name=Dragon
+entity.dragon.end.name=Dragon
+entity.dragon.garnet.name=Dragon
+entity.dragon.jade.name=Dragon
+entity.dragon.sapphire.name=Dragon
+entity.dragon.name=Dragon
+entity.dragon.nether.name=Dragon
+entity.dragon.ruby.name=Dragon
+entity.dragon.skeleton.name=Skeleton Dragon
+entity.dragon.wither.name=Wither Dragon
+
+commands.dragon.nodragons=There are no dragons nearby
+commands.dragon.canttame=You cannot tame dragons
+
+item.diamond_shears.name=Diamond Shears
+item.structure_spawner.name=Structure Spawner (Debug)
+tile.rotd:pileofsticks.name=Nest Block
+
+item.dragonEgg.name=%s Egg
+
+item.ender_dragonscales.name=Dragon Scales
+item.ender_dragon_pickaxe.name=Dragon Pickaxe
+item.ender_dragon_axe.name=Dragon Axe
+item.ender_dragon_shovel.name=Dragon Spade
+item.ender_dragon_sword.name=Dragon Sword
+item.ender_dragonscale_cap.name=Dragon Cap
+item.ender_dragonscale_chestplate.name=Dragon Chestplate
+item.ender_dragonscale_leggings.name=Dragon Leggings
+item.ender_dragonscale_boots.name=Dragon Boots
+
+item.nether_dragonscales.name=Dragon Scales
+item.nether_dragon_pickaxe.name=Dragon Pickaxe
+item.nether_dragon_axe.name=Dragon Axe
+item.nether_dragon_shovel.name=Dragon Spade
+item.nether_dragon_sword.name=Dragon Sword
+item.nether_dragonscale_cap.name=Dragon Cap
+item.nether_dragonscale_chestplate.name=Dragon Chestplate
+item.nether_dragonscale_leggings.name=Dragon Leggings
+item.nether_dragonscale_boots.name=Dragon Boots
+
+item.jade_dragonscales.name=Dragon Scales
+item.jade_dragon_pickaxe.name=Dragon Pickaxe
+item.jade_dragon_axe.name=Dragon Axe
+item.jade_dragon_shovel.name=Dragon Spade
+item.jade_dragon_hoe.name=Dragon Hoe
+item.jade_dragon_sword.name=Dragon Sword
+item.jade_dragonscale_cap.name=Dragon Cap
+item.jade_dragonscale_chestplate.name=Dragon Chestplate
+item.jade_dragonscale_leggings.name=Dragon Leggings
+item.jade_dragonscale_boots.name=Dragon Boots
+
+item.ruby_dragonscales.name=Dragon Scales
+item.ruby_dragon_pickaxe.name=Dragon Pickaxe
+item.ruby_dragon_axe.name=Dragon Axe
+item.ruby_dragon_shovel.name=Dragon Spade
+item.ruby_dragon_sword.name=Dragon Sword
+item.ruby_dragonscale_cap.name=Dragon Cap
+item.ruby_dragonscale_chestplate.name=Dragon Chestplate
+item.ruby_dragonscale_leggings.name=Dragon Leggings
+item.ruby_dragonscale_boots.name=Dragon Boots
+
+item.amethyst_dragonscales.name=Dragon Scales
+item.amethyst_dragon_pickaxe.name=Dragon Pickaxe
+item.amethyst_dragon_axe.name=Dragon Axe
+item.amethyst_dragon_shovel.name=Dragon Spade
+item.amethyst_dragon_sword.name=Dragon Sword
+item.amethyst_dragonscale_cap.name=Dragon Cap
+item.amethyst_dragonscale_chestplate.name=Dragon Chestplate
+item.amethyst_dragonscale_leggings.name=Dragon Leggings
+item.amethyst_dragonscale_boots.name=Dragon Boots
+
+item.garnet_dragonscales.name=Dragon Scales
+item.garnet_dragon_pickaxe.name=Dragon Pickaxe
+item.garnet_dragon_axe.name=Dragon Axe
+item.garnet_dragon_shovel.name=Dragon Spade
+item.garnet_dragon_sword.name=Dragon Sword
+item.garnet_dragonscale_cap.name=Dragon Cap
+item.garnet_dragonscale_chestplate.name=Dragon Chestplate
+item.garnet_dragonscale_leggings.name=Dragon Leggings
+item.garnet_dragonscale_boots.name=Dragon Boots
+
+item.sapphire_dragonscales.name=Dragon Scales
+item.sapphire_dragon_pickaxe.name=Dragon Pickaxe
+item.sapphire_dragon_axe.name=Dragon Axe
+item.sapphire_dragon_shovel.name=Dragon Spade
+item.sapphire_dragon_sword.name=Dragon Sword
+item.sapphire_dragonscale_cap.name=Dragon Cap
+item.sapphire_dragonscale_chestplate.name=Dragon Chestplate
+item.sapphire_dragonscale_leggings.name=Dragon Leggings
+item.sapphire_dragonscale_boots.name=Dragon Boots
+
+key.categories.dragon = Dragon Controls
+key.dragon.flyUp=Fly Up
+key.dragon.flyDown=Fly Down
+
+entity.DragonMounts.dragon.amethyst.name=Dragon
+entity.DragonMounts.dragon.end.name=Dragon
+entity.DragonMounts.dragon.garnet.name=Dragon
+entity.DragonMounts.dragon.jade.name=Dragon
+entity.DragonMounts.dragon.sapphire.name=Dragon
+entity.DragonMounts.dragon.name=Dragon
+entity.DragonMounts.dragon.nether.name=Dragon
+entity.DragonMounts.dragon.ruby.name=Dragon
+entity.DragonMounts.dragon.skeleton.name=Skeleton Dragon
+entity.DragonMounts.dragon.wither.name=Wither Dragon
+
+item.dragonarmor_diamond.name=Diamond Dragon Armor
+item.dragonarmor_iron.name=Iron Dragon Armor
+item.dragonarmor_gold.name=Gold Dragon Armor
+
+entity.dragon.tooYounng=The dragon is too young let it grow.
+
+dragon.emerald=Emerald
+dragon.garnet=Garnet
+dragon.amethyst=Amethyst
+dragon.sapphire=Sapphire
+dragon.ruby=Ruby
+dragon.nether=Nether
+dragon.end=Ender
+
+

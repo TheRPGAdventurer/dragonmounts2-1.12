@@ -1,0 +1,116 @@
+###########Translate by qnebra###################
+itemGroup.rotd=Realm Of The Dragons
+
+entity.RealmOfTheDragon.amethyst.name=Ametystowy Smok
+entity.RealmOfTheDragon.end.name=Smok z Endu
+entity.RealmOfTheDragon.garnet.name=Granatowy Smok
+entity.RealmOfTheDragon.jade.name=Szmaragdowy Smok
+entity.RealmOfTheDragon.sapphire.name=Szafirowy Smok
+entity.RealmOfTheDragon.name=Enderowy Smok
+entity.RealmOfTheDragon.nether.name=Smok z Netheru
+entity.RealmOfTheDragon.ruby.name=Rubinowy Smok
+entity.RealmOfTheDragon.skeleton.name=Kościany Smok
+entity.RealmOfTheDragon.wither.name=Witherowy Smok
+
+commands.dragon.nodragons=Nie ma smoków w pobliżu
+commands.dragon.canttame=Na razie nie możesz oswoić smoka
+
+item.diamond_shears.name=Diamentowe nożyce
+item.structure_spawner.name=Przywoływacz struktur (Deweloperskie)
+tile.rotd:pileofsticks.name=Blok Gniazda
+
+item.dragonEgg.name=%s Jajo
+
+item.ender_dragonscales.name=Łuski Enderowego Smoka
+item.ender_dragon_pickaxe.name=Kilof z enderowej łuski
+item.ender_dragon_axe.name=Siekiera z enderowej łuski
+item.ender_dragon_shovel.name=Łopata z enderowej łuski
+item.ender_dragon_sword.name=Miecz z enderowej łuski
+item.ender_dragonscale_cap.name=Czapka z enderowej łuski
+item.ender_dragonscale_chestplate.name=Napierśnik z enderowej łuski
+item.ender_dragonscale_leggings.name=Spodnie z enderowej łuski
+item.ender_dragonscale_boots.name=Buty z enderowej łuski
+
+item.nether_dragonscales.name=Łuska smoka z Netheru
+item.nether_dragon_pickaxe.name=Kilof z netherowej łuski
+item.nether_dragon_axe.name=Siekiera z netherowej łuski
+item.nether_dragon_shovel.name=Łopata z netherowej łuski
+item.nether_dragon_sword.name=Miecz z netherowej łuski
+item.nether_dragonscale_cap.name=Czapka z netherowej łuski
+item.nether_dragonscale_chestplate.name=Napierśnik z netherowej łuski
+item.nether_dragonscale_leggings.name=Spodnie z netherowej łuski
+item.nether_dragonscale_boots.name=Buty z netherowej łuski
+
+item.jade_dragonscales.name=Łuska Szmaragowego Smoka	
+item.jade_dragon_pickaxe.name=Kilof ze szmaragdowej łuski
+item.jade_dragon_axe.name=Siekiera ze szmaragdowej łuski
+item.jade_dragon_shovel.name=Łopata ze szmaragdowej łuski
+item.jade_dragon_hoe.name=Motyka ze szmaragdowej łuski
+item.jade_dragon_sword.name=Miecz ze szmaragdowej łuski
+item.jade_dragonscale_cap.name=Czapka ze szmaragdowej łuski
+item.jade_dragonscale_chestplate.name=Napierśnik ze szmaragdowej łuski
+item.jade_dragonscale_leggings.name=Spodnie ze szmaragdowej łuski
+item.jade_dragonscale_boots.name=Buty ze Szmaradowej łuski
+
+item.ruby_dragonscales.name=Łuska Rubinowego Smoka
+item.ruby_dragon_pickaxe.name=Kilof z rubinowej łuski
+item.ruby_dragon_axe.name=Siekiera z rubinowej łuski
+item.ruby_dragon_shovel.name=Łopata z rubinowej łuski
+item.ruby_dragon_sword.name=Miecz z rubinowej łuski
+item.ruby_dragonscale_cap.name=Czapka z rubinowej łuski
+item.ruby_dragonscale_chestplate.name=Napierśnik z rubinowej łuski
+item.ruby_dragonscale_leggings.name=Spodnie z rubinowej łuski
+item.ruby_dragonscale_boots.name=Buty z rubinowej łuski
+
+item.amethyst_dragonscales.name=Łuska Ametystowego Smoka
+item.amethyst_dragon_pickaxe.name=Kilof z ametystowej łuski
+item.amethyst_dragon_axe.name=Siekiera z ametystowej łuski
+item.amethyst_dragon_shovel.name=Łopata z ametystowej łuski
+item.amethyst_dragon_sword.name=Miecz z ametystowej łuski
+item.amethyst_dragonscale_cap.name=Czapka z ametystowej łuski
+item.amethyst_dragonscale_chestplate.name=Napierśnik z ametystowej łuski
+item.amethyst_dragonscale_leggings.name=Spodnie z ametystowej łuski
+item.amethyst_dragonscale_boots.name=Buty z ametystowej łuski
+
+item.garnet_dragonscales.name=Łuska Granatowego Smoka
+item.garnet_dragon_pickaxe.name=Kilof z granatowej łuski
+item.garnet_dragon_axe.name=Siekiera z granatowej łuski
+item.garnet_dragon_shovel.name=Łopata z granatowej łuski
+item.garnet_dragon_sword.name=Miecz z granatowej łuski
+item.garnet_dragonscale_cap.name=Czapka z granatowej łuski
+item.garnet_dragonscale_chestplate.name=Napierśnik z granatowej łuski
+item.garnet_dragonscale_leggings.name=Spodnie z granatowej łuski
+item.garnet_dragonscale_boots.name=Buty z granatowej łuski
+
+item.sapphire_dragonscales.name=Łuska Szafirowego Smoka
+item.sapphire_dragon_pickaxe.name=Kilof z szafirowej łuski
+item.sapphire_dragon_axe.name=Siekiera z szafirowej łuski
+item.sapphire_dragon_shovel.name=Łopata z szafirowej łuski
+item.sapphire_dragon_sword.name=Miecz z szafirowej łuski
+item.sapphire_dragonscale_cap.name=Czapka z szafirowej łuski
+item.sapphire_dragonscale_chestplate.name=Napierśnik z szafirowej łuski
+item.sapphire_dragonscale_leggings.name=Spodnie z szafirowej łuski
+item.sapphire_dragonscale_boots.name=Buty z szafirowej łuski
+
+key.categories.RealmOfTheDragon = Sterowanie smokiem
+key.dragon.flyUp=W górę
+key.dragon.flyDown=W dół
+
+entity.RealmOfTheDragons.RealmOfTheDragon.amethyst.name=Ametystowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.end.name=Smok z Endu
+entity.RealmOfTheDragons.RealmOfTheDragon.garnet.name=Granatowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.jade.name=Szmaragdowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.sapphire.name=Szafirowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.name=Enderowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.nether.name=Smok z Netheru
+entity.RealmOfTheDragons.RealmOfTheDragon.ruby.name=Rubinowy Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.skeleton.name=Kościany Smok
+entity.RealmOfTheDragons.RealmOfTheDragon.wither.name=Witherowy Smok
+
+item.dragonarmor_diamond.name=Diamentowy smoczy pancerz
+item.dragonarmor_iron.name=Żelazny smoczy pancerz
+item.dragonarmor_gold.name=Złoty smoczy pancerz
+
+entity.dragon.tooYounng=Smok jest za młody, daj mu jeszcze urosnąć.
+
+
