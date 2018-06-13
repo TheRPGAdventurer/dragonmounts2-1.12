@@ -1,7 +1,7 @@
 {
     "pools": [
         {   
-		    "name": "garnet",
+		    "name": "ice",
             "rolls": {
 			        "min": 1,
 					"max": 2
@@ -9,7 +9,7 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "rotd:garnet_dragonscales",
+                    "name": "dragonmounts:ice_dragonscales",
                     "weight": 1,
                     "functions": [
                         {
@@ -24,12 +24,12 @@
             ]
         },
         {
-		    "name": "garnet_dragon",
+		    "name": "ice_dragon",
             "rolls": 1,
             "entries": [
                 {
                     "type": "loot_table",
-                    "name": "rotd:entities/dragon",
+                    "name": "dragonmounts:entities/dragon",
                     "weight": 1
                 }
             ]

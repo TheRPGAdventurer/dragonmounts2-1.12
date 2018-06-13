@@ -9,11 +9,11 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class DragonMountsLootTables {
 	
-	public static final ResourceLocation ENTITIES_DRAGON_AMETHYST = create("amethyst");
-	public static final ResourceLocation ENTITIES_DRAGON_GARNET = create("garnet");
-	public static final ResourceLocation ENTITIES_DRAGON_JADE = create("jade");
-	public static final ResourceLocation ENTITIES_DRAGON_RUBY = create("ruby");
-	public static final ResourceLocation ENTITIES_DRAGON_SAPPHIRE = create("sapphire");
+	public static final ResourceLocation ENTITIES_DRAGON_WATER = create("water");
+	public static final ResourceLocation ENTITIES_DRAGON_FIRE = create("fire");
+	public static final ResourceLocation ENTITIES_DRAGON_FOREST = create("forest");
+	public static final ResourceLocation ENTITIES_DRAGON_ICE = create("ice");
+	public static final ResourceLocation ENTITIES_DRAGON_AETHER = create("aether");
 	public static final ResourceLocation ENTITIES_DRAGON_END = create("ender");
 	public static final ResourceLocation ENTITIES_DRAGON_NETHER = create("nether");
 	public static final ResourceLocation ENTITIES_DRAGON_SKELETON = create("skeleton");

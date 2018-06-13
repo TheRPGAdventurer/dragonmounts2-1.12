@@ -29,7 +29,7 @@
             "entries": [
                 {
                     "type": "loot_table",
-                    "name": "rotd:entities/dragon",
+                    "name": "dragonmounts:entities/dragon",
                     "weight": 1
                 }
             ]
