@@ -29,19 +29,19 @@ public class ModArmour {
 	
 	public static ItemDragonArmour forestDragonScaleHelmet;
 	public static ItemDragonArmour forestDragonScaleCap;
-	public static ItemDragonArmour forestDragonScaleChestplate;
+	public static ItemDragonArmour forestDragonScaleTunic;
 	public static ItemDragonArmour forestDragonScaleLeggings;
 	public static ItemDragonArmour forestDragonScaleBoots;
 	
 	public static ItemDragonArmour fireDragonScaleHelmet;
 	public static ItemDragonArmour fireDragonScaleCap;
-	public static ItemDragonArmour fireDragonScaleChestplate;
+	public static ItemDragonArmour fireDragonScaleTunic;
 	public static ItemDragonArmour fireDragonScaleLeggings;
 	public static ItemDragonArmour fireDragonScaleBoots;
 	
 	public static ItemDragonArmour aetherDragonScaleHelmet;
 	public static ItemDragonArmour aetherDragonScaleCap;
-	public static ItemDragonArmour aetherDragonScaleChestplate;
+	public static ItemDragonArmour aetherDragonScaleTunic;
 	public static ItemDragonArmour aetherDragonScaleLeggings;
 	public static ItemDragonArmour aetherDragonScaleBoots;
 	
@@ -53,19 +53,19 @@ public class ModArmour {
 	
 	public static ItemDragonArmour iceDragonScaleHelmet;
 	public static ItemDragonArmour iceDragonScaleCap;
-	public static ItemDragonArmour iceDragonScaleChestplate;
+	public static ItemDragonArmour iceDragonScaleTunic;
 	public static ItemDragonArmour iceDragonScaleLeggings;
 	public static ItemDragonArmour iceDragonScaleBoots;
 	
 	public static ItemNetherDragonArmour netherDragonScaleHelmet;
 	public static ItemNetherDragonArmour netherDragonScaleCap;
-	public static ItemNetherDragonArmour netherDragonScaleChestplate;
+	public static ItemNetherDragonArmour netherDragonScaleTunic;
 	public static ItemNetherDragonArmour netherDragonScaleLeggings;
 	public static ItemNetherDragonArmour netherDragonScaleBoots;
 	
 	public static ItemEnderDragonArmour enderDragonScaleHelmet;
 	public static ItemEnderDragonArmour enderDragonScaleCap;
-	public static ItemEnderDragonArmour enderDragonScaleChestplate;
+	public static ItemEnderDragonArmour enderDragonScaleTunic;
 	public static ItemEnderDragonArmour enderDragonScaleLeggings;
 	public static ItemEnderDragonArmour enderDragonScaleBoots;
 	
@@ -76,37 +76,37 @@ public class ModArmour {
 	
 	public static final Item[] ARMOR =  {
 		forestDragonScaleCap = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "forest_dragonscale_cap", EnumItemBreedTypes.FOREST),
-		forestDragonScaleChestplate = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "forest_dragonscale_chestplate", EnumItemBreedTypes.FOREST),
+		forestDragonScaleTunic = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "forest_dragonscale_tunic", EnumItemBreedTypes.FOREST),
 		forestDragonScaleLeggings = new ItemDragonArmour(ForestDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "forest_dragonscale_leggings", EnumItemBreedTypes.FOREST),
 		forestDragonScaleBoots = new ItemDragonArmour(ForestDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "forest_dragonscale_boots", EnumItemBreedTypes.FOREST),
 		
 		fireDragonScaleCap = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "fire_dragonscale_cap", EnumItemBreedTypes.FIRE),
-		fireDragonScaleChestplate = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "fire_dragonscale_chestplate", EnumItemBreedTypes.FIRE),
+		fireDragonScaleTunic = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "fire_dragonscale_tunic", EnumItemBreedTypes.FIRE),
 		fireDragonScaleLeggings = new ItemDragonArmour(FireDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "fire_dragonscale_leggings", EnumItemBreedTypes.FIRE),
 		fireDragonScaleBoots = new ItemDragonArmour(FireDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "fire_dragonscale_boots", EnumItemBreedTypes.FIRE),
 		
 		aetherDragonScaleCap = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "aether_dragonscale_cap", EnumItemBreedTypes.AETHER),
-		aetherDragonScaleChestplate = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "aether_dragonscale_chestplate", EnumItemBreedTypes.AETHER),
+		aetherDragonScaleTunic = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "aether_dragonscale_tunic", EnumItemBreedTypes.AETHER),
 		aetherDragonScaleLeggings = new ItemDragonArmour(AetherDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "aether_dragonscale_leggings", EnumItemBreedTypes.AETHER),
 		aetherDragonScaleBoots = new ItemDragonArmour(AetherDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "aether_dragonscale_boots", EnumItemBreedTypes.AETHER),
 		
 		waterDragonScaleCap = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "water_dragonscale_cap", EnumItemBreedTypes.WATER),
-		waterDragonscaleChesplate = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "water_dragonscale_chestplate", EnumItemBreedTypes.WATER),
+		waterDragonscaleChesplate = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.CHEST, "water_dragonscale_tunic", EnumItemBreedTypes.WATER),
 		waterDragonScaleLeggings = new ItemDragonArmour(WaterDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "water_dragonscale_leggings", EnumItemBreedTypes.WATER),
 		waterDragonScaleBoots = new ItemDragonArmour(WaterDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "water_dragonscale_boots", EnumItemBreedTypes.WATER),
 		
 		iceDragonScaleCap = new ItemDragonArmour(IceDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "ice_dragonscale_cap", EnumItemBreedTypes.ICE),
-		iceDragonScaleChestplate = new ItemDragonArmour(IceDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "ice_dragonscale_chestplate", EnumItemBreedTypes.ICE),
+		iceDragonScaleTunic = new ItemDragonArmour(IceDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "ice_dragonscale_tunic", EnumItemBreedTypes.ICE),
 		iceDragonScaleLeggings = new ItemDragonArmour(IceDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "ice_dragonscale_leggings", EnumItemBreedTypes.ICE),
 		iceDragonScaleBoots = new ItemDragonArmour(IceDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "ice_dragonscale_boots", EnumItemBreedTypes.ICE),
 		
 		netherDragonScaleCap = new ItemNetherDragonArmour(NetherDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "nether_dragonscale_cap", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
-		netherDragonScaleChestplate = new ItemNetherDragonArmour(NetherDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "nether_dragonscale_chestplate", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
+		netherDragonScaleTunic = new ItemNetherDragonArmour(NetherDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "nether_dragonscale_tunic", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
 		netherDragonScaleLeggings = new ItemNetherDragonArmour(NetherDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "nether_dragonscale_leggings", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
 		netherDragonScaleBoots = new ItemNetherDragonArmour(NetherDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "nether_dragonscale_boots", new PotionEffect(MobEffects.RESISTANCE, 2, 1, true, false), EnumItemBreedTypes.NETHER),
 		
 		enderDragonScaleCap = new ItemEnderDragonArmour(EnderDragonScaleMaterial, 1, EntityEquipmentSlot.HEAD, "ender_dragonscale_cap", new PotionEffect(MobEffects.RESISTANCE, 2, 2, true, false), EnumItemBreedTypes.END),
-		enderDragonScaleChestplate = new ItemEnderDragonArmour(EnderDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "ender_dragonscale_chestplate", new PotionEffect(MobEffects.RESISTANCE, 2, 2, true, false), EnumItemBreedTypes.END),
+		enderDragonScaleTunic = new ItemEnderDragonArmour(EnderDragonScaleMaterial,  1, EntityEquipmentSlot.CHEST, "ender_dragonscale_tunic", new PotionEffect(MobEffects.RESISTANCE, 2, 2, true, false), EnumItemBreedTypes.END),
 		enderDragonScaleLeggings = new ItemEnderDragonArmour(EnderDragonScaleMaterial, 2, EntityEquipmentSlot.LEGS, "ender_dragonscale_leggings", new PotionEffect(MobEffects.RESISTANCE, 2, 2, true, false), EnumItemBreedTypes.END),
 		enderDragonScaleBoots = new ItemEnderDragonArmour(EnderDragonScaleMaterial, 1, EntityEquipmentSlot.FEET, "ender_dragonscale_boots", new PotionEffect(MobEffects.RESISTANCE, 2, 2, true, false), EnumItemBreedTypes.END),
 		

@@ -1318,15 +1318,15 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		case NETHER:
 			return DragonMountsLootTables.ENTITIES_DRAGON_NETHER;
 		case FOREST:
-			return DragonMountsLootTables.ENTITIES_DRAGON_JADE;
+			return DragonMountsLootTables.ENTITIES_DRAGON_FOREST;
 		case ICE:
-			return DragonMountsLootTables.ENTITIES_DRAGON_GARNET;
+			return DragonMountsLootTables.ENTITIES_DRAGON_ICE;
 		case FIRE:
-			return DragonMountsLootTables.ENTITIES_DRAGON_RUBY;
+			return DragonMountsLootTables.ENTITIES_DRAGON_FIRE;
 		case SYLPHID:
-			return DragonMountsLootTables.ENTITIES_DRAGON_SAPPHIRE;
+			return DragonMountsLootTables.ENTITIES_DRAGON_WATER;
 		case AETHER:
-			return DragonMountsLootTables.ENTITIES_DRAGON_AMETHYST;
+			return DragonMountsLootTables.ENTITIES_DRAGON_AETHER;
 		case SKELETON:
 			return DragonMountsLootTables.ENTITIES_DRAGON_SKELETON;
 		case WITHER:
