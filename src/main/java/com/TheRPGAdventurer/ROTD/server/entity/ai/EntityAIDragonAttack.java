@@ -116,10 +116,10 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         EntityLivingBase target = this.dragon.getAttackTarget();
         boolean attackMelee = dragon.onGround || !dragon.isFlying() && rider == null;
         boolean attackRanged = dragon.isFlying() && rider == null;
-   //     if(attackMelee) {
-  //          this.dragon.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
-            double d0 = this.dragon.getDistanceSq(target.posX, target.getEntityBoundingBox().minY, target.posZ);
-     //       --this.delayCounter;
+        double d0 = this.dragon.getDistanceSq(target.posX, target.getEntityBoundingBox().minY, target.posZ);
+        if(attackMelee) {
+            this.dragon.getLookHelper().setLookPositionWithEntity(target, 30.0F, 30.0F);
+            --this.delayCounter;
 
                  if (d0 > 1024.0D) {
                     this.delayCounter += 10;
@@ -127,18 +127,18 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
                     this.delayCounter += 5;
                  }
 
-   //         if (!this.dragon.getNavigator().tryMoveToEntityLiving(entitylivingbase, this.speedTowardsTarget)) {
-   //             this.delayCounter += 15;
-   ///         }
+            if (!this.dragon.getNavigator().tryMoveToEntityLiving(target, this.speedTowardsTarget)) {
+                this.delayCounter += 15;
+            }
         
             this.attackTick = Math.max(this.attackTick - 1, 0);
-    //        this.checkAndPerformAttack(entitylivingbase, d0);
+            this.checkAndPerformAttack(target, d0);
             
-     //   } else if(attackRanged) {
-        //	this.attackTick = Math.max(this.attackTick - 1, 0);
+        } else if(attackRanged) {
+        	this.attackTick = Math.max(this.attackTick - 1, 0);
     	checkAndPerformUncontrolledBreathAttack(target, d0);
         	
-      //  }
+        }
     }
 
     protected void checkAndPerformAttack(EntityLivingBase target, double p_190102_2_) {

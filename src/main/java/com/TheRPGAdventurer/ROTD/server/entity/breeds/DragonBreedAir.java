@@ -6,6 +6,7 @@ import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
 
 public class DragonBreedAir extends DragonBreed {
@@ -24,6 +25,8 @@ public class DragonBreedAir extends DragonBreed {
 	     addImmunity(DamageSource.WITHER);
 	        
 	     addHabitatBiome(Biomes.EXTREME_HILLS);
+	     addHabitatBlock(Blocks.LAPIS_BLOCK);
+	     addHabitatBlock(Blocks.LAPIS_ORE);
 	}
 
 	@Override
@@ -44,11 +47,6 @@ public class DragonBreedAir extends DragonBreed {
 
     @Override
     public void onDeath(EntityTameableDragon dragon) {}
-    
-	@Override
-	public boolean canChangeBreed() {
-		return true;
-	}
     
 }
 	

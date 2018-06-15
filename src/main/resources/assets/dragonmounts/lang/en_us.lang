@@ -1,15 +1,14 @@
 itemGroup.dragonmounts=Dragon Mounts
 
-entity.dragon.ice.name=Dragon
-entity.dragon.end.name=Dragon
-entity.dragon.air.name=Dragon
-entity.dragon.forest.name=Dragon
-entity.dragon.water.name=Dragon
-entity.dragon.name=Dragon
-entity.dragon.nether.name=Dragon
-entity.dragon.fire.name=Dragon
-entity.dragon.skeleton.name=Skeleton Dragon
-entity.dragon.wither.name=Wither Dragon
+entity.DragonMount.ice.name=Snow Dragon
+entity.DragonMount.end.name=Ender Dragon
+entity.DragonMount.aether.name=Sky Dragon
+entity.DragonMount.forest.name=Forest Dragon
+entity.DragonMount.sylphid.name=Water Dragon
+entity.DragonMount.nether.name=Nether Dragon
+entity.DragonMount.fire.name=Fire Dragon
+entity.DragonMount.skeleton.name=Skeleton Dragon
+entity.DragonMount.wither.name=Wither Dragon
 
 commands.dragon.nodragons=There are no dragons nearby
 commands.dragon.canttame=You cannot tame dragons
@@ -71,15 +70,15 @@ item.ice_dragonscale_tunic.name=Dragon Tunic
 item.ice_dragonscale_leggings.name=Dragon Leggings
 item.ice_dragonscale_boots.name=Dragon Boots
 
-item.air_dragonscales.name=Dragon Scales
-item.air_dragon_pickaxe.name=Dragon Pickaxe
-item.air_dragon_axe.name=Dragon Axe
-item.air_dragon_shovel.name=Dragon Spade
-item.air_dragon_sword.name=Dragon Sword
-item.air_dragonscale_cap.name=Dragon Cap
-item.air_dragonscale_tunic.name=Dragon Tunic
-item.air_dragonscale_leggings.name=Dragon Leggings
-item.air_dragonscale_boots.name=Dragon Boots
+item.aether_dragonscales.name=Dragon Scales
+item.aether_dragon_pickaxe.name=Dragon Pickaxe
+item.aether_dragon_axe.name=Dragon Axe
+item.aether_dragon_shovel.name=Dragon Spade
+item.aether_dragon_sword.name=Dragon Sword
+item.aether_dragonscale_cap.name=Dragon Cap
+item.aether_dragonscale_tunic.name=Dragon Tunic
+item.aether_dragonscale_leggings.name=Dragon Leggings
+item.aether_dragonscale_boots.name=Dragon Boots
 
 item.water_dragonscales.name=Dragon Scales
 item.water_dragon_pickaxe.name=Dragon Pickaxe
@@ -95,14 +94,13 @@ key.categories.dragon = Dragon Controls
 key.dragon.flyUp=Fly Up
 key.dragon.flyDown=Fly Down
 
-entity.DragonMounts.dragon.ice.name=Dragon
-entity.DragonMounts.dragon.end.name=Dragon
-entity.DragonMounts.dragon.aether.name=Dragon
-entity.DragonMounts.dragon.forest.name=Dragon
-entity.DragonMounts.dragon.water.name=Dragon
-entity.DragonMounts.dragon.air=Dragon
-entity.DragonMounts.dragon.nether.name=Dragon
-entity.DragonMounts.dragon.fire.name=Dragon
+entity.DragonMounts.dragon.ice.name=Ice Dragon
+entity.DragonMounts.dragon.end.name=Ender Dragon
+entity.DragonMounts.dragon.aether.name=Aether Dragon
+entity.DragonMounts.dragon.forest.name=Forest Dragon
+entity.DragonMounts.dragon.sylphid.name=Water Dragon
+entity.DragonMounts.dragon.nether.name=Nether Dragon
+entity.DragonMounts.dragon.fire.name=Fire Dragon
 entity.DragonMounts.dragon.skeleton.name=Skeleton Dragon
 entity.DragonMounts.dragon.wither.name=Wither Dragon
 

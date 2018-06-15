@@ -221,7 +221,7 @@ public abstract class DragonBreed {
     }
     
     public boolean canChangeBreed() {
-    	return false;
+    	return true;
     }
     
     public boolean canBreathFire() {

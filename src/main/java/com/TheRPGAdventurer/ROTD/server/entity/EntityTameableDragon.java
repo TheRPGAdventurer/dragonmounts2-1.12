@@ -1253,6 +1253,11 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		// managed by DragonLifeStageHelper, so this is a no-op
 	}
 	
+	@Override
+	public boolean shouldDismountInWater(Entity rider) {
+		return getBreedType() != EnumDragonBreed.SYLPHID;
+	}
+	
     /**
      * Get's the appopriate age via ticksSinceCreation for interactions like
      * appropriate age for riding the dragon appropriate age for opening gui etc.

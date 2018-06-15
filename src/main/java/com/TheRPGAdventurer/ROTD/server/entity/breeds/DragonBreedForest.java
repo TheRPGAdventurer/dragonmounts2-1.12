@@ -41,10 +41,5 @@ public class DragonBreedForest extends DragonBreed {
     @Override
     public void onDeath(EntityTameableDragon dragon) {}
     
-	@Override
-	public boolean canChangeBreed() {
-		return true;
-	}
-    
 }
 	
