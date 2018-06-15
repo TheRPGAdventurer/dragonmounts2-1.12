@@ -26,7 +26,7 @@ item.ender_dragon_axe.name=Dragon Axe
 item.ender_dragon_shovel.name=Dragon Spade
 item.ender_dragon_sword.name=Dragon Sword
 item.ender_dragonscale_cap.name=Dragon Cap
-item.ender_dragonscale_chestplate.name=Dragon Chestplate
+item.ender_dragonscale_tunic.name=Dragon Tunic
 item.ender_dragonscale_leggings.name=Dragon Leggings
 item.ender_dragonscale_boots.name=Dragon Boots
 
@@ -36,7 +36,7 @@ item.nether_dragon_axe.name=Dragon Axe
 item.nether_dragon_shovel.name=Dragon Spade
 item.nether_dragon_sword.name=Dragon Sword
 item.nether_dragonscale_cap.name=Dragon Cap
-item.nether_dragonscale_chestplate.name=Dragon Chestplate
+item.nether_dragonscale_tunic.name=Dragon Tunic
 item.nether_dragonscale_leggings.name=Dragon Leggings
 item.nether_dragonscale_boots.name=Dragon Boots
 
@@ -47,7 +47,7 @@ item.forest_dragon_shovel.name=Dragon Spade
 item.forest_dragon_hoe.name=Dragon Hoe
 item.forest_dragon_sword.name=Dragon Sword
 item.forest_dragonscale_cap.name=Dragon Cap
-item.forest_dragonscale_chestplate.name=Dragon Chestplate
+item.forest_dragonscale_tunic.name=Dragon Tunic
 item.forest_dragonscale_leggings.name=Dragon Leggings
 item.forest_dragonscale_boots.name=Dragon Boots
 
@@ -57,7 +57,7 @@ item.fire_dragon_axe.name=Dragon Axe
 item.fire_dragon_shovel.name=Dragon Spade
 item.fire_dragon_sword.name=Dragon Sword
 item.fire_dragonscale_cap.name=Dragon Cap
-item.fire_dragonscale_chestplate.name=Dragon Chestplate
+item.fire_dragonscale_tunic.name=Dragon Tunic
 item.fire_dragonscale_leggings.name=Dragon Leggings
 item.fire_dragonscale_boots.name=Dragon Boots
 
@@ -67,7 +67,7 @@ item.ice_dragon_axe.name=Dragon Axe
 item.ice_dragon_shovel.name=Dragon Spade
 item.ice_dragon_sword.name=Dragon Sword
 item.ice_dragonscale_cap.name=Dragon Cap
-item.ice_dragonscale_chestplate.name=Dragon Chestplate
+item.ice_dragonscale_tunic.name=Dragon Tunic
 item.ice_dragonscale_leggings.name=Dragon Leggings
 item.ice_dragonscale_boots.name=Dragon Boots
 
@@ -77,7 +77,7 @@ item.aether_dragon_axe.name=Dragon Axe
 item.aether_dragon_shovel.name=Dragon Spade
 item.aether_dragon_sword.name=Dragon Sword
 item.aether_dragonscale_cap.name=Dragon Cap
-item.aether_dragonscale_chestplate.name=Dragon Chestplate
+item.aether_dragonscale_tunic.name=Dragon Tunic
 item.aether_dragonscale_leggings.name=Dragon Leggings
 item.aether_dragonscale_boots.name=Dragon Boots
 
@@ -87,7 +87,7 @@ item.water_dragon_axe.name=Dragon Axe
 item.water_dragon_shovel.name=Dragon Spade
 item.water_dragon_sword.name=Dragon Sword
 item.water_dragonscale_cap.name=Dragon Cap
-item.water_dragonscale_chestplate.name=Dragon Chestplate
+item.water_dragonscale_tunic.name=Dragon Tunic
 item.water_dragonscale_leggings.name=Dragon Leggings
 item.water_dragonscale_boots.name=Dragon Boots
 
