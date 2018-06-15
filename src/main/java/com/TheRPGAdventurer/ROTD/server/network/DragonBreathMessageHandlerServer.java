@@ -54,12 +54,8 @@ public class DragonBreathMessageHandlerServer implements IMessageHandler<DragonB
         }
         
         EntityTameableDragon dragon = new EntityTameableDragon(sendingPlayer.world); 
-
-        if (message.isBreathing()) {
-        	dragon.setBreathing(true);
-        } else {
-        	dragon.setBreathing(false);
-        }
+        dragon.setBreathing(message.isBreathing());
+        
 
         return null;
     }
