@@ -19,51 +19,44 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ModArmour {
 	
-	public static final ArmorMaterial ForestDragonScaleMaterial     = EnumHelper.addArmorMaterial("forest", DragonMounts.MODID + ":forest", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial FireDragonScaleMaterial     = EnumHelper.addArmorMaterial("fire", DragonMounts.MODID + ":fire", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial AetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("aether", DragonMounts.MODID + ":aether", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial WaterDragonScaleMaterial = EnumHelper.addArmorMaterial("water", DragonMounts.MODID + ":water", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial IceDragonScaleMaterial = EnumHelper.addArmorMaterial("ice", DragonMounts.MODID + ":ice", 45, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
-	public static final ArmorMaterial NetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("nether", DragonMounts.MODID + ":nether", 47, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 6.0F);
-	public static final ArmorMaterial EnderDragonScaleMaterial    = EnumHelper.addArmorMaterial("ender", DragonMounts.MODID + ":ender", 50, new int [] {4,7,9,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 7.0F);
+	public static final ArmorMaterial ForestDragonScaleMaterial   = EnumHelper.addArmorMaterial("forest", DragonMounts.MODID + ":forest", 45, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial FireDragonScaleMaterial     = EnumHelper.addArmorMaterial("fire", DragonMounts.MODID + ":fire", 45, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial AetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("aether", DragonMounts.MODID + ":aether", 45, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial WaterDragonScaleMaterial    = EnumHelper.addArmorMaterial("water", DragonMounts.MODID + ":water", 45, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial IceDragonScaleMaterial      = EnumHelper.addArmorMaterial("ice", DragonMounts.MODID + ":ice", 45, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 5.0F);
+	public static final ArmorMaterial NetherDragonScaleMaterial   = EnumHelper.addArmorMaterial("nether", DragonMounts.MODID + ":nether", 47, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 6.0F);
+	public static final ArmorMaterial EnderDragonScaleMaterial    = EnumHelper.addArmorMaterial("ender", DragonMounts.MODID + ":ender", 50, new int [] {4,5,7,4}, 11, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 7.0F);
 	
-	public static ItemDragonArmour forestDragonScaleHelmet;
 	public static ItemDragonArmour forestDragonScaleCap;
 	public static ItemDragonArmour forestDragonScaleTunic;
 	public static ItemDragonArmour forestDragonScaleLeggings;
 	public static ItemDragonArmour forestDragonScaleBoots;
 	
-	public static ItemDragonArmour fireDragonScaleHelmet;
 	public static ItemDragonArmour fireDragonScaleCap;
 	public static ItemDragonArmour fireDragonScaleTunic;
 	public static ItemDragonArmour fireDragonScaleLeggings;
 	public static ItemDragonArmour fireDragonScaleBoots;
 	
-	public static ItemDragonArmour aetherDragonScaleHelmet;
 	public static ItemDragonArmour aetherDragonScaleCap;
 	public static ItemDragonArmour aetherDragonScaleTunic;
 	public static ItemDragonArmour aetherDragonScaleLeggings;
 	public static ItemDragonArmour aetherDragonScaleBoots;
 	
-	public static ItemDragonArmour waterDragonScaleHelmet;
 	public static ItemDragonArmour waterDragonScaleCap;
 	public static ItemDragonArmour waterDragonscaleChesplate;
 	public static ItemDragonArmour waterDragonScaleLeggings;
 	public static ItemDragonArmour waterDragonScaleBoots;
 	
-	public static ItemDragonArmour iceDragonScaleHelmet;
 	public static ItemDragonArmour iceDragonScaleCap;
 	public static ItemDragonArmour iceDragonScaleTunic;
 	public static ItemDragonArmour iceDragonScaleLeggings;
 	public static ItemDragonArmour iceDragonScaleBoots;
 	
-	public static ItemNetherDragonArmour netherDragonScaleHelmet;
 	public static ItemNetherDragonArmour netherDragonScaleCap;
 	public static ItemNetherDragonArmour netherDragonScaleTunic;
 	public static ItemNetherDragonArmour netherDragonScaleLeggings;
 	public static ItemNetherDragonArmour netherDragonScaleBoots;
 	
-	public static ItemEnderDragonArmour enderDragonScaleHelmet;
 	public static ItemEnderDragonArmour enderDragonScaleCap;
 	public static ItemEnderDragonArmour enderDragonScaleTunic;
 	public static ItemEnderDragonArmour enderDragonScaleLeggings;
