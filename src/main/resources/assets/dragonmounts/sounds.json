@@ -111,6 +111,60 @@
     "sounds": [
       "dragonmounts:mob/dragon/breathweapon/hatchlingbreathefirestop"
     ]
+  },
+    "mob.dragon.breathweapon.adultbreatheicestart": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheicestart"
+    ]
+  },
+  "mob.dragon.breathweapon.adultbreatheiceloop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheiceloop"
+    ]
+  },
+  "mob.dragon.breathweapon.adultbreatheicestop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheicestop"
+    ]
+  },
+  "mob.dragon.breathweapon.juvenilebreatheicestart": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreatheicestart"
+    ]
+  },
+  "mob.dragon.breathweapon.juvenilebreatheiceloop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreatheiceloop"
+    ]
+  },
+  "mob.dragon.breathweapon.juvenilebreatheicestop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreatheicestop"
+    ]
+  },
+  "mob.dragon.breathweapon.hatchlingbreatheicestart": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreatheicestart"
+    ]
+  },
+  "mob.dragon.breathweapon.hatchlingbreatheiceloop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreatheiceloop"
+    ]
+  },
+  "mob.dragon.breathweapon.hatchlingbreatheicestop": {
+    "category": "neutral",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreatheicestop"
+    ]
   }
 
 }

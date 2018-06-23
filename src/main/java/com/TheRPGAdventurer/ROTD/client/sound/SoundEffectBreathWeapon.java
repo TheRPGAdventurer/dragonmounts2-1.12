@@ -40,15 +40,15 @@ public class SoundEffectBreathWeapon {
 	
 	  WeaponSoundInfo.State currentWeaponState = WeaponSoundInfo.State.IDLE;
 
-	  private ComponentSoundSettings headSoundSettings = new ComponentSoundSettings(1.0F);
+  private ComponentSoundSettings headSoundSettings = new ComponentSoundSettings(1.0F);
 
-	  private BreathWeaponSound headStartupSound;
-	  private BreathWeaponSound headLoopSound;
-	  private BreathWeaponSound headStoppingSound;
+  private BreathWeaponSound headStartupSound;
+  private BreathWeaponSound headLoopSound;
+  private BreathWeaponSound headStoppingSound;
 
-	  private int ticksElapsed;
-	  private SoundController soundController;
-	  private WeaponSoundUpdateLink weaponSoundUpdateLink;
+  private int ticksElapsed;
+  private SoundController soundController;
+  private WeaponSoundUpdateLink weaponSoundUpdateLink;
 	  
   public SoundEffectBreathWeapon(SoundController i_soundController, WeaponSoundUpdateLink i_weaponSoundUpdateLink) {
     soundController = i_soundController;
