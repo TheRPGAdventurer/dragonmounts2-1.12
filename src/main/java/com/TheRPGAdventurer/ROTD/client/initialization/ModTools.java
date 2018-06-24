@@ -66,13 +66,13 @@ public class ModTools {
 	
 	public static final Item[] TOOLS = {
 		forestDragonPickaxe, forestDragonAxe, forestDragonShovel, forestDragonSword,
-		iceDragonPickaxe, iceDragonAxe, iceDragonShovel, iceDragonSword,
-	    fireDragonAxe, fireDragonPickaxe, fireDragonShovel, fireDragonSword,
+		iceDragonPickaxe, iceDragonAxe, iceDragonShovel, iceDragonSword, iceDragonHoe,
+	    fireDragonAxe, fireDragonPickaxe, fireDragonShovel, fireDragonSword, fireDragonHoe,
 		aetherDragonAxe, aetherDragonPickaxe, aetherDragonShovel,  aetherDragonSword,
-	    waterDragonAxe, waterDragonPickaxe, waterDragonShovel, waterDragonSword,
+	    waterDragonAxe, waterDragonPickaxe, waterDragonShovel, waterDragonSword, waterDragonHoe,
 	    netherDragonAxe, netherDragonPickaxe, netherDragonShovel, netherDragonSword,
 	    enderDragonAxe, enderDragonPickaxe, enderDragonShovel, enderDragonSword,
-	    diamond_shears, waterDragonHoe, fireDragonHoe, iceDragonHoe
+	    diamond_shears 
 	};
 	
 	public static void initRepairs() {
