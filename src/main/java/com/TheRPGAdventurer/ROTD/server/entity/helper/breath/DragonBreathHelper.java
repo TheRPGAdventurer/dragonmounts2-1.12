@@ -139,7 +139,7 @@ public class DragonBreathHelper extends DragonHelper {
     if (soundEffectBreathWeapon == null) {
       soundEffectBreathWeapon = new SoundEffectBreathWeapon(soundController, weaponInfoLink);
     }
-    soundEffectBreathWeapon.performTick(Minecraft.getMinecraft().player);
+    soundEffectBreathWeapon.performTick(Minecraft.getMinecraft().player, dragon);
   }
 
   private void updateBreathState(boolean targetBeingBreathedAt) {

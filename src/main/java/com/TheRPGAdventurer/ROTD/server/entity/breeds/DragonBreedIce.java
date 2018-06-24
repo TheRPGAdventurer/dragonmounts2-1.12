@@ -89,6 +89,7 @@ public class DragonBreedIce extends DragonBreed {
 		
 	}
 	
+	@Override
     public boolean useColdSound() {
     	return true;
     }
