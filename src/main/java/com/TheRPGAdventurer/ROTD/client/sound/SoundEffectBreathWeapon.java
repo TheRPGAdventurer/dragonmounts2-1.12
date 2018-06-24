@@ -338,36 +338,36 @@ final SoundEffectNames adultice[] = {SoundEffectNames.ADULT_BREATHE_ICE_START,
     SoundEffectNames [] soundEffectNames;
     switch (lifeStage) {
       case HATCHLING: {
-    	if(dragon.getBreed().useColdSound()) {
+    	//if(dragon.getBreed().useColdSound()) {
     		soundEffectNames = hatchlingice;
-    	} else {
-           soundEffectNames = hatchlingfire;
-    	}
+    //	} else {
+       //    soundEffectNames = hatchlingfire;
+    //	}
         break;
       }
       case JUVENILE: {
-    	  if(dragon.getBreed().useColdSound()) {
-    		  soundEffectNames = juvenileice;
-    	  } else {
+    	//  if(dragon.getBreed().useColdSound()) {
+    	//	  soundEffectNames = juvenileice;
+    	//  } else {
             soundEffectNames = juvenilefire;
-    	  }
+    	//  }
         break;
       }
       case ADULT: {
-    	  if(dragon.getBreed().useColdSound()) {
-            soundEffectNames = adultfire;
-    	  } else {
+    	//  if(dragon.getBreed().useColdSound()) {
+        //    soundEffectNames = adultfire;
+    	//  } else {
     		  soundEffectNames = adultice;
-    	  }
+    	//  }
         break;
       }
       default: {
         System.err.println("Unknown lifestage:" + lifeStage + " in weaponSound()");
-        if(dragon.getBreed().useColdSound()) { // dummy
-            soundEffectNames = adultfire;
-    	  } else {
+    //    if(dragon.getBreed().useColdSound()) { // dummy
+       //     soundEffectNames = adultfire;
+    	//  } else {
     		  soundEffectNames = adultice;
-    	  }
+    	//  }
       }
     }
     return new ResourceLocation(soundEffectNames[soundPart.ordinal()].getJsonName());
