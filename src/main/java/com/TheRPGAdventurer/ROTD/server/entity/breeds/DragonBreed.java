@@ -228,6 +228,10 @@ public abstract class DragonBreed {
     	return true;
     }
     
+    public boolean useColdSound() {
+    	return false;
+    }
+    
     public Entity getEntityBreath(World world, double x, double y, double z, Vec3d motion,
             BreathNode i_breathNode) {
     	FlameBreathFX FX = new FlameBreathFX(world, z, z, z, motion, i_breathNode);
