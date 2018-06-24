@@ -336,6 +336,9 @@ final SoundEffectNames adultice[] = {SoundEffectNames.ADULT_BREATHE_ICE_START,
         SoundEffectNames.ADULT_BREATHE_ICE_STOP};
 
     SoundEffectNames [] soundEffectNames;
+    if(dragon.getBreed().useColdSound()) {
+    	soundEffectNames = hatchlingice;
+    } else {
     switch (lifeStage) {
       case HATCHLING: {
     	//if(dragon.getBreed().useColdSound()) {
@@ -368,6 +371,7 @@ final SoundEffectNames adultice[] = {SoundEffectNames.ADULT_BREATHE_ICE_START,
     	//  } else {
     		  soundEffectNames = adultice;
     	//  }
+        }
       }
     }
     return new ResourceLocation(soundEffectNames[soundPart.ordinal()].getJsonName());
