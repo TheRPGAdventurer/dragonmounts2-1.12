@@ -311,71 +311,76 @@ public class SoundEffectBreathWeapon {
    * @return the resourcelocation corresponding to the desired sound
    */
   protected ResourceLocation weaponSound(SoundPart soundPart, EnumDragonLifeStage lifeStage, EntityTameableDragon dragon) {
-    final SoundEffectNames hatchlingfire[] = {SoundEffectNames.HATCHLING_BREATHE_FIRE_START,
+    final SoundEffectNames hatchlingfire[] = {
+    		                              SoundEffectNames.HATCHLING_BREATHE_FIRE_START,
                                           SoundEffectNames.HATCHLING_BREATHE_FIRE_LOOP,
                                           SoundEffectNames.HATCHLING_BREATHE_FIRE_STOP};
 
-    final SoundEffectNames juvenilefire[] = {SoundEffectNames.JUVENILE_BREATHE_FIRE_START,
+    final SoundEffectNames juvenilefire[] = {
+    		                              SoundEffectNames.JUVENILE_BREATHE_FIRE_START,
                                           SoundEffectNames.JUVENILE_BREATHE_FIRE_LOOP,
                                           SoundEffectNames.JUVENILE_BREATHE_FIRE_STOP};
 
-    final SoundEffectNames adultfire[] = {SoundEffectNames.ADULT_BREATHE_FIRE_START,
-                                      SoundEffectNames.ADULT_BREATHE_FIRE_LOOP,
-                                      SoundEffectNames.ADULT_BREATHE_FIRE_STOP};
+    final SoundEffectNames adultfire[] = {
+    		                              SoundEffectNames.ADULT_BREATHE_FIRE_START,
+                                          SoundEffectNames.ADULT_BREATHE_FIRE_LOOP,
+                                          SoundEffectNames.ADULT_BREATHE_FIRE_STOP};
     
-    final SoundEffectNames hatchlingice[] = {SoundEffectNames.HATCHLING_BREATHE_ICE_START,
-            SoundEffectNames.HATCHLING_BREATHE_ICE_LOOP,
-            SoundEffectNames.HATCHLING_BREATHE_ICE_STOP};
+    final SoundEffectNames hatchlingice[] = {
+    		                              SoundEffectNames.HATCHLING_BREATHE_ICE_START,
+                                          SoundEffectNames.HATCHLING_BREATHE_ICE_LOOP,
+                                          SoundEffectNames.HATCHLING_BREATHE_ICE_STOP};
 
-final SoundEffectNames juvenileice[] = {SoundEffectNames.JUVENILE_BREATHE_ICE_START,
-            SoundEffectNames.JUVENILE_BREATHE_ICE_LOOP,
-            SoundEffectNames.JUVENILE_BREATHE_ICE_STOP};
+    final SoundEffectNames juvenileice[] = {
+    		                              SoundEffectNames.JUVENILE_BREATHE_ICE_START,
+                                          SoundEffectNames.JUVENILE_BREATHE_ICE_LOOP,
+                                          SoundEffectNames.JUVENILE_BREATHE_ICE_STOP};
 
-final SoundEffectNames adultice[] = {SoundEffectNames.ADULT_BREATHE_ICE_START,
-        SoundEffectNames.ADULT_BREATHE_ICE_LOOP,
-        SoundEffectNames.ADULT_BREATHE_ICE_STOP};
+    final SoundEffectNames adultice[] = {
+    		                              SoundEffectNames.ADULT_BREATHE_ICE_START,
+                                          SoundEffectNames.ADULT_BREATHE_ICE_LOOP,
+                                          SoundEffectNames.ADULT_BREATHE_ICE_STOP};
 
     SoundEffectNames [] soundEffectNames;
-    if(dragon.getBreed().useColdSound()) {
-    	soundEffectNames = hatchlingice;
-    } else {
     switch (lifeStage) {
       case HATCHLING: {
-    	//if(dragon.getBreed().useColdSound()) {
+    	if(dragon.getBreed().useColdSound()) {
     		soundEffectNames = hatchlingice;
-    //	} else {
-       //    soundEffectNames = hatchlingfire;
-    //	}
-        break;
+    		 break;
+    	} else {
+           soundEffectNames = hatchlingfire;
+           break;
+    	}
       }
       case JUVENILE: {
-    	//  if(dragon.getBreed().useColdSound()) {
-    	//	  soundEffectNames = juvenileice;
-    	//  } else {
+    	  if(dragon.getBreed().useColdSound()) {
+    		  soundEffectNames = juvenileice;
+    		  break;
+    	  } else {
             soundEffectNames = juvenilefire;
-    	//  }
-        break;
+            break;
+    	  }      
       }
       case ADULT: {
-    	//  if(dragon.getBreed().useColdSound()) {
-        //    soundEffectNames = adultfire;
-    	//  } else {
-    		  soundEffectNames = adultice;
-    	//  }
-        break;
+    	  if(dragon.getBreed().useColdSound()) {
+            soundEffectNames = adultice;
+            break;
+    	  } else {
+    		soundEffectNames = adultfire;
+    		break;
+    	  }  
       }
       default: {
         System.err.println("Unknown lifestage:" + lifeStage + " in weaponSound()");
-    //    if(dragon.getBreed().useColdSound()) { // dummy
-       //     soundEffectNames = adultfire;
-    	//  } else {
-    		  soundEffectNames = adultice;
-    	//  }
+        if(dragon.getBreed().useColdSound()) { // dummy
+              soundEffectNames = adultfire;
+              break;
+    	  } else {
+    		  soundEffectNames = adultfire;
+    		  break; 	  
         }
       }
     }
     return new ResourceLocation(soundEffectNames[soundPart.ordinal()].getJsonName());
   }
-
-
 }
