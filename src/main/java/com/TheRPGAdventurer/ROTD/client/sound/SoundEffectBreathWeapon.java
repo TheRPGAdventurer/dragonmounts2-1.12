@@ -316,27 +316,27 @@ public class SoundEffectBreathWeapon {
                                           SoundEffectNames.HATCHLING_BREATHE_FIRE_LOOP,
                                           SoundEffectNames.HATCHLING_BREATHE_FIRE_STOP};
 
-    final SoundEffectNames juvenilefire[] = {
+    final SoundEffectNames  juvenilefire[] = {
     		                              SoundEffectNames.JUVENILE_BREATHE_FIRE_START,
                                           SoundEffectNames.JUVENILE_BREATHE_FIRE_LOOP,
                                           SoundEffectNames.JUVENILE_BREATHE_FIRE_STOP};
 
-    final SoundEffectNames adultfire[] = {
+    final SoundEffectNames     adultfire[] = {
     		                              SoundEffectNames.ADULT_BREATHE_FIRE_START,
                                           SoundEffectNames.ADULT_BREATHE_FIRE_LOOP,
                                           SoundEffectNames.ADULT_BREATHE_FIRE_STOP};
     
-    final SoundEffectNames hatchlingice[] = {
+    final SoundEffectNames  hatchlingice[] = {
     		                              SoundEffectNames.HATCHLING_BREATHE_ICE_START,
                                           SoundEffectNames.HATCHLING_BREATHE_ICE_LOOP,
                                           SoundEffectNames.HATCHLING_BREATHE_ICE_STOP};
 
-    final SoundEffectNames juvenileice[] = {
+    final SoundEffectNames   juvenileice[] = {
     		                              SoundEffectNames.JUVENILE_BREATHE_ICE_START,
                                           SoundEffectNames.JUVENILE_BREATHE_ICE_LOOP,
                                           SoundEffectNames.JUVENILE_BREATHE_ICE_STOP};
 
-    final SoundEffectNames adultice[] = {
+    final SoundEffectNames     adultice[] = {
     		                              SoundEffectNames.ADULT_BREATHE_ICE_START,
                                           SoundEffectNames.ADULT_BREATHE_ICE_LOOP,
                                           SoundEffectNames.ADULT_BREATHE_ICE_STOP};
