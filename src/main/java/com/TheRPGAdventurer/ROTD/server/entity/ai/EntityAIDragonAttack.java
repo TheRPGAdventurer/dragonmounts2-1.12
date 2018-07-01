@@ -151,15 +151,15 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         } 
     }
     
-    protected void checkAndPerformUncontrolledBreathAttack(EntityLivingBase target, double p_190102_2_) {
-        double d0 = this.getAttackReachSqrBreath(target);
+//    protected void checkAndPerformUncontrolledBreathAttack(EntityLivingBase target, double p_190102_2_) {
+ //       double d0 = this.getAttackReachSqrBreath(target);
 
-        if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) { 
-            this.attackTick = 20;
-            dragon.attackEntityWithRanged(target);
-        }
+  //      if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) { 
+   //         this.attackTick = 20;
+   //         dragon.attackEntityWithRanged(target);
+  //      }
     	
-    }
+//    }
 
     protected double getAttackReachSqr(EntityLivingBase attackTarget) {
         return (double)(this.dragon.width * 2.0F * this.dragon.width * 2.0F + attackTarget.width);

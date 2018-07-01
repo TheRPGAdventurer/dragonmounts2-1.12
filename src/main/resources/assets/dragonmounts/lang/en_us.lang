@@ -59,7 +59,7 @@ item.fire_dragonscale_cap.name=Dragon Cap
 item.fire_dragonscale_tunic.name=Dragon Tunic
 item.fire_dragonscale_leggings.name=Dragon Leggings
 item.fire_dragonscale_boots.name=Dragon Boots
-item.fire_dragonscale_hoe.name=Dragon Hoe
+item.fire_dragon_hoe.name=Dragon Hoe
 
 item.ice_dragonscales.name=Dragon Scales
 item.ice_dragon_pickaxe.name=Dragon Pickaxe
@@ -70,7 +70,7 @@ item.ice_dragonscale_cap.name=Dragon Cap
 item.ice_dragonscale_tunic.name=Dragon Tunic
 item.ice_dragonscale_leggings.name=Dragon Leggings
 item.ice_dragonscale_boots.name=Dragon Boots
-item.ice_dragonscale_hoe.name=Dragon Hoe
+item.ice_dragon_hoe.name=Dragon Hoe
 
 item.aether_dragonscales.name=Dragon Scales
 item.aether_dragon_pickaxe.name=Dragon Pickaxe
@@ -90,7 +90,7 @@ item.water_dragon_sword.name=Dragon Sword
 item.water_dragonscale_cap.name=Dragon Cap
 item.water_dragonscale_tunic.name=Dragon Tunic
 item.water_dragonscale_leggings.name=Dragon Leggings
-item.water_dragonscale_hoe.name=Dragon Hoe
+item.water_dragon_hoe.name=Dragon Hoe
 
 key.categories.dragon = Dragon Controls
 key.dragon.flyUp=Fly Up
