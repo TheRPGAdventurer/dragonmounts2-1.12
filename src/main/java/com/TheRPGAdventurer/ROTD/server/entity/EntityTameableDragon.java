@@ -742,11 +742,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 			return entityplayer;
 		}   return null;
 	}
-	
-	@Nullable
-	public EntityPlayer getLastRidingPlayer() {
-		return null;
-	}
 
 	/**
 	 * Called when a player interacts with a mob. e.g. gets milk from a cow, gets

@@ -42,6 +42,7 @@ public class DragonMountsConfig {
 	public static boolean canSpawnNetherBoneNest = true;
 	
 	public static boolean canFireSetFire = true;
+	public static boolean canBreathSetIce = true;
     
 	// chances
 	public static int MainNestRarity  = 300;
@@ -126,6 +127,16 @@ public class DragonMountsConfig {
 		prop = config.get(CATEGORY_MAIN, "use CommandingPlayer", useCommandingPlayer);
 		prop.setComment("Use a commanding player method(Experimental) to make dragons land on multiple players");
 		useCommandingPlayer = prop.getBoolean();
+		propOrder.add(prop.getName());
+		
+		prop = config.get(CATEGORY_MAIN, "Can Set Fire", canFireSetFire);
+		prop.setComment("Can dragon's breath set fire on Blocks");
+		canFireSetFire = prop.getBoolean();
+		propOrder.add(prop.getName());
+		
+		prop = config.get(CATEGORY_MAIN, "Can Set Ice", canBreathSetIce);
+		prop.setComment("Can dragon's breath set ice on Blocks");
+		canBreathSetIce = prop.getBoolean();
 		propOrder.add(prop.getName());
         
 		/**

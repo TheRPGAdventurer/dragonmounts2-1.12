@@ -52,24 +52,11 @@ public class BreathWeaponIce extends BreathWeapon {
     Block block = iBlockState.getBlock();
 
     Random rand = new Random();
-    int flammability;
-    for (EnumFacing facing : EnumFacing.values()) {
-//      BlockPos sideToIgnite = blockPos.offset(facing);
-//      if(!block.isFlammable(world, sideToIgnite, facing)) flammability = 12;
-      if (block.isFlammable(world, blockPos, facing)) {
-        flammability = block.getFlammability(world, blockPos, facing);
-        float thresholdForIgnition = convertFlammabilityToHitDensityThreshold(flammability);
-        float thresholdForDestruction = thresholdForIgnition * 50;
-        float densityOfThisFace = currentHitDensity.getHitDensity(facing);
-        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(blockPos) && DragonMountsConfig.canFireSetFire) {
-          final float MIN_PITCH = 0.8F;
-          final float MAX_PITCH = 1.2F;
-          final float VOLUME = 1.0F;
-//          world.playSound(null, new BlockPos(sideToIgnite.getX() + 0.5, sideToIgnite.getY() + 0.5, sideToIgnite.getZ() + 0.5),
-//                  SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.NEUTRAL, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH));
-          world.setBlockState(blockPos, Blocks.SNOW_LAYER.getDefaultState());
-        }
-      }
+    BlockPos sideToIgnite = blockPos.offset(EnumFacing.UP);
+  //  if (DragonMountsConfig.canBreathSetIce ) {
+   //     world.setBlockState(sideToIgnite, Blocks.SNOW_LAYER.getDefaultState());} else 
+        	if (DragonMountsConfig.canBreathSetIce && world.getBlockState(blockPos).getBlock() == Blocks.WATER || world.getBlockState(blockPos).getBlock() == Blocks.FLOWING_WATER) {
+    	world.mayPlace(Blocks.FROSTED_ICE, blockPos, false, EnumFacing.DOWN, (Entity)null);
     }
     
     return new BreathAffectedBlock();  // reset to zero
@@ -102,7 +89,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     
 //    if (currentHitDensity.applyDamageThisTick()) {
           entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
-          PotionEffect iceeffect = new PotionEffect(MobEffects.SLOWNESS, 20*10);
+          PotionEffect iceeffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);
           if (!((EntityLivingBase) entity).isPotionActive(iceeffect.getPotion()) && entity.isInWater()) { // If the Potion isn't currently active,
         	  ((EntityLivingBase) entity).addPotionEffect(iceeffect); // Apply a copy of the PotionEffect to the player
   		}
