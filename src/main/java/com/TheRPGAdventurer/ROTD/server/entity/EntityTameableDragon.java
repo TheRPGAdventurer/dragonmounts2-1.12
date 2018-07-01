@@ -916,34 +916,34 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	}
 
 
-	public boolean attackEntityAsMob(Entity e) {
-		boolean attack = e.attackEntityFrom(DamageSource.causeMobDamage(this),
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean attacked = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this),
 				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
 
-		if (attack) {		
-			applyEnchantments(this, e);		
+		if (attacked) {
+			applyEnchantments(this, entityIn);
 		}
 
 		if (getBreedType() == EnumDragonBreed.WITHER) {
-			((EntityLivingBase) e).addPotionEffect(new PotionEffect(MobEffects.WITHER, 200));
-		} 
-
-		return attack;
-	}
-	
-	public boolean attackEntityWithRanged(EntityLivingBase e) {
-		boolean attacked = e.attackEntityFrom(DamageSource.causeMobDamage(this), 
-				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
-		if(e.isDead) {
-			return false;
+			((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, 200));
 		}
-		
-		if (attacked == true) {		
-			this.setBreathing(attacked);
-			this.getLookHelper().setLookPositionWithEntity(e, getHeadYawSpeed(), getHeadPitchSpeed());
-		} 
+
 		return attacked;
 	}
+	
+//	public boolean attackEntityWithRanged(EntityLivingBase e) {
+//		boolean attacked = e.attackEntityFrom(DamageSource.causeMobDamage(this), 
+//				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
+//		if(e.isDead) {
+//			return false;
+//		}
+		
+//		if (attacked == true) {		
+//			this.setBreathing(attacked);
+//			this.getLookHelper().setLookPositionWithEntity(e, getHeadYawSpeed(), getHeadPitchSpeed());
+//		} 
+//		return attacked;
+//	}
 	
 	@Override
 	public void swingArm(EnumHand hand) {
