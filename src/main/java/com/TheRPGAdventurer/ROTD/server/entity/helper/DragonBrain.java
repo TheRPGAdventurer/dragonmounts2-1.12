@@ -30,6 +30,7 @@ import com.TheRPGAdventurer.ROTD.server.util.EntityClassPredicate;
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
@@ -152,7 +153,7 @@ public class DragonBrain extends DragonHelper {
             tasks.addTask(2, new EntityAISwimming(dragon)); // mutex 4   
 
             tasks.addTask(6, new EntityAITempt(dragon, 0.75, dragon.getBreed().getBreedingItem(), false)); // mutex 2+1
-            attackTasks.addTask(7, new EntityAIDragonAttack(dragon, 1, true)); // mutex 2+1
+            attackTasks.addTask(7, new EntityAIDragonAttack(dragon, 3, true)); // mutex 2+1
 //            attackTasks.addTask(1, new EntityAIBreathAttack(dragon));
                        
             tasks.addTask(9, new EntityAIDragonFollowOwner(dragon, 1, 10, 128)); // mutex 2+1

@@ -134,8 +134,8 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 			Double.MAX_VALUE).setDescription("Movement Speed Air").setShouldWatch(true);
 
 	// base attributes
-	public static final double BASE_GROUND_SPEED = 0.4;
-	public static final double BASE_AIR_SPEED = 0.9;
+	public static final double BASE_GROUND_SPEED = 0.3;
+	public static final double BASE_AIR_SPEED = 0.8;
 	public static final double BASE_DAMAGE = 10.0D;
 	public static final double BASE_ARMOR = 20.0D;
 	public static final double BASE_TOUGHNESS = 30.0D;
@@ -512,7 +512,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
                 inAirTicks = 0;
             }         
 
-            boolean flying = canFly() && inAirTicks > IN_AIR_THRESH && !isInWater() && !isInLava();
+            boolean flying = canFly() && inAirTicks > IN_AIR_THRESH && !isInLava();
 			if (flying != isFlying()) {
 
 				// notify client

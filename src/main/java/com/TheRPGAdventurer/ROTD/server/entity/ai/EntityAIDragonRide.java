@@ -11,10 +11,13 @@ package com.TheRPGAdventurer.ROTD.server.entity.ai;
 
 import com.TheRPGAdventurer.ROTD.client.initialization.ModKeys;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
+import com.TheRPGAdventurer.ROTD.server.entity.breeds.EnumDragonBreed;
 import com.TheRPGAdventurer.ROTD.util.math.MathX;
 import com.TheRPGAdventurer.ROTD.util.reflection.PrivateAccessor;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.Vec3d;
 
 /**
@@ -49,6 +52,13 @@ public class EntityAIDragonRide extends EntityAIDragonBase implements PrivateAcc
         double x = dragon.posX;
         double y = dragon.posY;
         double z = dragon.posZ;
+        
+        if(dragon.getBreedType() == EnumDragonBreed.SYLPHID) {
+        	PotionEffect watereffect = new PotionEffect(MobEffects.WATER_BREATHING, 20*10);
+        	if (!rider.isPotionActive(watereffect.getPotion()) && rider.isInWater()) { // If the Potion isn't currently active,
+        		rider.addPotionEffect(watereffect); // Apply a copy of the PotionEffect to the player
+    		}
+        } 
         
 	    dragon.setBreathing(ModKeys.KEY_BREATH.isKeyDown());	
 

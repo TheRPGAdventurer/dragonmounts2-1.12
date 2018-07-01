@@ -59,5 +59,10 @@ public class DragonBreedWater extends DragonBreed {
     public boolean useColdSound() {
     	return true;
     }
+	
+	@Override
+	public boolean canBreathFire() {
+		return false;
+	}
 
 }

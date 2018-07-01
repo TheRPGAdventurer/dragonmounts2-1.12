@@ -1,34 +1,21 @@
 package com.TheRPGAdventurer.ROTD.server.entity.helper.breath;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
@@ -65,6 +52,25 @@ public class BreathWeaponIce extends BreathWeapon {
     Block block = iBlockState.getBlock();
 
     Random rand = new Random();
+    int flammability;
+    for (EnumFacing facing : EnumFacing.values()) {
+//      BlockPos sideToIgnite = blockPos.offset(facing);
+//      if(!block.isFlammable(world, sideToIgnite, facing)) flammability = 12;
+      if (block.isFlammable(world, blockPos, facing)) {
+        flammability = block.getFlammability(world, blockPos, facing);
+        float thresholdForIgnition = convertFlammabilityToHitDensityThreshold(flammability);
+        float thresholdForDestruction = thresholdForIgnition * 50;
+        float densityOfThisFace = currentHitDensity.getHitDensity(facing);
+        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(blockPos) && DragonMountsConfig.canFireSetFire) {
+          final float MIN_PITCH = 0.8F;
+          final float MAX_PITCH = 1.2F;
+          final float VOLUME = 1.0F;
+//          world.playSound(null, new BlockPos(sideToIgnite.getX() + 0.5, sideToIgnite.getY() + 0.5, sideToIgnite.getZ() + 0.5),
+//                  SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.NEUTRAL, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH));
+          world.setBlockState(blockPos, Blocks.SNOW_LAYER.getDefaultState());
+        }
+      }
+    }
     
     return new BreathAffectedBlock();  // reset to zero
   }
@@ -76,7 +82,7 @@ public class BreathWeaponIce extends BreathWeapon {
    * @param currentHitDensity the hit density
    * @return the updated hit density; null if the entity is dead, doesn't exist, or otherwise not affected
    */
-  public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAffectedEntity currentHitDensity) {
+public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAffectedEntity currentHitDensity) {
     checkNotNull(world);
     checkNotNull(entityID);
     checkNotNull(currentHitDensity);
@@ -93,8 +99,13 @@ public class BreathWeaponIce extends BreathWeapon {
     final float DAMAGE_PER_HIT_DENSITY = 5.7F;
 
     float hitDensity = currentHitDensity.getHitDensity();
+    
 //    if (currentHitDensity.applyDamageThisTick()) {
           entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
+          PotionEffect iceeffect = new PotionEffect(MobEffects.SLOWNESS, 20*10);
+          if (!((EntityLivingBase) entity).isPotionActive(iceeffect.getPotion()) && entity.isInWater()) { // If the Potion isn't currently active,
+        	  ((EntityLivingBase) entity).addPotionEffect(iceeffect); // Apply a copy of the PotionEffect to the player
+  		}
        //   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40*10, 2));
   //  }
 
