@@ -916,6 +916,20 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		return attacked;
 	}
 	
+	public boolean attackEntityWithRanged(EntityLivingBase e) {
+		boolean attacked = e.attackEntityFrom(DamageSource.causeMobDamage(this), 
+				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
+		if(e.isDead) {
+			return false;
+		}
+		
+		if (attacked == true) {		
+			this.setBreathing(attacked);
+			this.getLookHelper().setLookPositionWithEntity(e, getHeadYawSpeed(), getHeadPitchSpeed());
+		} 
+		return attacked;
+	}
+	
 	@Override
 	public void swingArm(EnumHand hand) {
 		// play eating sound

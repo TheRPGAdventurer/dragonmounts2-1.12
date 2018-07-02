@@ -120,8 +120,7 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         double d0 = this.dragon.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
         --this.delayCounter;
 
-        if ((this.longMemory || this.dragon.getEntitySenses().canSee(entitylivingbase)) && this.delayCounter <= 0 && (this.targetX == 0.0D && this.targetY == 0.0D && this.targetZ == 0.0D || entitylivingbase.getDistanceSq(this.targetX, this.targetY, this.targetZ) >= 1.0D || this.dragon.getRNG().nextFloat() < 0.05F))
-        {
+        if ((this.longMemory || this.dragon.getEntitySenses().canSee(entitylivingbase)) && this.delayCounter <= 0 && (this.targetX == 0.0D && this.targetY == 0.0D && this.targetZ == 0.0D || entitylivingbase.getDistanceSq(this.targetX, this.targetY, this.targetZ) >= 1.0D || this.dragon.getRNG().nextFloat() < 0.05F)) {
             this.targetX = entitylivingbase.posX;
             this.targetY = entitylivingbase.getEntityBoundingBox().minY;
             this.targetZ = entitylivingbase.posZ;
@@ -174,15 +173,15 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         } 
     }
     
-//    protected void checkAndPerformUncontrolledBreathAttack(EntityLivingBase target, double p_190102_2_) {
- //       double d0 = this.getAttackReachSqrBreath(target);
+    protected void checkAndPerformUncontrolledBreathAttack(EntityLivingBase target, double p_190102_2_) {
+        double d0 = this.getAttackReachSqrBreath(target);
 
-  //      if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) { 
-   //         this.attackTick = 20;
-   //         dragon.attackEntityWithRanged(target);
-  //      }
+        if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) { 
+            this.attackTick = 20;
+            dragon.attackEntityWithRanged(target);
+        }
     	
-//    }
+    }
 
     protected double getAttackReachSqr(EntityLivingBase attackTarget) {
         return (double)(this.dragon.width * 2.0F * this.dragon.width * 2.0F + attackTarget.width);
