@@ -4,6 +4,7 @@ import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.EnumHand;
@@ -84,7 +85,7 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         }  else if (!this.dragon.isWithinHomeDistanceFromPosition(new BlockPos(entitylivingbase))) {
             return false;
         } else {
-            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative();
+            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative() && dragon.getControllingPlayer() == null;
         }
     }
 
@@ -166,10 +167,10 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
     protected void checkAndPerformAttack(EntityLivingBase target, double p_190102_2_) {
         double d0 = this.getAttackReachSqr(target);
 
-        if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) {
+        if (p_190102_2_ <= d0 && this.attackTick <= 0) {
             this.attackTick = 20;
             this.dragon.swingArm(EnumHand.MAIN_HAND);
-            this.dragon.attackEntityAsMob(target);
+            this.dragon.attackEntityAsMob(target); 
         } 
     }
     

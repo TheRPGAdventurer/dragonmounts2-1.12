@@ -46,7 +46,7 @@ import net.minecraft.world.World;
  */
 public class BreathWeaponWither extends BreathWeapon {
 	
-  private int witherduration = 350; 
+  private int witherduration = 350 * 10; 
 	
   public BreathWeaponWither(EntityTameableDragon i_dragon) {
     super(i_dragon);

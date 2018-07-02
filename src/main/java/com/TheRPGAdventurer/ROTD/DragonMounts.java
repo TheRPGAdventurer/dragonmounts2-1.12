@@ -13,7 +13,6 @@ import com.TheRPGAdventurer.ROTD.client.gui.GuiHandler;
 import com.TheRPGAdventurer.ROTD.client.inventory.CreativeTab;
 import com.TheRPGAdventurer.ROTD.server.ServerProxy;
 import com.TheRPGAdventurer.ROTD.server.network.MessageDragonArmor;
-import com.TheRPGAdventurer.ROTD.server.network.MessageDragonBreath;
 import com.TheRPGAdventurer.ROTD.server.world.DragonMountsWorldGenerator;
 
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
@@ -47,11 +46,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class DragonMounts {
     
-	@NetworkWrapper({MessageDragonArmor.class, MessageDragonBreath.class})
+	@NetworkWrapper({MessageDragonArmor.class})
 	public static SimpleNetworkWrapper NETWORK_WRAPPER;
-    public static final String NAME = "Realm Of The Dragons";
+    public static final String NAME = "Dragon Mounts";
     public static final String MODID = "dragonmounts";
-    public static final String VERSION = "1.7.9";
+    public static final String VERSION = "1.3.9";
     public static final String LLIBRARY_VERSION = "1.7.9";
     public static final String FORGE_VERSION = "1.12-14.21.1.2443";
     public static final String GUI_FACTORY = "com.TheRPGAdventurer.ROTD.DragonMountsConfigGuiFactory";

@@ -15,7 +15,6 @@ import static net.minecraft.entity.SharedMonsterAttributes.FOLLOW_RANGE;
 import static net.minecraft.entity.SharedMonsterAttributes.KNOCKBACK_RESISTANCE;
 import static net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED;
 
-import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +32,6 @@ import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
 import com.TheRPGAdventurer.ROTD.DragonMountsLootTables;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModArmour;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModItems;
-import com.TheRPGAdventurer.ROTD.client.initialization.ModKeys;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModTools;
 import com.TheRPGAdventurer.ROTD.client.model.anim.DragonAnimator;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
@@ -54,13 +52,11 @@ import com.TheRPGAdventurer.ROTD.server.entity.helper.DragonReproductionHelper;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.DragonSoundManager;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.DragonBreathHelper;
 import com.TheRPGAdventurer.ROTD.server.network.MessageDragonArmor;
-import com.TheRPGAdventurer.ROTD.server.network.MessageDragonBreath;
 import com.TheRPGAdventurer.ROTD.server.util.ItemUtils;
 import com.TheRPGAdventurer.ROTD.util.PrivateFields;
 import com.google.common.base.Optional;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
@@ -68,9 +64,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.IEntityMultiPart;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.MultiPartEntityPart;
 import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
@@ -99,14 +93,12 @@ import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.translation.I18n;
@@ -116,8 +108,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 
 /**
@@ -925,20 +915,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 
 		return attacked;
 	}
-	
-//	public boolean attackEntityWithRanged(EntityLivingBase e) {
-//		boolean attacked = e.attackEntityFrom(DamageSource.causeMobDamage(this), 
-//				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
-//		if(e.isDead) {
-//			return false;
-//		}
-		
-//		if (attacked == true) {		
-//			this.setBreathing(attacked);
-//			this.getLookHelper().setLookPositionWithEntity(e, getHeadYawSpeed(), getHeadPitchSpeed());
-//		} 
-//		return attacked;
-//	}
 	
 	@Override
 	public void swingArm(EnumHand hand) {
