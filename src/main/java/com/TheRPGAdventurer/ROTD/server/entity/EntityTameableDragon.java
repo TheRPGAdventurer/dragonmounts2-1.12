@@ -950,9 +950,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	 * @return 0 no armor
 	 */
 	public int getArmorResistance() {
-		if(getArmor() == 1) {return 2;}
-		if(getArmor() == 2) {return 1;}
-		if(getArmor() == 3) {return 3;}
+		if(getArmor() == 1) {return 3;}
+		if(getArmor() == 2) {return 2;}
+		if(getArmor() == 3) {return 5;}
 		return 0;
 	}
 
