@@ -35,7 +35,6 @@ import com.TheRPGAdventurer.ROTD.client.initialization.ModItems;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModTools;
 import com.TheRPGAdventurer.ROTD.client.model.anim.DragonAnimator;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
-import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonSit;
 import com.TheRPGAdventurer.ROTD.server.entity.ai.path.PathNavigateFlying;
 import com.TheRPGAdventurer.ROTD.server.entity.breeds.DragonBreed;
 import com.TheRPGAdventurer.ROTD.server.entity.breeds.EnumDragonBreed;
@@ -65,6 +64,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
@@ -163,13 +163,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
     		.<Byte>createKey(EntityTameableDragon.class, DataSerializers.BYTE);
 	private static final DataParameter<String> DATA_BREATH_WEAPON = EntityDataManager
 			.<String>createKey(EntityTameableDragon.class, DataSerializers.STRING); 
-    private static final DataParameter<Byte> CONTROL_STATE = EntityDataManager
-    		.<Byte>createKey(EntityTameableDragon.class, DataSerializers.BYTE);
 
 	// data NBT IDs
 	private static final String NBT_ARMOR     = "Armor";
 	private static final String NBT_SADDLED   = "Saddle";
-	private static final String NBT_SITTING   = "Sitting";
 	private static final String NBT_SHEARED   = "Sheared";
 	private static final String NBT_CHESTED   = "Chested";
 	private static final String NBT_BREATHING = "Breathing";
@@ -180,7 +177,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	// client-only delegates
 	private final DragonBodyHelper bodyHelper = new DragonBodyHelper(this);
 
-	private EntityAIDragonSit AIDragonSit;
 	public EntityEnderCrystal healingEnderCrystal;
 	public DragonInventory dragonInv;
 	private ItemStackHandler itemHandler = null;
@@ -235,7 +231,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}
 
 		moveHelper = new DragonMoveHelper(this);
-		AIDragonSit = new EntityAIDragonSit(this);
+		aiSit = new EntityAISit(this);
 
 		// init helpers
 		helpers.values().forEach(DragonHelper::applyEntityAttributes);
@@ -379,34 +375,12 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	}
 
 	/**
-	 * Returns the AITask responsible of the sit logic
-	 */
-	public EntityAIDragonSit getAIDragonSit() {
-		return this.AIDragonSit;
-	}
-
-	public boolean isDragonSitting() {
-		return (((Byte) this.dataManager.get(TAMED)).byteValue() & 1) != 0;
-	}
-
-	public void setDragonSitting(boolean sitting) {
-		byte b0 = ((Byte) this.dataManager.get(TAMED)).byteValue();
-
-		if (sitting) {
-			this.dataManager.set(TAMED, Byte.valueOf((byte) (b0 | 1)));
-		} else {
-			this.dataManager.set(TAMED, Byte.valueOf((byte) (b0 & -2)));
-		}
-	}
-
-	/**
 	 * (abstract) Protected helper method to write subclass entity data to NBT.
 	 */
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setBoolean(NBT_SADDLED, isSaddled());
-		nbt.setBoolean(NBT_SITTING, this.isSitting());
 		nbt.setInteger(NBT_ARMOR, this.getArmor());
 		nbt.setBoolean(NBT_CHESTED, this.isChested());
         nbt.setBoolean(NBT_SHEARED, this.getSheared());
@@ -423,10 +397,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		if (this.AIDragonSit != null) {
-			this.AIDragonSit.setDragonSitting(nbt.getBoolean(NBT_SITTING));
-		}
-		this.setDragonSitting(nbt.getBoolean(NBT_SITTING));
 		this.setSaddled(nbt.getBoolean(NBT_SADDLED));
 		this.setChested(nbt.getBoolean(NBT_CHESTED));
         this.setSheared(nbt.getBoolean(NBT_SHEARED));
@@ -725,12 +695,23 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	 * 
 	 * @author TheRPGAdventurer
 	 */
-	@Nullable
-	public EntityPlayer getCommandingPlayer() {
-		for (int i = 0; i < world.playerEntities.size();) {
-			EntityPlayer entityplayer = world.playerEntities.get(i);
-			return entityplayer;
-		}   return null;
+	@Override
+	public EntityLivingBase getOwner() {
+		if(DragonMountsConfig.allowOtherPlayerControl) {
+		    for (int i = 0; i < world.playerEntities.size();) {
+			    EntityPlayer entityplayer = world.playerEntities.get(i);
+			    return entityplayer;
+		    }
+		} else {
+			try {
+	            UUID uuid = this.getOwnerId();
+	            return uuid == null ? null : this.world.getPlayerEntityByUUID(uuid);
+	        } catch (IllegalArgumentException var2) {
+	            return null;
+	        }		
+		}
+		
+		return null;
 	}
 
 	/**
@@ -890,7 +871,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}
 
 		// don't just sit there!
-		AIDragonSit.setDragonSitting(false);
+		aiSit.setSitting(false);
 		
 		float damageReduction = getArmorResistance() + 3.0F;
 		if(getArmorResistance() != 0) {

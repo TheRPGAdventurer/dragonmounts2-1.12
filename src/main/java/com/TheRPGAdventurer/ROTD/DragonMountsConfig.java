@@ -35,6 +35,7 @@ public class DragonMountsConfig {
 	public static boolean shouldChangeBreedViaHabitatOrBlock = true;
     public static boolean canDragonDespawn = true;
     public static boolean useCommandingPlayer = false;
+    public static boolean allowOtherPlayerControl = true;
 	
     public static boolean canSpawnSurfaceDragonNest = true;
 	public static boolean canSpawnUnderGroundNest = false;
@@ -126,6 +127,11 @@ public class DragonMountsConfig {
 		
 		prop = config.get(CATEGORY_MAIN, "use CommandingPlayer", useCommandingPlayer);
 		prop.setComment("Use a commanding player method(Experimental) to make dragons land on multiple players");
+		useCommandingPlayer = prop.getBoolean();
+		propOrder.add(prop.getName());
+		
+		prop = config.get(CATEGORY_MAIN, "Allow Other Player's Control", allowOtherPlayerControl);
+		prop.setComment("Disable or enable the dragon's ability to obey ther players");
 		useCommandingPlayer = prop.getBoolean();
 		propOrder.add(prop.getName());
 		

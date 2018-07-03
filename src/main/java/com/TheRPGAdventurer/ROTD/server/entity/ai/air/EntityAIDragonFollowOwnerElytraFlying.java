@@ -34,12 +34,11 @@ public class EntityAIDragonFollowOwnerElytraFlying extends EntityAIDragonBase {
     	}
         
         // don't follow if sitting
-        if (dragon.isDragonSitting()) {
+        if (dragon.isSitting()) {
         	return false;
         }
         
-//       owner = (EntityPlayer) dragon.getOwner();
-        owner = dragon.getCommandingPlayer();
+        owner = (EntityPlayer) dragon.getOwner();
         
         // don't follow if ownerless 
         if (owner == null) {

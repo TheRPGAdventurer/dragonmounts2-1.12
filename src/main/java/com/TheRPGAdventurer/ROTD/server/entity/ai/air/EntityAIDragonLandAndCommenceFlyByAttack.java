@@ -81,20 +81,6 @@ public class EntityAIDragonLandAndCommenceFlyByAttack extends EntityAIDragonBase
 		return dragon.isFlying() && dragon.getControllingPlayer() == null && !dragon.getNavigator().noPath();
 	}
 
-	/**
-	 * experiment of dragon.getCommandingPlayer
-	 * 
-	 * @return
-	 */
-	public EntityPlayer getPlayer() {
-		EntityPlayer player;
-		if (DragonMountsConfig.useCommandingPlayer) {
-			return player = dragon.getCommandingPlayer();
-		} else {
-			return player = (EntityPlayer) dragon.getOwner();
-		}
-	}
-
 	@Override
 	public void startExecuting() {
 		EntityLivingBase revenge = dragon.getRevengeTarget();
@@ -102,7 +88,7 @@ public class EntityAIDragonLandAndCommenceFlyByAttack extends EntityAIDragonBase
 		if (!tryMoveToBlockPos(landingPos, speed)) {
 			// probably too high, so simply descend vertically
 			tryMoveToBlockPos(dragon.getPosition().down(4), speed);
-		} else if (dragon.getOwner() != null && !tryMoveToBlockPos(getPlayer().getPosition(), speed)) {
+		} else if (dragon.getOwner() != null && !tryMoveToBlockPos(dragon.getOwner().getPosition(), speed)) {
 			tryMoveToBlockPos(dragon.getPosition().down(4), speed);
 		} else if (revenge != null && !tryMoveToBlockPos(dragon.getRevengeTarget().getPosition(), speed)) {
 			tryMoveToBlockPos(dragon.getRevengeTarget().getPosition(), speed);
