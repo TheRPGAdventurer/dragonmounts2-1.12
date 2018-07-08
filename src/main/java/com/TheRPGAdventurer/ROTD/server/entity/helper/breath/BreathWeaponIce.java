@@ -59,6 +59,10 @@ public class BreathWeaponIce extends BreathWeapon {
     	world.mayPlace(Blocks.FROSTED_ICE, blockPos, false, EnumFacing.DOWN, (Entity)null);
     }
     
+    if(block == Blocks.FIRE) {
+        world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+   	}
+    
     return new BreathAffectedBlock();  // reset to zero
   }
   
