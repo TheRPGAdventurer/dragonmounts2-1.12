@@ -338,7 +338,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	}
 	
 	/**
-	 * Returns true if the entity is flying.
+	 * Returns true if the entity is breathing.
 	 */
 	public boolean isBreathing() {
 		if (world.isRemote) {
@@ -1526,6 +1526,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
         }
     }
 
+    /**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	private void initDragonInv() {
 		int numberOfInventoryforChest = 27;
 		DragonInventory animalchest = this.dragonInv;
@@ -1552,6 +1555,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}
 	}
 	
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public int getIntFromArmor(ItemStack stack) {
 		if (!stack.isEmpty() && stack.getItem() != null && stack.getItem() == ModArmour.dragonarmor_iron) {
 			return 1;
@@ -1566,6 +1572,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		return 0;
 	}
 
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public void openGUI(EntityPlayer playerEntity) {
 		if (!this.world.isRemote && (!this.isBeingRidden() || this.isPassenger(playerEntity)) && getLifeStageHelper().getTicksSinceCreation() >= 45000) {
 			playerEntity.openGui(DragonMounts.instance, 0, this.world, this.getEntityId(), 0, 0);
@@ -1574,6 +1583,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}
 	}
 
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public boolean replaceItemInInventory(int inventorySlot, @Nullable ItemStack itemStackIn) {
 		int j = inventorySlot - 500 + 2;
 		if (j >= 0 && j < this.dragonInv.getSizeInventory()) {
@@ -1600,6 +1612,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 				|| super.hasCapability(capability, facing);
 	}
 	
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public void readDragonInventory(NBTTagCompound nbt) {	
 		if (dragonInv != null) {
 			NBTTagList nbttaglist = nbt.getTagList("Items", 10);
@@ -1629,6 +1644,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}		
 	}
 	
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public void writeDragonInventory(NBTTagCompound nbt) {
 		if (dragonInv != null) {
 			NBTTagList nbttaglist = new NBTTagList();
@@ -1648,6 +1666,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 		}
 	}
 	
+	/**
+     * Credits: AlexThe 666 Ice and Fire
+     */
 	public void refreshInventory() {
 		ItemStack saddle = this.dragonInv.getStackInSlot(0);
 		ItemStack leftChestforInv = this.dragonInv.getStackInSlot(1);

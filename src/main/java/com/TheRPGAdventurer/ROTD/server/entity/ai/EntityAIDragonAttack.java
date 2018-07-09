@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityAIDragonAttack extends EntityAIDragonBase {
@@ -50,6 +51,8 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
             return false;
         } else if (!entitylivingbase.isEntityAlive()) {
             return false;
+        } else if(dragon.isSitting()) {
+        	return false;        
         } else {
             if (canPenalize) {
                 if (--this.delayCounter <= 0) {
@@ -85,7 +88,8 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         }  else if (!this.dragon.isWithinHomeDistanceFromPosition(new BlockPos(entitylivingbase))) {
             return false;
         } else {
-            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative() && dragon.getControllingPlayer() == null;
+            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative() && dragon.getControllingPlayer() == null
+            		&& !(((EntityPlayer)entitylivingbase).world.getDifficulty() == EnumDifficulty.PEACEFUL);
         }
     }
 
