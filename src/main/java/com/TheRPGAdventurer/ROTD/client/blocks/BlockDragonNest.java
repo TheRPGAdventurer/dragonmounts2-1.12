@@ -15,15 +15,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockPileOfSticks extends BlockBase {
+public class BlockDragonNest extends BlockBase {
 
-	public BlockPileOfSticks(String unlocalizedName, Material material) {
+	public BlockDragonNest(String unlocalizedName, Material material) {
 		super(unlocalizedName, material);
 		this.setResistance(1);
 		this.setHardness(1);
 		this.setSoundType(SoundType.WOOD);
 		this.setCreativeTab(CreativeTabs.DECORATIONS);
-	}
+	} 
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {

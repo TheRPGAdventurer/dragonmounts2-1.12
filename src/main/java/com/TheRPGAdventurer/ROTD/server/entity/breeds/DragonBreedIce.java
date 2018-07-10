@@ -42,6 +42,8 @@ public class DragonBreedIce extends DragonBreed {
         addHabitatBlock(Blocks.SNOW);
         addHabitatBlock(Blocks.SNOW_LAYER);
         addHabitatBlock(Blocks.ICE);
+        addHabitatBlock(Blocks.PACKED_ICE);
+        addHabitatBlock(Blocks.FROSTED_ICE);
 
         addHabitatBiome(Biomes.FROZEN_OCEAN);
         addHabitatBiome(Biomes.FROZEN_RIVER);

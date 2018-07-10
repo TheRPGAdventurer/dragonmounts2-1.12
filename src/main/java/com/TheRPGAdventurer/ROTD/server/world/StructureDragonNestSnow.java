@@ -11,7 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class StructureDragonNests {
+public class StructureDragonNestSnow {
 	
 	public static boolean generate(World world, BlockPos pos, Random rand) {
 		int x = pos.getX();
@@ -90,7 +90,7 @@ public class StructureDragonNests {
 	    world.setBlockState(new BlockPos(x-2,y+0,z+1), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x-1,y+0,z+2), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
 	    
-	    world.setBlockState(new BlockPos(x+0,y+1,z+0), BlockDragonBreedEgg.DRAGON_BREED_EGG.getStateFromMeta(world.rand.nextInt(4)));
+	    world.setBlockState(new BlockPos(x+0,y+1,z+0), BlockDragonBreedEgg.DRAGON_BREED_EGG.getStateFromMeta(4));
 	    return true;
 	}   
 	

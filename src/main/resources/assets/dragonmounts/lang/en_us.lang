@@ -91,6 +91,7 @@ item.water_dragonscale_cap.name=Dragon Cap
 item.water_dragonscale_tunic.name=Dragon Tunic
 item.water_dragonscale_leggings.name=Dragon Leggings
 item.water_dragon_hoe.name=Dragon Hoe
+item.water_dragonscale_boots.name=Dragon Boots
 
 key.categories.dragon = Dragon Controls
 key.dragon.flyUp=Fly Up
