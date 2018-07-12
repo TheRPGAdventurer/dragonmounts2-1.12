@@ -47,8 +47,12 @@ public class DragonMountsConfig {
     
 	// chances
 	public static int MainNestRarity  = 300;
-	public static int MainNestRarerityInX = 16;
-	public static int MainNestRarerityInZ = 16;
+	public static int MainNestRarerityInX = 18;
+	public static int MainNestRarerityInZ = 18;
+	
+	public static int MainSnowNestRarity  = 350;
+	public static int MainSnowNestRarerityInX = 18;
+	public static int MainSnowNestRarerityInZ = 18;
 	
 	public static int netherNestRarity = 480;
 	public static int netherNestRarerityInX = 16;

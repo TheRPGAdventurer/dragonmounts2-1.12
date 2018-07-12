@@ -68,27 +68,27 @@ public class StructureDragonNestSnow {
 	    
 	    //below
 	    world.setBlockState(new BlockPos(x+0,y+0,z+0), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x+0,y+0,z+1), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x+0,y+0,z+1), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x+2,y+0,z+0), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x+1,y+0,z+1), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x+1,y+0,z+1), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x-1,y+0,z+0), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x-2,y+0,z+0), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x-2,y+0,z+0), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x-2,y+0,z-1), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x-1,y+0,z-1), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x-1,y+0,z-1), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x-1,y+0,z-2), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x+0,y+0,z-1), ModBlocks.pileofsticks.getDefaultState()); 
 	    world.setBlockState(new BlockPos(x+1,y+0,z-1), ModBlocks.pileofsticks.getDefaultState()); 
-	    world.setBlockState(new BlockPos(x+2,y+0,z-1), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x+2,y+0,z-1), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x+2,y+0,z+1), ModBlocks.pileofsticks.getDefaultState()); 
 	    world.setBlockState(new BlockPos(x+1,y+0,z-2), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x+0,y+0,z-2), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x+0,y+0,z-2), Blocks.SNOW.getDefaultState());
 	    world.setBlockState(new BlockPos(x+1,y+0,z+0), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x+0,y+0,z+2), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x+1,y+0,z+2), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x+0,y+0,x+0), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x-1,y+0,z+1), ModBlocks.pileofsticks.getDefaultState());
 	    world.setBlockState(new BlockPos(x-2,y+0,z+1), ModBlocks.pileofsticks.getDefaultState());
-	    world.setBlockState(new BlockPos(x-1,y+0,z+2), Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, DirtType.COARSE_DIRT));
+	    world.setBlockState(new BlockPos(x-1,y+0,z+2), Blocks.SNOW.getDefaultState());
 	    
 	    world.setBlockState(new BlockPos(x+0,y+1,z+0), BlockDragonBreedEgg.DRAGON_BREED_EGG.getStateFromMeta(4));
 	    return true;
