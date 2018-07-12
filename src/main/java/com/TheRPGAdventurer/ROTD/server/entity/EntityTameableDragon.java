@@ -1221,7 +1221,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 	
 	@Override
 	public boolean shouldDismountInWater(Entity rider) {
-		return getBreedType() != EnumDragonBreed.SYLPHID;
+		return false;
 	}
 	
     /**
