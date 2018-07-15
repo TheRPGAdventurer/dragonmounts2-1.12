@@ -250,9 +250,8 @@ public class BreathWeaponNether extends BreathWeapon {
 
     float hitDensity = currentHitDensity.getHitDensity();
     if(dragon.getControllingPlayer() != null && entity != dragon.getControllingPlayer()) {
-    	entity.setFire((int)(hitDensity * 5));}
-    if (currentHitDensity.applyDamageThisTick()) {
-      entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);} 
+    	entity.setFire((int)(40 * 10));}
+      entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
       
 
     return currentHitDensity;

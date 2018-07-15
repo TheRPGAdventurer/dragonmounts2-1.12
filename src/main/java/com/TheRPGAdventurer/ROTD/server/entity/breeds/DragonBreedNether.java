@@ -1,26 +1,14 @@
 package com.TheRPGAdventurer.ROTD.server.entity.breeds;
 
 
-import com.TheRPGAdventurer.ROTD.client.render.BreathWeaponEmitter;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathAffectedArea;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeapon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeaponNether;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode.Power;
 
-import net.minecraft.init.Biomes;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 public class DragonBreedNether extends DragonBreed {

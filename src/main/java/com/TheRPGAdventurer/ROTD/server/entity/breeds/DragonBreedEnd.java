@@ -1,13 +1,8 @@
 package com.TheRPGAdventurer.ROTD.server.entity.breeds;
 
-import com.TheRPGAdventurer.ROTD.client.render.BreathWeaponEmitter;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathAffectedArea;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeapon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeaponEnder;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode.Power;
 
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;

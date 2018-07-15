@@ -10,6 +10,7 @@
 package com.TheRPGAdventurer.ROTD.client;
 
 import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
+import com.TheRPGAdventurer.ROTD.client.event.DragonViewEvent;
 import com.TheRPGAdventurer.ROTD.client.gui.GuiDragonDebug;
 import com.TheRPGAdventurer.ROTD.client.handler.DragonEntityWatcher;
 import com.TheRPGAdventurer.ROTD.client.initialization.ModKeys;
@@ -71,8 +72,7 @@ public class ClientProxy extends ServerProxy {
         
         if (DragonMountsConfig.isDebug()) { MinecraftForge.EVENT_BUS.register(new GuiDragonDebug());}            
         RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
-//        DragonBreathControl.createSingleton(getNetwork());
-//        MinecraftForge.EVENT_BUS.register(new DragonBreathControl());
+        MinecraftForge.EVENT_BUS.register(new DragonViewEvent());
 
     }
     

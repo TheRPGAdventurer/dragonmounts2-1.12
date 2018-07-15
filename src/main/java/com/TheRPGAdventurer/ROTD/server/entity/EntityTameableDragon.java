@@ -56,6 +56,7 @@ import com.TheRPGAdventurer.ROTD.util.PrivateFields;
 import com.google.common.base.Optional;
 
 import net.minecraft.block.Block;
+import net.minecraft.command.CommandException;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
@@ -197,13 +198,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
             ReflectionHelper.setPrivateValue(EntityLiving.class, this, new DragonBodyHelper(this), PrivateFields.ENTITYLIVING_BODYHELPER);
         } catch (Exception ex) {
             L.warn("Can't override EntityBodyHelper", ex);
-        }
-
-        // override EntityLookHelper field, which is private and has no setter
-        try {
-            ReflectionHelper.setPrivateValue(EntityLiving.class, this, new DragonLookHelper(this), PrivateFields.ENTITYLIVING_LOOKHELPER);
-        } catch (Exception ex) {
-            L.warn("Can't override EntityLookHelper", ex);
         }
 		
 		attackTasks = new EntityAITasks(world != null ? world.profiler : null);
@@ -1228,9 +1222,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
      * Get's the appopriate age via ticksSinceCreation for interactions like
      * appropriate age for riding the dragon appropriate age for opening gui etc.
      */
-//    public boolean isInAppropriateAgeForInteraction() {
- //   	return this.getLifeStageHelper().getTicksSinceCreation() >= 45000;	
- //   }
+    public static int getAppropriateAgeForInteraction() {
+    	return 45000;	
+    }
 
 	/**
 	 * Returns the size multiplier for the current age.
@@ -1454,13 +1448,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
     public void applyEntityCollision(Entity entityIn) {
     	
         if (entityIn instanceof EntityBoat) {
-            if (entityIn.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY)
-            {
+            if (entityIn.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY) {
                 super.applyEntityCollision(entityIn);
             }
-        }
-        else if (entityIn.getEntityBoundingBox().minY <= this.getEntityBoundingBox().minY)
-        {
+        } else if (entityIn.getEntityBoundingBox().minY <= this.getEntityBoundingBox().minY) {
             super.applyEntityCollision(entityIn);
         }
     }
@@ -1576,11 +1567,11 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
      * Credits: AlexThe 666 Ice and Fire
      */
 	public void openGUI(EntityPlayer playerEntity) {
-		if (!this.world.isRemote && (!this.isBeingRidden() || this.isPassenger(playerEntity)) && getLifeStageHelper().getTicksSinceCreation() >= 45000) {
+		if (!this.world.isRemote && (!this.isBeingRidden() || this.isPassenger(playerEntity)) && getLifeStageHelper().getTicksSinceCreation() >= getAppropriateAgeForInteraction()) {
 			playerEntity.openGui(DragonMounts.instance, 0, this.world, this.getEntityId(), 0, 0);
 		} else if (!this.world.isRemote && getLifeStageHelper().getTicksSinceCreation() >= 45000) {
 			playerEntity.sendStatusMessage(new TextComponentTranslation("entity.dragon.tooYoung", new Object[0]), true);
-		}
+		} 
 	}
 
 	/**
@@ -1703,5 +1694,4 @@ public class EntityTameableDragon extends EntityTameable implements IShearable {
 			dragon.refreshInventory();
 		}
 	}
-	
 }
