@@ -83,9 +83,9 @@ public class BreathWeapon {
                   SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.HOSTILE, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH), false);
           world.setBlockState(sideToIgnite, Blocks.FIRE.getDefaultState());
         }
-        if (densityOfThisFace >= thresholdForDestruction && block.getBlockHardness(iBlockState, world, pos) > -1.0F) {
-          world.setBlockToAir(pos);
-        }
+     //   if (densityOfThisFace >= thresholdForDestruction && block.getBlockHardness(iBlockState, world, pos) < 2 && block.getBlockHardness(iBlockState, world, pos) > 0) {
+     //       world.setBlockToAir(pos);
+     //   }
       }
     }
     
@@ -106,6 +106,10 @@ public class BreathWeapon {
         IBlockState iBlockStateSmelted = world.getBlockState(pos);
          iBlockStateSmelted = smeltedResultBlock.getStateFromMeta(smeltingResult.getMetadata());
       }
+    }
+    
+    if(block.getBlockHardness(iBlockState, world, pos) < 2 && block.getBlockHardness(iBlockState, world, pos) > 0) {    
+    	world.setBlockState(pos, Blocks.AIR.getDefaultState());
     }
 
     if (block1 == Blocks.IRON_ORE) world.setBlockState(pos,  Blocks.IRON_BLOCK.getDefaultState());
