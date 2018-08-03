@@ -73,9 +73,9 @@ public class BreathWeapon {
       if (block.isFlammable(world, sideToIgnite, facing)) {
         int flammability = block.getFlammability(world, sideToIgnite, facing);
         float thresholdForIgnition = convertFlammabilityToHitDensityThreshold(flammability);
-        float thresholdForDestruction = thresholdForIgnition * 10;
+//        float thresholdForDestruction = thresholdForIgnition * 10;
         float densityOfThisFace = currentHitDensity.getHitDensity(facing);
-        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(sideToIgnite)) {
+        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(sideToIgnite) && thresholdForIgnition != 0) {
           final float MIN_PITCH = 0.8F;
           final float MAX_PITCH = 1.2F;
           final float VOLUME = 1.0F;
