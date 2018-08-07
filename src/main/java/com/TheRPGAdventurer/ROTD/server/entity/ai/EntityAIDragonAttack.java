@@ -53,7 +53,7 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
             return false;
         } else if(dragon.isSitting()) {
         	return false;
-        } else if(dragon.getPassengers() != null) {
+        } else if(dragon.getControllingPlayer() != null) {
         	return false;                
         } else {
             if (canPenalize) {
