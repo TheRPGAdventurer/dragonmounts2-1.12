@@ -14,6 +14,13 @@ public class DragonBreedForest extends DragonBreed {
     DragonBreedForest() {
         super("forest", 0x298317);
         
+        addImmunity(DamageSource.IN_FIRE);
+        addImmunity(DamageSource.ON_FIRE);
+        addImmunity(DamageSource.MAGIC);
+        addImmunity(DamageSource.HOT_FLOOR);
+        addImmunity(DamageSource.LIGHTNING_BOLT);
+        addImmunity(DamageSource.WITHER);
+        
         addHabitatBlock(Blocks.YELLOW_FLOWER);
         addHabitatBlock(Blocks.RED_FLOWER);
         addHabitatBlock(Blocks.MOSSY_COBBLESTONE);
@@ -33,11 +40,6 @@ public class DragonBreedForest extends DragonBreed {
 
     @Override
     public void onDeath(EntityTameableDragon dragon) {}
-    
-	@Override
-	public boolean canChangeBreed() {
-		return true;
-	}
     
 }
 	

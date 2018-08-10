@@ -30,6 +30,7 @@ import com.TheRPGAdventurer.ROTD.server.util.EntityClassPredicate;
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
@@ -142,7 +143,7 @@ public class DragonBrain extends DragonHelper {
         
         tasks.addTask(0, new EntityAIDragonCatchOwner(dragon)); // mutex all
         tasks.addTask(1, new EntityAIDragonRide(dragon)); // mutex all
-        tasks.addTask(2, dragon.getAIDragonSit()); // mutex 4+1
+        tasks.addTask(2, dragon.getAISit()); // mutex 4+1
         tasks.addTask(3, new EntityAIDragonFollowOwnerElytraFlying(dragon)); // mutex all
         tasks.addTask(4, new EntityAIMoveTowardsRestriction(dragon, 1)); // mutex 1
         
@@ -152,18 +153,16 @@ public class DragonBrain extends DragonHelper {
             tasks.addTask(2, new EntityAISwimming(dragon)); // mutex 4   
 
             tasks.addTask(6, new EntityAITempt(dragon, 0.75, dragon.getBreed().getBreedingItem(), false)); // mutex 2+1
-            attackTasks.addTask(7, new EntityAIDragonAttack(dragon, 1, true)); // mutex 2+1
-//            attackTasks.addTask(1, new EntityAIBreathAttack(dragon));
+            attackTasks.addTask(7, new  EntityAIDragonAttack(dragon, 1, true)); // mutex 2+1
                        
-            tasks.addTask(9, new EntityAIDragonFollowOwner(dragon, 1, 10, 128)); // mutex 2+1
+            tasks.addTask(9, new EntityAIDragonFollowOwner(dragon, 1, 15, 128)); // mutex 2+1
             tasks.addTask(9, new EntityAIDragonFollowOwnerElytraFlying(dragon)); // mutex 2+1
             tasks.addTask(10, new EntityAIWander(dragon, 1)); // mutex 1
             tasks.addTask(11, new EntityAIDragonWatchIdle(dragon)); // mutex 2
             tasks.addTask(11, new EntityAIDragonWatchLiving(dragon, 16, 0.05f)); // mutex 2
             
-            attackTasks.addTask(5, new EntityAINearestAttackableTarget(dragon, EntityLiving.class, 13, false, true, new Predicate<EntityLiving>(){public boolean apply(@Nullable EntityLiving p_apply_1_){return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_);}}));
-            attackTasks.addTask(5, new EntityAIDragonHunt(dragon, EntityAnimal.class, false, new EntityClassPredicate(EntitySheep.class, EntityPig.class, EntityChicken.class, EntityRabbit.class, EntityLlama.class))); // mutex 1
-            
+            targetTasks.addTask(5, new EntityAINearestAttackableTarget(dragon, EntityLiving.class, 13, false, true, new Predicate<EntityLiving>(){public boolean apply(@Nullable EntityLiving p_apply_1_){return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_);}}));
+            targetTasks.addTask(5, new EntityAIDragonHunt(dragon, EntityAnimal.class, false, new EntityClassPredicate(EntitySheep.class, EntityPig.class, EntityChicken.class, EntityRabbit.class, EntityLlama.class))); // mutex 1
         }
                 targetTasks.addTask(2, new EntityAIOwnerHurtByTarget(dragon)); // mutex 1
                 targetTasks.addTask(3, new EntityAIOwnerHurtTarget(dragon)); // mutex 1

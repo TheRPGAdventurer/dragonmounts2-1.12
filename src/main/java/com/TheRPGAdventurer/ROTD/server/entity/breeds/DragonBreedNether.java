@@ -1,26 +1,14 @@
 package com.TheRPGAdventurer.ROTD.server.entity.breeds;
 
 
-import com.TheRPGAdventurer.ROTD.client.render.BreathWeaponEmitter;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathAffectedArea;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeapon;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathWeaponNether;
-import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathNode.Power;
 
-import net.minecraft.init.Biomes;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 public class DragonBreedNether extends DragonBreed {
@@ -47,14 +35,14 @@ public class DragonBreedNether extends DragonBreed {
         dragon.getBrain().setAvoidsWater(false);
    }
 
-    @Override
-    public void onDeath(EntityTameableDragon dragon) {
-    	dragon.world.createExplosion(dragon, dragon.posX, dragon.posY, dragon.posZ, 25, true); 
-    }
+	@Override
+	public void onDeath(EntityTameableDragon dragon) {
+		
+	}
     
     @Override
     public SoundEvent getLivingSound() {
-        if (rand.nextInt(2) == 0) {
+        if (rand.nextInt(3) == 0) {
             return ModSounds.ENTITY_NETHER_DRAGON_GROWL;
         } else {
             return ModSounds.ENTITY_NETHER_DRAGON_GROWL;

@@ -49,8 +49,4 @@ public class DragonBreedFire extends DragonBreed {
 		
 	}
 	
-	@Override
-	public boolean canChangeBreed() {
-		return false;
-	}
 }

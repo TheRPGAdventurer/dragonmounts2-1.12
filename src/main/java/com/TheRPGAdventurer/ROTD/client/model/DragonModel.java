@@ -257,11 +257,11 @@ public class DragonModel extends ModelBase {
         tailScaleMiddle = tail.addChildBox("scale", -1, -8, -3, 2, 4, 6).setAngles(0, 0, 0);
         tailScaleRight = tail.addChildBox("scale", -1, -8, -3, 2, 4, 6).setAngles(0, 0, -scaleRotZ);
         
-        boolean sapphire = breed == EnumDragonBreed.SYLPHID;
+        boolean ice = breed == EnumDragonBreed.ICE;
         
-        tailScaleMiddle.showModel = !sapphire;
-        tailScaleLeft.showModel = sapphire;
-        tailScaleRight.showModel = sapphire;
+        tailScaleMiddle.showModel = !ice;
+        tailScaleLeft.showModel = ice;
+        tailScaleRight.showModel = ice;
         
         buildTailHorn(false);
         buildTailHorn(true);
@@ -297,6 +297,7 @@ public class DragonModel extends ModelBase {
         horn.setAngles(hornRotX, hornRotY, hornRotZ);
         horn.isHidden = true;
         horn.showModel = breed == EnumDragonBreed.NETHER;
+        horn.showModel = breed == EnumDragonBreed.SYLPHID;
         
         if (mirror) {
             tailHornLeft = horn;
@@ -314,7 +315,7 @@ public class DragonModel extends ModelBase {
         heart        = body.addChildBox("heart", -4, 12, -5, 8, 6, 15);
         back         = body.addChildBox("scale",        -1,  -6,  -10,  2,  6, 12);
         chestL       = body.addChildBox("chestL",        12, 0, 18, 4, 12, 12);
-        chestR       = body.addChildBox("chestR",       -15, 0, 18, 4, 12, 12);
+        chestR       = body.addChildBox("chestR",       -16, 0, 18, 4, 12, 12);
         saddle       = body.addChildBox("saddle",       -7, -2, -15, 15, 3, 20); 
         saddleFront  = body.addChildBox("saddleFront",  -3, -3, -14, 6, 1, 2); 
         saddleBack   = body.addChildBox("saddleBack",   -6, -4, 2, 13, 2, 2); 
@@ -641,8 +642,7 @@ public class DragonModel extends ModelBase {
         }
     }
 
-    protected void copyPositionRotationLocation(ModelPart modelPart,
-            SegmentSizePositionRotation segmentData) {
+    protected void copyPositionRotationLocation(ModelPart modelPart, SegmentSizePositionRotation segmentData) {
         modelPart.rotateAngleX = segmentData.copyIfValid(segmentData.rotateAngleX, modelPart.rotateAngleX);
         modelPart.rotateAngleY = segmentData.copyIfValid(segmentData.rotateAngleY, modelPart.rotateAngleY);
         modelPart.rotateAngleZ = segmentData.copyIfValid(segmentData.rotateAngleZ, modelPart.rotateAngleZ);

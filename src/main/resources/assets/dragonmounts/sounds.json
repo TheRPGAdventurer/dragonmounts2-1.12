@@ -2,29 +2,29 @@
   "mob.dragon.growl": {
   "category": "dragon_growl",
     "sounds": [
-      "rotd:mob/dragon/growl",
-      "rotd:mob/dragon/growl1",
-      "rotd:mob/dragon/growl2",
-      "rotd:mob/dragon/growl3",
-	  "rotd:mob/dragon/growl4",
-	  "rotd:mob/dragon/growl5"
+      "dragonmounts:mob/dragon/growl",
+      "dragonmounts:mob/dragon/growl1",
+      "dragonmounts:mob/dragon/growl2",
+      "dragonmounts:mob/dragon/growl3",
+	  "dragonmounts:mob/dragon/growl4",
+	  "dragonmounts:mob/dragon/growl5"
     ]
   },
   
   "mob.dragon.nethergrowl": {
   "category": "nether_dragon_growl",
     "sounds": [
-      "rotd:mob/dragon/nethergrowl",
-      "rotd:mob/dragon/nethergrowl1",
-      "rotd:mob/dragon/nethergrowl2",
-	  "rotd:mob/dragon/nethergrowl3"
+      "dragonmounts:mob/dragon/nethergrowl",
+      "dragonmounts:mob/dragon/nethergrowl1",
+      "dragonmounts:mob/dragon/nethergrowl2",
+	  "dragonmounts:mob/dragon/nethergrowl3"
     ]
   },
   
   "mob.dragon.skeletongrowl": {
   "category": "skeleton_dragon_growl",
     "sounds": [
-      "rotd:mob/dragon/skeletongrowl1"
+      "dragonmounts:mob/dragon/skeletongrowl1"
     ]
   },
   
@@ -46,71 +46,88 @@
   "mob.dragon.step": {
     "category": "dragon_step",
     "sounds": [
-      "rotd:mob/dragon/step1",
-      "rotd:mob/dragon/step2",
-      "rotd:mob/dragon/step3",
-      "rotd:mob/dragon/step4"
+      "dragonmounts:mob/dragon/step1",
+      "dragonmounts:mob/dragon/step2",
+      "dragonmounts:mob/dragon/step3",
+      "dragonmounts:mob/dragon/step4"
     ]
   },
    "mob.dragon.death": {
-    "category": "neutral",
+    "category": "dragon_death",
     "sounds": [
-      "rotd:mob/dragon/death"
+      "dragonmounts:mob/dragon/death"
     ]
   },
   "mob.dragon.breathweapon.adultbreathefirestart": {
-    "category": "neutral",
+    "category": "dragon_start",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/adultbreathefirestart"
+      "dragonmounts:mob/dragon/breathweapon/adultbreathefirestart"
     ]
   },
   "mob.dragon.breathweapon.adultbreathefireloop": {
-    "category": "neutral",
+    "category": "dragon_loop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/adultbreathefireloop"
+      "dragonmounts:mob/dragon/breathweapon/adultbreathefireloop"
     ]
   },
   "mob.dragon.breathweapon.adultbreathefirestop": {
-    "category": "neutral",
+    "category": "dragon_stop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/adultbreathefirestop"
+      "dragonmounts:mob/dragon/breathweapon/adultbreathefirestop"
     ]
   },
   "mob.dragon.breathweapon.juvenilebreathefirestart": {
-    "category": "neutral",
+    "category": "dragon_start",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/juvenilebreathefirestart"
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreathefirestart"
     ]
   },
   "mob.dragon.breathweapon.juvenilebreathefireloop": {
-    "category": "neutral",
+    "category": "dragon_loop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/juvenilebreathefireloop"
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreathefireloop"
     ]
   },
   "mob.dragon.breathweapon.juvenilebreathefirestop": {
-    "category": "neutral",
+    "category": "dragon_stop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/juvenilebreathefirestop"
+      "dragonmounts:mob/dragon/breathweapon/juvenilebreathefirestop"
     ]
   },
   "mob.dragon.breathweapon.hatchlingbreathefirestart": {
-    "category": "neutral",
+    "category": "dragon_start",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/hatchlingbreathefirestart"
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreathefirestart"
     ]
   },
   "mob.dragon.breathweapon.hatchlingbreathefireloop": {
-    "category": "neutral",
+    "category": "dragon_loop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/hatchlingbreathefireloop"
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreathefireloop"
     ]
   },
   "mob.dragon.breathweapon.hatchlingbreathefirestop": {
-    "category": "neutral",
+    "category": "dragon_stop",
     "sounds": [
-      "rotd:mob/dragon/breathweapon/hatchlingbreathefirestop"
+      "dragonmounts:mob/dragon/breathweapon/hatchlingbreathefirestop"
+    ]
+  },
+    "mob.dragon.breathweapon.adultbreatheicestart": {
+    "category": "dragon_start",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheicestart"
+    ]
+  },
+  "mob.dragon.breathweapon.adultbreatheiceloop": {
+    "category": "dragon_loop",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheiceloop"
+    ]
+  },
+  "mob.dragon.breathweapon.adultbreatheicestop": {
+    "category": "dragon_stop",
+    "sounds": [
+      "dragonmounts:mob/dragon/breathweapon/adultbreatheicestop"
     ]
   }
-
 }

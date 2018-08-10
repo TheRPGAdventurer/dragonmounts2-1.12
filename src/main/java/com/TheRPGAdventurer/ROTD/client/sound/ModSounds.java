@@ -30,9 +30,6 @@ public class ModSounds {
 	@ObjectHolder("mob.dragon.skeletongrowl")
 	public static final SoundEvent ENTITY_SKELETON_DRAGON_GROWL = createSoundEvent("mob.dragon.skeletongrowl");
 	
-	@ObjectHolder("mob.dragon.breathweapon.adultbreathefirestart")
-	public static final SoundEvent ENTITY_DRAGON_BREATHSTART = createSoundEvent("mob.dragon.breathweapon.adultbreathefirestart");
-
 	private static SoundEvent createSoundEvent(final String soundName) {
 		final ResourceLocation soundID = new ResourceLocation(DragonMounts.MODID, soundName);
 		return new SoundEvent(soundID).setRegistryName(soundID);
@@ -48,8 +45,8 @@ public class ModSounds {
 					ENTITY_DRAGON_DEATH,
 					ENTITY_DRAGON_GROWL,
 					ENTITY_NETHER_DRAGON_GROWL,
-					ENTITY_SKELETON_DRAGON_GROWL,
-					ENTITY_DRAGON_BREATHSTART
+					ENTITY_SKELETON_DRAGON_GROWL
+					
 			);
 		}
 	}

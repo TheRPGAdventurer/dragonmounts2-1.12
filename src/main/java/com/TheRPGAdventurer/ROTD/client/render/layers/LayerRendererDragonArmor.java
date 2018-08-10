@@ -1,5 +1,6 @@
 package com.TheRPGAdventurer.ROTD.client.render.layers;
 
+import com.TheRPGAdventurer.ROTD.DragonMounts;
 import com.TheRPGAdventurer.ROTD.client.model.DragonModel;
 import com.TheRPGAdventurer.ROTD.client.render.DragonRenderer;
 import com.TheRPGAdventurer.ROTD.client.render.breeds.DefaultDragonBreedRenderer;
@@ -24,7 +25,7 @@ public class LayerRendererDragonArmor extends LayerRendererDragon {
             float moveSpeed, float partialTicks, float ticksExisted, float lookYaw,
             float lookPitch, float scale) {
     	if (dragon.getArmor() != 0) {
-			renderer.bindTexture(new ResourceLocation("rotd:textures/entities/armor/armor_" + (dragon.getArmor() != 1 ? dragon.getArmor() != 2 ? "diamond" : "gold" : "iron") + ".png"));
+			renderer.bindTexture(new ResourceLocation(DragonMounts.MODID + ":textures/entities/armor/armor_" + (dragon.getArmor() != 1 ? dragon.getArmor() != 2 ? "diamond" : "gold" : "iron") + ".png"));
 	        model.render(dragon, moveTime, moveSpeed, ticksExisted, lookYaw, lookPitch, scale);
 		}
 	}

@@ -4,9 +4,9 @@ import net.minecraft.util.text.TextFormatting;
 
 public enum EnumItemBreedTypes {
 	
-	AETHER(TextFormatting.BLUE), 
-	WATER(TextFormatting.AQUA), 
-	ICE(TextFormatting.WHITE), 
+	AETHER(TextFormatting.AQUA), 
+	WATER(TextFormatting.BLUE), 
+	ICE(TextFormatting.DARK_BLUE), 
 	FIRE(TextFormatting.DARK_RED), 
 	FOREST(TextFormatting.DARK_GREEN),
 	NETHER(TextFormatting.GOLD),

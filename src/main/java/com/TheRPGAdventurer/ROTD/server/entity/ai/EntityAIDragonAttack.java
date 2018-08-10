@@ -4,10 +4,13 @@ import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityAIDragonAttack extends EntityAIDragonBase {
@@ -29,7 +32,6 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
     private int failedPathFindingPenalty = 0;
     private boolean canPenalize = false;
     EntityPlayer rider = dragon.getControllingPlayer();
-    public boolean useBreathAttack;
 
     public EntityAIDragonAttack(EntityTameableDragon dragon, double speedIn, boolean useLongMemory) {
     	super(dragon);
@@ -42,13 +44,20 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
-    public boolean shouldExecute() {
+    @SuppressWarnings("null")
+	public boolean shouldExecute() {
         EntityLivingBase entitylivingbase = this.dragon.getAttackTarget();
 
-        if (entitylivingbase == null) {
+        if (entitylivingbase == null && dragon.getLifeStageHelper().getTicksSinceCreation() <= dragon.getAppropriateAgeForInteraction() && ((EntityTameable) entitylivingbase).isTamed()) {
             return false;
         } else if (!entitylivingbase.isEntityAlive()) {
             return false;
+        } else if(rider != null)  {
+           return false;
+        }  else if(dragon.isSitting()) {       
+        	return false;        
+        } else if(dragon.getControllingPlayer() != null) {
+        	return false;                
         } else {
             if (canPenalize) {
                 if (--this.delayCounter <= 0) {
@@ -84,7 +93,8 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         }  else if (!this.dragon.isWithinHomeDistanceFromPosition(new BlockPos(entitylivingbase))) {
             return false;
         } else {
-            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative();
+            return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative() && dragon.getControllingPlayer() == null
+            		&& !(((EntityPlayer)entitylivingbase).world.getDifficulty() == EnumDifficulty.PEACEFUL);
         }
     }
 
@@ -109,45 +119,63 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
         this.dragon.getNavigator().clearPathEntity();
     }
 
+
     /**
      * Keep ticking a continuous task that has already been started
      */
     public void updateTask() {
-        EntityLivingBase target = this.dragon.getAttackTarget();
-        boolean attackMelee = dragon.onGround || !dragon.isFlying() && rider == null;
-        boolean attackRanged = dragon.isFlying() && rider == null;
-   //     if(attackMelee) {
-  //          this.dragon.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
-            double d0 = this.dragon.getDistanceSq(target.posX, target.getEntityBoundingBox().minY, target.posZ);
-     //       --this.delayCounter;
+        EntityLivingBase entitylivingbase = this.dragon.getAttackTarget();
+        boolean useBreath;
+        boolean useBite;
+        this.dragon.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
+        double d0 = this.dragon.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
+        --this.delayCounter;
 
-                 if (d0 > 1024.0D) {
-                    this.delayCounter += 10;
-                 }  else if (d0 > 256.0D) {
-                    this.delayCounter += 5;
-                 }
+        if ((this.longMemory || this.dragon.getEntitySenses().canSee(entitylivingbase))) {
+        		if(this.delayCounter <= 0 && (this.targetX == 0.0D && this.targetY == 0.0D && this.targetZ == 0.0D || entitylivingbase.getDistanceSq(this.targetX, this.targetY, this.targetZ) >= 1.0D || this.dragon.getRNG().nextFloat() < 0.05F)) {
+            this.targetX = entitylivingbase.posX;
+            this.targetY = entitylivingbase.getEntityBoundingBox().minY;
+            this.targetZ = entitylivingbase.posZ;
+            this.delayCounter = 4 + this.dragon.getRNG().nextInt(7);
 
-   //         if (!this.dragon.getNavigator().tryMoveToEntityLiving(entitylivingbase, this.speedTowardsTarget)) {
-   //             this.delayCounter += 15;
-   ///         }
+            if (this.canPenalize) {
+                this.delayCounter += failedPathFindingPenalty;
+                if (this.dragon.getNavigator().getPath() != null) {
+                    net.minecraft.pathfinding.PathPoint finalPathPoint = this.dragon.getNavigator().getPath().getFinalPathPoint();
+                    if (finalPathPoint != null && entitylivingbase.getDistanceSq(finalPathPoint.x, finalPathPoint.y, finalPathPoint.z) < 1)
+                        failedPathFindingPenalty = 0;
+                    else
+                        failedPathFindingPenalty += 10;
+                } else {
+                    failedPathFindingPenalty += 10;
+                }
+            }
+
+            if (d0 > 1024.0D) {
+                this.delayCounter += 10;
+            } else if (d0 > 256.0D) {
+                this.delayCounter += 5;
+            }
+
+            if (!this.dragon.getNavigator().tryMoveToEntityLiving(entitylivingbase, this.speedTowardsTarget)) {
+                this.delayCounter += 15;
+            }
+        }
+
+        this.attackTick = Math.max(this.attackTick - 1, 0);
+        this.checkAndPerformAttack(entitylivingbase, d0);
+        } 
         
-            this.attackTick = Math.max(this.attackTick - 1, 0);
-    //        this.checkAndPerformAttack(entitylivingbase, d0);
-            
-     //   } else if(attackRanged) {
-        //	this.attackTick = Math.max(this.attackTick - 1, 0);
-    	checkAndPerformUncontrolledBreathAttack(target, d0);
-        	
-      //  }
     }
+
 
     protected void checkAndPerformAttack(EntityLivingBase target, double p_190102_2_) {
         double d0 = this.getAttackReachSqr(target);
 
-        if (p_190102_2_ <= d0 && this.attackTick <= 0 && attackTick <= 40) {
+        if (p_190102_2_ <= d0 && this.attackTick <= 0) {
             this.attackTick = 20;
             this.dragon.swingArm(EnumHand.MAIN_HAND);
-            this.dragon.attackEntityAsMob(target);
+            this.dragon.attackEntityAsMob(target); 
         } 
     }
     

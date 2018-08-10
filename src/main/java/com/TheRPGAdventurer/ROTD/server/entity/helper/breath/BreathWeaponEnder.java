@@ -77,7 +77,7 @@ public class BreathWeaponEnder extends BreathWeapon {
 
         entityareaeffectcloud.setPosition(blockPos.getX(), blockPos.getY(), blockPos.getZ());                 
         int i = rand.nextInt(10000);
-        if(i < 18) {
+        if(i < 10) {
         world.spawnEntity(entityareaeffectcloud);
       }
     }  return new BreathAffectedBlock();  // reset to zero

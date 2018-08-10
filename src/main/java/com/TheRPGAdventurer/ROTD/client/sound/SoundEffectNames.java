@@ -17,7 +17,11 @@ public enum SoundEffectNames {
   JUVENILE_BREATHE_FIRE_STOP("mob.dragon.breathweapon.juvenilebreathefirestop"),
   HATCHLING_BREATHE_FIRE_START("mob.dragon.breathweapon.hatchlingbreathefirestart"),
   HATCHLING_BREATHE_FIRE_LOOP("mob.dragon.breathweapon.hatchlingbreathefireloop"),
-  HATCHLING_BREATHE_FIRE_STOP("mob.dragon.breathweapon.hatchlingbreathefirestop");
+  HATCHLING_BREATHE_FIRE_STOP("mob.dragon.breathweapon.hatchlingbreathefirestop"),
+  
+  ADULT_BREATHE_ICE_START("mob.dragon.breathweapon.adultbreatheicestart"),
+  ADULT_BREATHE_ICE_LOOP("mob.dragon.breathweapon.adultbreatheiceloop"),
+  ADULT_BREATHE_ICE_STOP("mob.dragon.breathweapon.adultbreatheicestop");
 
   public final String getJsonName() {return DragonMounts.MODID + ":" + jsonName;}
 

@@ -16,12 +16,12 @@ public class ModItems {
 	
 	
 	public static final Item[] ITEMS = {
-		ForestDragonScales = new ItemDragonScales("forest_dragonscales", EnumItemBreedTypes.FOREST),
-		FireDragonScales = new ItemDragonScales("fire_dragonscales", EnumItemBreedTypes.FIRE),
-		IceDragonScales = new ItemDragonScales("ice_dragonscales", EnumItemBreedTypes.ICE),
-		WaterDragonScales = new ItemDragonScales("water_dragonscales", EnumItemBreedTypes.WATER),
-		AetherDragonScales = new ItemDragonScales("aether_dragonscales", EnumItemBreedTypes.AETHER),
-		NetherDragonScales = new ItemDragonScales("nether_dragonscales", EnumItemBreedTypes.NETHER),
-		EnderDragonScales = new ItemDragonScales("ender_dragonscales", EnumItemBreedTypes.END),
+		ForestDragonScales = new ItemDragonScales("forest_dragonscales", EnumItemBreedTypes.FOREST, 16),
+		FireDragonScales = new ItemDragonScales("fire_dragonscales", EnumItemBreedTypes.FIRE, 16),
+		IceDragonScales = new ItemDragonScales("ice_dragonscales", EnumItemBreedTypes.ICE, 16),
+		WaterDragonScales = new ItemDragonScales("water_dragonscales", EnumItemBreedTypes.WATER, 16),
+		AetherDragonScales = new ItemDragonScales("aether_dragonscales", EnumItemBreedTypes.AETHER, 16),
+		NetherDragonScales = new ItemDragonScales("nether_dragonscales", EnumItemBreedTypes.NETHER, 16),
+		EnderDragonScales = new ItemDragonScales("ender_dragonscales", EnumItemBreedTypes.END, 16),
 	};
 }

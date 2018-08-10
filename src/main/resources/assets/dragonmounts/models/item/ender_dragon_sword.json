@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
 	"textures": {
-	    "layer0": "rotd:items/ender_dragon_sword"
+	    "layer0": "dragonmounts:items/ender_dragon_sword"
 	}
 }

@@ -87,9 +87,9 @@ public class BreathWeaponNether extends BreathWeapon {
                   SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.NEUTRAL, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH));
           world.setBlockState(sideToIgnite, Blocks.FIRE.getDefaultState());
         }
-    //    if (densityOfThisFace >= thresholdForDestruction && block != Blocks.OBSIDIAN && block != Blocks.BEDROCK) {
-    //      world.setBlockToAir(blockPos);
-    //    }
+        if (densityOfThisFace >= thresholdForDestruction && block.getBlockHardness(iBlockState, world, blockPos) < 2 && block.getBlockHardness(iBlockState, world, blockPos) > 0) {
+          world.setBlockToAir(blockPos);
+        }
       }
     }
 
@@ -250,9 +250,8 @@ public class BreathWeaponNether extends BreathWeapon {
 
     float hitDensity = currentHitDensity.getHitDensity();
     if(dragon.getControllingPlayer() != null && entity != dragon.getControllingPlayer()) {
-    	entity.setFire((int)(hitDensity * 5));}
-    if (currentHitDensity.applyDamageThisTick()) {
-      entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);} 
+    	entity.setFire((int)(40 * 10));}
+      entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
       
 
     return currentHitDensity;

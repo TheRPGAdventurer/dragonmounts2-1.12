@@ -181,7 +181,7 @@ public abstract class DragonBreed {
     public abstract void onDeath(EntityTameableDragon dragon);
     
     public SoundEvent getLivingSound() {
-        if (rand.nextInt(2) == 0) {
+        if (rand.nextInt(3) == 0) {
             return ModSounds.ENTITY_DRAGON_GROWL;
         } else {
         	return ModSounds.ENTITY_DRAGON_BREATHE;
@@ -221,11 +221,15 @@ public abstract class DragonBreed {
     }
     
     public boolean canChangeBreed() {
-    	return false;
+    	return true;
     }
     
     public boolean canBreathFire() {
     	return true;
+    }
+    
+    public boolean useColdSound() {
+    	return false;
     }
     
     public Entity getEntityBreath(World world, double x, double y, double z, Vec3d motion,

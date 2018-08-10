@@ -39,20 +39,30 @@ public class DragonBreedWater extends DragonBreed {
 
 	@Override
 	public void onEnable(EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onDisable(EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onDeath(EntityTameableDragon dragon) {
-		// TODO Auto-generated method stub
 		
+		
+	}
+	
+	@Override
+    public boolean useColdSound() {
+    	return true;
+    }
+	
+	@Override
+	public boolean canBreathFire() {
+		return false;
 	}
 
 }

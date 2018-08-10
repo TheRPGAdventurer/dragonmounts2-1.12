@@ -2,10 +2,10 @@ package com.TheRPGAdventurer.ROTD.server.entity.helper.breath;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.HashMap;
 import java.util.Random;
 
-import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 
 import net.minecraft.block.Block;
@@ -39,8 +39,6 @@ import net.minecraft.world.World;
  */
 public class BreathWeapon {
 	
-  protected EntityTameableDragon dragon;
-	
   public BreathWeapon(EntityTameableDragon i_dragon) {
     dragon = i_dragon;
   }
@@ -51,13 +49,14 @@ public class BreathWeapon {
    * @param currentHitDensity
    * @return the updated block hit density
    */
-  public BreathAffectedBlock affectBlock(World world, Vec3i blockPosition, BreathAffectedBlock currentHitDensity) {
+  public BreathAffectedBlock affectBlock(World world, Vec3i blockPosition,
+                                                     BreathAffectedBlock currentHitDensity) {
     checkNotNull(world);
     checkNotNull(blockPosition);
     checkNotNull(currentHitDensity);
 
-    BlockPos blockPos = new BlockPos(blockPosition);
-    IBlockState iBlockState = world.getBlockState(blockPos);
+    BlockPos pos = new BlockPos(blockPosition);
+    IBlockState iBlockState = world.getBlockState(pos);
     Block block = iBlockState.getBlock();
 
     Random rand = new Random();
@@ -69,63 +68,80 @@ public class BreathWeapon {
     // 2) If the block can be smelted (eg sand), then convert the block to the smelted version
     // 3) If the block can't be smelted then convert to lava
 
-    int flammability;
     for (EnumFacing facing : EnumFacing.values()) {
-      BlockPos sideToIgnite = blockPos.offset(facing);
-//      if(!block.isFlammable(world, sideToIgnite, facing)) flammability = 12;
+      BlockPos sideToIgnite = pos.offset(facing);
       if (block.isFlammable(world, sideToIgnite, facing)) {
-        flammability = block.getFlammability(world, sideToIgnite, facing);
+        int flammability = block.getFlammability(world, sideToIgnite, facing);
         float thresholdForIgnition = convertFlammabilityToHitDensityThreshold(flammability);
-        float thresholdForDestruction = thresholdForIgnition * 50;
+//        float thresholdForDestruction = thresholdForIgnition * 10;
         float densityOfThisFace = currentHitDensity.getHitDensity(facing);
-        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(sideToIgnite) && DragonMountsConfig.canFireSetFire) {
+        if (densityOfThisFace >= thresholdForIgnition && world.isAirBlock(sideToIgnite) && thresholdForIgnition != 0) {
           final float MIN_PITCH = 0.8F;
           final float MAX_PITCH = 1.2F;
           final float VOLUME = 1.0F;
-          world.playSound(null, new BlockPos(sideToIgnite.getX() + 0.5, sideToIgnite.getY() + 0.5, sideToIgnite.getZ() + 0.5),
-                  SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.NEUTRAL, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH));
+          world.playSound(sideToIgnite.getX() + 0.5, sideToIgnite.getY() + 0.5, sideToIgnite.getZ() + 0.5,
+                  SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.HOSTILE, VOLUME, MIN_PITCH + rand.nextFloat() * (MAX_PITCH - MIN_PITCH), false);
           world.setBlockState(sideToIgnite, Blocks.FIRE.getDefaultState());
         }
-   //     if (densityOfThisFace >= thresholdForDestruction && block != Blocks.OBSIDIAN && block != Blocks.BEDROCK) {
-  //        world.setBlockToAir(blockPos);
-   //     }
+     //   if (densityOfThisFace >= thresholdForDestruction && block.getBlockHardness(iBlockState, world, pos) < 2 && block.getBlockHardness(iBlockState, world, pos) > 0) {
+     //       world.setBlockToAir(pos);
+     //   }
+      }
+    }
+    
+    Block block1 = iBlockState.getBlock();
+    Item itemFromBlock = Item.getItemFromBlock(block1);
+    ItemStack itemStack;
+    if (itemFromBlock != null && itemFromBlock.getHasSubtypes())     {
+      int metadata = block1.getMetaFromState(iBlockState);
+      itemStack = new ItemStack(itemFromBlock, 1, metadata);
+    } else {
+      itemStack = new ItemStack(itemFromBlock);
+    }
+    
+    ItemStack smeltingResult = FurnaceRecipes.instance().getSmeltingResult(itemStack);
+    if (smeltingResult != null) {
+      Block smeltedResultBlock = Block.getBlockFromItem(smeltingResult.getItem());
+      if (smeltedResultBlock != null) {
+        IBlockState iBlockStateSmelted = world.getBlockState(pos);
+         iBlockStateSmelted = smeltedResultBlock.getStateFromMeta(smeltingResult.getMetadata());
       }
     }
 
-    BlockBurnProperties burnProperties = getBurnProperties(iBlockState);
-    if (burnProperties.burnResult == null
-        || currentHitDensity.getMaxHitDensity() < burnProperties.threshold) {
-      return currentHitDensity;
-    }
-    world.setBlockState(blockPos, burnProperties.burnResult);
+    if (block1 == Blocks.IRON_ORE) world.setBlockState(pos,  Blocks.IRON_BLOCK.getDefaultState());
+    if (block1 == Blocks.GOLD_ORE) world.setBlockState(pos,  Blocks.GOLD_BLOCK.getDefaultState());
+    if (block1 == Blocks.EMERALD_ORE) world.setBlockState(pos,  Blocks.EMERALD_BLOCK.getDefaultState());
+    if (block1 == Blocks.DIAMOND_ORE) world.setBlockState(pos,  Blocks.DIAMOND_BLOCK.getDefaultState());
+    if (block1 == Blocks.COAL_ORE) world.setBlockState(pos,  Blocks.COAL_BLOCK.getDefaultState());
+    if (block1 == Blocks.REDSTONE_ORE) world.setBlockState(pos,  Blocks.REDSTONE_BLOCK.getDefaultState());
+    if (block1 == Blocks.LAPIS_ORE) world.setBlockState(pos,  Blocks.LAPIS_BLOCK.getDefaultState());
+    if (block1 == Blocks.QUARTZ_ORE) world.setBlockState(pos,  Blocks.QUARTZ_BLOCK.getDefaultState());
     return new BreathAffectedBlock();  // reset to zero
   }
 
-  private BlockBurnProperties getBurnProperties(IBlockState iBlockState) {
+  private BlockBurnProperties getBurnProperties(IBlockState iBlockState, World world, BlockPos pos) {
     Block block = iBlockState.getBlock();
     if (blockBurnPropertiesCache.containsKey(block)) {
-      return  blockBurnPropertiesCache.get(block);
+      return  blockBurnPropertiesCache.get(block); 
     }
-    
-//    if(block == Blocks.OBSIDIAN || block == Blocks.BEDROCK) return null;
 
     BlockBurnProperties blockBurnProperties = new BlockBurnProperties();
-    IBlockState result = getSmeltingResult(iBlockState);
+    boolean result = getSmeltingResult(iBlockState, world, pos);
     blockBurnProperties.threshold = 20;
-    if (result == null) {
-      blockBurnProperties.threshold = 30;
- //     result = getScorchedResult(iBlockState);
+    if (result == false) {
+      blockBurnProperties.threshold = 3;
+      result = getScorchedResult(iBlockState, world, pos);
     }
-    if (result == null) {
-      blockBurnProperties.threshold = 55;
- //     result = getVaporisedLiquidResult(iBlockState);
+    if (result == false) {
+      blockBurnProperties.threshold = 5;
+      result = getVaporisedLiquidResult(iBlockState, world, pos);
     }
-    if (result == null) {
+    if (result == false) {
       blockBurnProperties.threshold = 100;
- //     result = getMoltenLavaResult(iBlockState);
+      result = getMoltenLavaResult(iBlockState, world, pos);
     }
-    blockBurnProperties.burnResult = result;
-    blockBurnPropertiesCache.put(block, blockBurnProperties);
+  //  blockBurnProperties.burnResult = result;
+  //  blockBurnPropertiesCache.put(block, blockBurnProperties);
     return blockBurnProperties;
   }
 
@@ -138,7 +154,7 @@ public class BreathWeapon {
    * @param sourceBlock
    * @return the smelting result, or null if none
    */
-  private static IBlockState getSmeltingResult(IBlockState sourceBlock) {
+  private static boolean getSmeltingResult(IBlockState sourceBlock, World world, BlockPos pos) {
     Block block = sourceBlock.getBlock();
     Item itemFromBlock = Item.getItemFromBlock(block);
     ItemStack itemStack;
@@ -153,19 +169,20 @@ public class BreathWeapon {
     if (smeltingResult != null) {
       Block smeltedResultBlock = Block.getBlockFromItem(smeltingResult.getItem());
       if (smeltedResultBlock != null) {
-        IBlockState iBlockStateSmelted = smeltedResultBlock.getStateFromMeta(smeltingResult.getMetadata());
-        return iBlockStateSmelted;
+        IBlockState iBlockStateSmelted = world.getBlockState(pos);
+        return iBlockStateSmelted == smeltedResultBlock.getStateFromMeta(smeltingResult.getMetadata());
       }
-    } 
-    if (block == Blocks.IRON_ORE) return Blocks.IRON_BLOCK.getDefaultState();
-    if (block == Blocks.GOLD_ORE) return Blocks.GOLD_BLOCK.getDefaultState();
-    if (block == Blocks.EMERALD_ORE) return Blocks.EMERALD_BLOCK.getDefaultState();
-    if (block == Blocks.DIAMOND_ORE) return Blocks.DIAMOND_BLOCK.getDefaultState();
-    if (block == Blocks.COAL_ORE) return Blocks.COAL_BLOCK.getDefaultState();
-    if (block == Blocks.REDSTONE_ORE) return Blocks.REDSTONE_BLOCK.getDefaultState();
-    if (block == Blocks.LAPIS_ORE) return Blocks.LAPIS_BLOCK.getDefaultState();
-    if (block == Blocks.QUARTZ_ORE) return Blocks.QUARTZ_BLOCK.getDefaultState();
-    return null;
+    }
+    
+    if (block == Blocks.IRON_ORE) world.setBlockState(pos,  Blocks.IRON_BLOCK.getDefaultState());
+    if (block == Blocks.GOLD_ORE) world.setBlockState(pos,  Blocks.GOLD_BLOCK.getDefaultState());
+    if (block == Blocks.EMERALD_ORE) world.setBlockState(pos,  Blocks.EMERALD_BLOCK.getDefaultState());
+    if (block == Blocks.DIAMOND_ORE) world.setBlockState(pos,  Blocks.DIAMOND_BLOCK.getDefaultState());
+    if (block == Blocks.COAL_ORE) world.setBlockState(pos,  Blocks.COAL_BLOCK.getDefaultState());
+    if (block == Blocks.REDSTONE_ORE) world.setBlockState(pos,  Blocks.REDSTONE_BLOCK.getDefaultState());
+    if (block == Blocks.LAPIS_ORE) world.setBlockState(pos,  Blocks.LAPIS_BLOCK.getDefaultState());
+    if (block == Blocks.QUARTZ_ORE) world.setBlockState(pos,  Blocks.QUARTZ_BLOCK.getDefaultState());
+    return false;
   }
 
   /** if sourceBlock is a liquid or snow that can be molten or vaporised, return the result as a block
@@ -173,52 +190,51 @@ public class BreathWeapon {
    * @param sourceBlock
    * @return the vaporised result, or null if none
    */
-  private static IBlockState getVaporisedLiquidResult(IBlockState sourceBlock) {
+  private static boolean getVaporisedLiquidResult(IBlockState sourceBlock, World world, BlockPos pos) {
     Block block = sourceBlock.getBlock();
-    Material material = block.getDefaultState().getMaterial();
+    Material material = block.getMaterial(sourceBlock);
 
     if (material == Material.WATER) {
-      return Blocks.AIR.getDefaultState();
+      return world.setBlockState(pos, Blocks.AIR.getDefaultState());
     } else if (material == Material.SNOW || material == Material.ICE) {
       final int SMALL_LIQUID_AMOUNT = 4;
-      return Blocks.FLOWING_WATER.getDefaultState().withProperty(BlockLiquid.LEVEL, SMALL_LIQUID_AMOUNT);
+      return world.setBlockState(pos, Blocks.FLOWING_WATER.getDefaultState().withProperty(BlockLiquid.LEVEL, SMALL_LIQUID_AMOUNT));
     } else if (material == Material.PACKED_ICE || material == Material.CRAFTED_SNOW) {
       final int LARGE_LIQUID_AMOUNT = 1;
-      return Blocks.FLOWING_WATER.getDefaultState().withProperty(BlockLiquid.LEVEL, LARGE_LIQUID_AMOUNT);
+      return world.setBlockState(pos, Blocks.FLOWING_WATER.getDefaultState().withProperty(BlockLiquid.LEVEL, LARGE_LIQUID_AMOUNT));
     }
-    return null;
+    return false;
   }
 
-  /** if sourceBlock is a block that can be melted to lava, return the result as a block
+  /** if sourceBlock is a block that can be melted to lave, return the result as a block
    * @param sourceBlock
    * @return the molten lava result, or null if none
    */
-  private static IBlockState getMoltenLavaResult(IBlockState sourceBlock) {
+  private static boolean getMoltenLavaResult(IBlockState sourceBlock, World world, BlockPos pos) {
     Block block = sourceBlock.getBlock();
-    Material material = block.getDefaultState().getMaterial();
+    Material material = block.getMaterial(sourceBlock);
 
     if (material == Material.SAND || material == Material.CLAY
             || material == Material.GLASS || material == Material.IRON
-            || material == Material.GROUND || material == Material.ROCK
-            || block != Blocks.BEDROCK || block != Blocks.OBSIDIAN) {
+            || material == Material.GROUND || material == Material.ROCK) {
       final int LARGE_LIQUID_AMOUNT = 1;
-      return Blocks.LAVA.getDefaultState().withProperty(BlockLiquid.LEVEL, LARGE_LIQUID_AMOUNT);
+      return world.setBlockState(pos, Blocks.LAVA.getDefaultState().withProperty(BlockLiquid.LEVEL, LARGE_LIQUID_AMOUNT));
     }
-    return null;
+    return false;
   }
 
   /** if sourceBlock is a block that isn't flammable but can be scorched / changed, return the result as a block
    * @param sourceBlock
    * @return the scorched result, or null if none
    */
-  private static IBlockState getScorchedResult(IBlockState sourceBlock) {
+  private static boolean getScorchedResult(IBlockState sourceBlock, World world, BlockPos pos) {
     Block block = sourceBlock.getBlock();
-    Material material = block.getDefaultState().getMaterial();
+    Material material = block.getMaterial(sourceBlock);
 
     if (material == Material.GRASS) {
-      return Blocks.DIRT.getDefaultState();
+      return world.setBlockState(pos, Blocks.DIRT.getDefaultState());
     }
-    return null;
+    return false;
   }
 
 
@@ -226,39 +242,36 @@ public class BreathWeapon {
 
   /** if the hitDensity is high enough, manipulate the entity (eg set fire to it, damage it)
    * A dragon can't be damaged by its own breathweapon;
+   * If the "orbholder immune" option is on, and the entity is a player holding a dragon orb, ignore damage.
    * @param world
    * @param entityID  the ID of the affected entity
    * @param currentHitDensity the hit density
    * @return the updated hit density; null if entity dead, doesn't exist, or otherwise not affected
    */
   public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAffectedEntity currentHitDensity) {
-    checkNotNull(world);
-    checkNotNull(entityID);
-    checkNotNull(currentHitDensity);
+	    checkNotNull(world);
+	    checkNotNull(entityID);
+	    checkNotNull(currentHitDensity);
 
-    if (entityID == dragon.getEntityId()) return null;
-//    if (entityID == dragon.getControllingPlayer().getEntityId()) return null;
+	    if (entityID == dragon.getEntityId()) return null;
+	    if(dragon.getControllingPassenger() != null) {
+	    if (entityID == dragon.getControllingPlayer().getEntityId()) return null;}
 
-    Entity entity = world.getEntityByID(entityID);
-    if (entity == null || !(entity instanceof EntityLivingBase) || entity.isDead) {
-      return null;
-    }
+	    Entity entity = world.getEntityByID(entityID);
+	    if (entity == null || !(entity instanceof EntityLivingBase) || entity.isDead) {
+	      return null;
+	    }
 
-    final float CATCH_FIRE_THRESHOLD = 1.4F;
-    final float BURN_SECONDS_PER_HIT_DENSITY = 5.4F;
-    final float DAMAGE_PER_HIT_DENSITY = 4.5F;
+	    final float CATCH_FIRE_THRESHOLD = 1.4F;
+	    final float BURN_SECONDS_PER_HIT_DENSITY = 1.0F;
+	    final float DAMAGE_PER_HIT_DENSITY = 5.8F;
 
-    float hitDensity = currentHitDensity.getHitDensity();
-    if(dragon.getControllingPlayer() != null && entity != dragon.getControllingPlayer()) {
-    	entity.setFire((int)(hitDensity * 5));
-    }
-    
-    if (currentHitDensity.applyDamageThisTick()) {
-    	 entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
-       
-    }
-
-    return currentHitDensity;
+	    float hitDensity = currentHitDensity.getHitDensity();
+	    if(dragon.getControllingPlayer() != null && entity != dragon.getControllingPlayer()) {
+	    	entity.setFire((int)(40 * 10));}
+	      entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
+	      
+	    return currentHitDensity;
   }
 
   /**
@@ -276,4 +289,6 @@ public class BreathWeapon {
     float threshold = 50.0F / flammability;
     return threshold;
   }
+
+  protected EntityTameableDragon dragon;
 }

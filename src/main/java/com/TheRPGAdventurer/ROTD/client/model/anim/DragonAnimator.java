@@ -282,13 +282,13 @@ public class DragonAnimator {
         FlutterTimer.add(HoverFlag ? 0.1f : -0.1f);
 
         // update walking transition
-        boolean walkFlag = moveSpeed > 0.1 && !dragon.isDragonSitting();
+        boolean walkFlag = moveSpeed > 0.1 && !dragon.isSitting();
         float walkVal = 0.1f;
         walkTimer.add(walkFlag ? walkVal : -walkVal);
         
         // update sitting transisiton
         float sitVal = sitTimer.get();
-        sitVal += dragon.isDragonSitting() ? 0.1f : -0.1f;
+        sitVal += dragon.isSitting() ? 0.1f : -0.1f;
         sitVal *= 0.95f;
         sitTimer.set(sitVal);
         
@@ -679,6 +679,10 @@ public class DragonAnimator {
     
     public float getLookYaw() {
     	return lookYaw;
+    }
+    
+    public float getLookPitch() {
+    	return lookPitch;
     }
     
 }
