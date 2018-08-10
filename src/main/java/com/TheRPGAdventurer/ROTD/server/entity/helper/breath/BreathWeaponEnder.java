@@ -17,6 +17,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -70,10 +71,11 @@ public class BreathWeaponEnder extends BreathWeapon {
     Random rand = new Random();
     
     ItemGlassBottle bottle = new ItemGlassBottle();
+    EntityDragon dragon1 = new EntityDragon(world);
     
     if (!world.isRemote) { 
         entityareaeffectcloud = new EntityAreaEffectCloud(world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
-        entityareaeffectcloud.setOwner(this.dragon);
+        entityareaeffectcloud.setOwner(dragon1);
         entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
         entityareaeffectcloud.setRadius(1.6F);
         entityareaeffectcloud.setDuration(750);

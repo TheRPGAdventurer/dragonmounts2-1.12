@@ -78,9 +78,13 @@ import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityEnderCrystal;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityWaterMob;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -1461,10 +1465,23 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	}
 	
 	@Override
-	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {		
-		return ((EntityTameableDragon) target).getLifeStageHelper().getTicksSinceCreation() <= ((EntityTameableDragon) target).getAppropriateAgeForInteraction()
-				&& !((EntityTameable)target).isTamed() && !target.hasCustomName();
-	}
+    public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
+        if (target instanceof EntityTameable) {
+        	EntityTameable tameableTarget = (EntityTameable)target;
+        	EntityAnimal animalTarget = (EntityAnimal)target;
+            if (tameableTarget.isTamed() && tameableTarget.getOwner() == owner) {
+                 return false;
+            } else if(animalTarget.hasCustomName()) {
+            	return false;
+            } else if (target instanceof EntityPlayer && owner instanceof EntityPlayer && !((EntityPlayer)owner).canAttackPlayer((EntityPlayer)target)) {
+                return false;
+            } else {
+                return !(target instanceof AbstractHorse) || !((AbstractHorse)target).isTame();
+            }
+        } else {
+            return false;
+        }
+    }
 	
     protected boolean canFitPassenger(Entity passenger) {
         return this.getPassengers().size() < 3;
