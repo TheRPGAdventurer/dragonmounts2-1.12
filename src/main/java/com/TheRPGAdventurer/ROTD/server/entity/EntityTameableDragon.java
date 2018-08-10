@@ -129,7 +129,7 @@ import net.minecraftforge.items.ItemStackHandler;
  */
 public class EntityTameableDragon extends EntityTameable implements IShearable, IEntityMultiPart { 
 
-	private static final Logger L = LogManager.getLogger();
+	private static final Logger L = LogManager.getLogger(); 
 
 	public static final IAttribute MOVEMENT_SPEED_AIR = new RangedAttribute(null, "generic.movementSpeedAir", 1.5, 0.0,
 			Double.MAX_VALUE).setDescription("Movement Speed Air").setShouldWatch(true);
@@ -279,7 +279,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
     }
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes() { 
 		super.applyEntityAttributes();
 
 		getAttributeMap().registerAttribute(MOVEMENT_SPEED_AIR);
@@ -1458,6 +1458,12 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	private void updateShearing() {
 		if (ticksShear <= 0) {setSheared(false);}
 		if (ticksShear >= 0) {ticksShear--;}
+	}
+	
+	@Override
+	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {		
+		return ((EntityTameableDragon) target).getLifeStageHelper().getTicksSinceCreation() <= ((EntityTameableDragon) target).getAppropriateAgeForInteraction()
+				&& !((EntityTameable)target).isTamed() && !target.hasCustomName();
 	}
 	
     protected boolean canFitPassenger(Entity passenger) {
