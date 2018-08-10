@@ -203,12 +203,13 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
     public MultiPartEntityPart dragonPartHead = new MultiPartEntityPart(this, "head", 4.0F, 4.0F);
     public MultiPartEntityPart dragonPartSnout = new MultiPartEntityPart(this, "snout", 4.0F, 2.0F);
     public MultiPartEntityPart dragonPartBody = new MultiPartEntityPart(this, "body", 2.75f, 2.4f);
+    public MultiPartEntityPart dragonPartThroat = new MultiPartEntityPart(this, "throat", 2.75f, 2.4f);
     public MultiPartEntityPart dragonPartTail = new MultiPartEntityPart(this, "tail", 5.0f, 5.0f);
 
 	public EntityTameableDragon(World world) {
 		super(world);		
 		
-		this.dragonPartArray = new MultiPartEntityPart[] {this.dragonPartHead, this.dragonPartBody, this.dragonPartTail};
+		this.dragonPartArray = new MultiPartEntityPart[] {this.dragonPartHead, this.dragonPartBody, this.dragonPartTail, this.dragonPartThroat};
 //				, this.dragonPartNeck, this.dragonPartBody, this.dragonPartTail1, this.dragonPartTail2, this.dragonPartTail3, this.dragonPartWing1, this.dragonPartWing2};		
 		
         // override EntityBodyHelper field, which is private and has no setter
@@ -584,7 +585,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
      */
 	public void onDeath(DamageSource src) {
 		super.onDeath(src);
-		if (dragonInv != null && !this.world.isRemote) {
+		if (dragonInv != null && !this.world.isRemote && getLifeStageHelper().getTicksSinceCreation() >= getAppropriateAgeForInteraction()) {
 			for (int i = 0; i < dragonInv.getSizeInventory(); ++i) {
 				ItemStack itemstack = dragonInv.getStackInSlot(i);
 				if (!itemstack.isEmpty()) {
@@ -891,6 +892,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean attacked = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this),
 				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
+		
+		if(((EntityTameable) entityIn).isTamed() || isEgg()) {
+			return false;
+		}
 
 		if (attacked) {
 			applyEnchantments(this, entityIn);
@@ -1720,8 +1725,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
     }
 
 	@Override
-	public boolean attackEntityFromPart(MultiPartEntityPart dragonPart, DamageSource source, float damage) {
-		
+	public boolean attackEntityFromPart(MultiPartEntityPart dragonPart, DamageSource source, float damage) {		
 		if (this.isBeingRidden() && source.getTrueSource() != null && this.getControllingPassenger() != null
 				&& source.getTrueSource() == this.getControllingPassenger()) { 
 			return false;
@@ -1757,20 +1761,29 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	}
 	
 	public void updateMultipleBoundingBox() {
-		if(!isEgg()) {
+		if(isAdult()) {
 			DragonLifeStageHelper stage = getLifeStageHelper();
 		    double hx, hy, hz;
 		    float angle;
 			DragonHeadPositionHelper pos = getAnimator().getDragonHeadPositionHelper();		
+			
 			angle = (((renderYawOffset + 0) * 3.14159265F) / 180F);
 			hx = posX - MathHelper.sin(angle) * 3.0 - pos.head.rotateAngleX * getScale();
 			hy = posY + 2 * getScale();
-			hz = posZ + MathHelper.cos(angle) * 3.0 + pos.head.rotateAngleZ * getScale();
-			   
-			   
+			hz = posZ + MathHelper.cos(angle) * 3.0 + pos.head.rotateAngleZ * getScale();			   			   
 	        dragonPartHead.setPosition(hx, hy, hz); 
 			dragonPartHead.width = dragonPartHead.height = 1.0F * getScale();
 	        dragonPartHead.onUpdate(); 
+	        
+	        double tx,ty,tz;
+	        angle = (((renderYawOffset + 0) * 3.14159265F) / 180F);
+			tx = posX - MathHelper.sin(angle) * 3.0 - pos.neck.rotateAngleX * getScale();
+			ty = posY;
+			tz = posZ + MathHelper.cos(angle) * 2.4 + pos.neck.rotateAngleZ * getScale();
+	        dragonPartThroat.setPosition(tx, ty, tz);
+	        dragonPartThroat.width = 3.5F * getScale();
+	        dragonPartThroat.height = 2.5F * getScale();
+	        
 	           
 	        dragonPartBody.width = 2.4f * getScale();
 	        dragonPartBody.height = 2.2f * getScale();
