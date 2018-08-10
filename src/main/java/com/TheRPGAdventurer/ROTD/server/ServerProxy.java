@@ -13,6 +13,7 @@ import com.TheRPGAdventurer.ROTD.DragonMounts;
 import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
 import com.TheRPGAdventurer.ROTD.server.cmd.CommandDragon;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
+import com.TheRPGAdventurer.ROTD.server.handler.DragonBottleHandler;
 import com.TheRPGAdventurer.ROTD.server.handler.DragonEggBlockHandler;
 import com.TheRPGAdventurer.ROTD.server.network.DragonBreathMessage;
 import com.TheRPGAdventurer.ROTD.server.network.DragonBreathMessageHandlerServer;
@@ -60,11 +61,10 @@ public class ServerProxy {
     
     public void Initialization(FMLInitializationEvent evt) { 
         MinecraftForge.EVENT_BUS.register(new DragonEggBlockHandler());
+//        MinecraftForge.EVENT_BUS.register(new DragonBottleHandler());
         network = NetworkRegistry.INSTANCE.newSimpleChannel("DragonControls");
-        network.registerMessage(DragonControlMessageHandler.class, DragonControlMessage.class,
-        		DCM_DISCRIMINATOR_ID, Side.SERVER);
-        network.registerMessage(DragonBreathMessageHandlerServer.class, DragonBreathMessage.class,
-                DOT_DISCRIMINATOR_ID, Side.SERVER);
+        network.registerMessage(DragonControlMessageHandler.class, DragonControlMessage.class, DCM_DISCRIMINATOR_ID, Side.SERVER);
+        network.registerMessage(DragonBreathMessageHandlerServer.class, DragonBreathMessage.class, DOT_DISCRIMINATOR_ID, Side.SERVER);
 
     }
 

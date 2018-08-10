@@ -44,12 +44,13 @@ public class EntityAIDragonAttack extends EntityAIDragonBase {
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
-    @SuppressWarnings("null")
 	public boolean shouldExecute() {
-        EntityLivingBase entitylivingbase = this.dragon.getAttackTarget();
-
-        if (entitylivingbase == null && dragon.getLifeStageHelper().getTicksSinceCreation() <= dragon.getAppropriateAgeForInteraction() && ((EntityTameable) entitylivingbase).isTamed()) {
-            return false;
+        EntityLivingBase entitylivingbase = this.dragon.getAttackTarget();     
+        if(entitylivingbase == null) {
+        	return false;
+        } else if (entitylivingbase instanceof EntityTameable && ((EntityTameable) entitylivingbase).isTamed() 
+        && dragon.getLifeStageHelper().getTicksSinceCreation() <= dragon.getAppropriateAgeForInteraction()) {
+        	return false;        	         
         } else if (!entitylivingbase.isEntityAlive()) {
             return false;
         } else if(rider != null)  {

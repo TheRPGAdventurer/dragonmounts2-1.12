@@ -22,6 +22,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGlassBottle;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.potion.PotionEffect;
@@ -45,6 +46,8 @@ import net.minecraft.world.World;
  */
 public class BreathWeaponEnder extends BreathWeapon {
 	
+  public EntityAreaEffectCloud entityareaeffectcloud;
+	
   public BreathWeaponEnder(EntityTameableDragon i_dragon) {
     super(i_dragon);
   }
@@ -66,8 +69,10 @@ public class BreathWeaponEnder extends BreathWeapon {
 
     Random rand = new Random();
     
+    ItemGlassBottle bottle = new ItemGlassBottle();
+    
     if (!world.isRemote) { 
-        EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
+        entityareaeffectcloud = new EntityAreaEffectCloud(world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
         entityareaeffectcloud.setOwner(this.dragon);
         entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
         entityareaeffectcloud.setRadius(1.6F);
