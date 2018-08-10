@@ -901,10 +901,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean attacked = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this),
 				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
-		
-		if(((EntityTameable) entityIn).isTamed() || isEgg()) {
-			return false;
-		}
 
 		if (attacked) {
 			applyEnchantments(this, entityIn);
@@ -1465,15 +1461,24 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	}
 	
 	@Override
-    public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
-        if (target instanceof EntityTameable) {
-        	EntityTameable tameableTarget = (EntityTameable)target;
-        	EntityAnimal animalTarget = (EntityAnimal)target;
-            if (tameableTarget.isTamed() && tameableTarget.getOwner() == owner) {
-                 return false;
-            } else if(animalTarget.hasCustomName()) {
-            	return false;
-            } else if (target instanceof EntityPlayer && owner instanceof EntityPlayer && !((EntityPlayer)owner).canAttackPlayer((EntityPlayer)target)) {
+	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
+        if (target.isEntityAlive()) {
+            if (target instanceof EntityWolf) {
+                EntityWolf entitywolf = (EntityWolf)target;
+
+                if (entitywolf.isTamed() && entitywolf.getOwner() == owner) {
+                    return false;
+                }
+            }
+            
+            if(target instanceof EntityTameableDragon) {
+            	EntityTameableDragon dragon = (EntityTameableDragon)target;
+            	if(dragon.getLifeStageHelper().getTicksSinceCreation() <= dragon.getAppropriateAgeForInteraction()) {
+            		return false;
+            	}
+            }
+
+            if (target instanceof EntityPlayer && owner instanceof EntityPlayer && !((EntityPlayer)owner).canAttackPlayer((EntityPlayer)target)) {
                 return false;
             } else {
                 return !(target instanceof AbstractHorse) || !((AbstractHorse)target).isTame();
@@ -1803,14 +1808,14 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 			dragonPartHead.width = dragonPartHead.height = 1.0F * getScale();
 	        dragonPartHead.onUpdate(); 
 	        
-	        double tx,ty,tz;
-	        angle = (((renderYawOffset + 0) * 3.14159265F) / 180F);
-			tx = posX - MathHelper.sin(angle) * 3.0 - pos.neck.rotateAngleX * getScale();
-			ty = posY;
-			tz = posZ + MathHelper.cos(angle) * 2.4 + pos.neck.rotateAngleZ * getScale();
-	        dragonPartThroat.setPosition(tx, ty, tz);
-	        dragonPartThroat.width = 3.5F * getScale();
-	        dragonPartThroat.height = 2.5F * getScale();
+	    //    double tx,ty,tz;
+	    //    angle = (((renderYawOffset + 0) * 3.14159265F) / 180F);
+		//	tx = posX - MathHelper.sin(angle) * 3.0 - pos.neck.rotateAngleX * getScale();
+		//	ty = posY;
+		//	tz = posZ + MathHelper.cos(angle) * 2.4 + pos.neck.rotateAngleZ * getScale();
+	      //  dragonPartThroat.setPosition(tx, ty, tz);
+	    //    dragonPartThroat.width = 3.5F * getScale();
+	     //   dragonPartThroat.height = 2.5F * getScale();
 	        
 	           
 	        dragonPartBody.width = 2.4f * getScale();
