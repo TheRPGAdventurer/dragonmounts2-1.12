@@ -139,18 +139,18 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 			Double.MAX_VALUE).setDescription("Movement Speed Air").setShouldWatch(true);
 
 	// base attributes
-	public static double BASE_GROUND_SPEED = 0.3;
-	public static double BASE_AIR_SPEED = 0.8;
-	public static double BASE_DAMAGE = 10.0D;
-	public static double BASE_ARMOR = 20.0D;
-	public static double BASE_TOUGHNESS = 30.0D;
-    public static float BASE_WIDTH = 2.75f;
-    public static float BASE_HEIGHT = 2.35f;
-	public static float RESISTANCE = 20.0f;
-	public static double BASE_FOLLOW_RANGE = 70;
-	public static double BASE_FOLLOW_RANGE_FLYING = BASE_FOLLOW_RANGE * 2;
-	public static int HOME_RADIUS = 64;
-	public static double IN_AIR_THRESH = 10;
+	public static final double BASE_GROUND_SPEED = 0.3;
+	public static final double BASE_AIR_SPEED = 0.8;
+	public static final double BASE_DAMAGE = 10.0D;
+	public static final double BASE_ARMOR = 20.0D;
+	public static final double BASE_TOUGHNESS = 30.0D;
+    public static final float BASE_WIDTH = 2.75f;
+    public static final float BASE_HEIGHT = 2.35f;
+	public static final float RESISTANCE = 20.0f;
+	public static final double BASE_FOLLOW_RANGE = 70;
+	public static final double BASE_FOLLOW_RANGE_FLYING = BASE_FOLLOW_RANGE * 2;
+	public static final int HOME_RADIUS = 64;
+	public static final double IN_AIR_THRESH = 10;
 
 	protected int        ticksSinceLastAttack;
 	public static int    ticksShear;
@@ -210,11 +210,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
     public MultiPartEntityPart dragonPartThroat = new MultiPartEntityPart(this, "throat", 2.75f, 2.4f);
     public MultiPartEntityPart dragonPartTail = new MultiPartEntityPart(this, "tail", 5.0f, 5.0f);
 
-	public EntityTameableDragon(World world) {
+	public EntityTameableDragon(World world) { 
 		super(world);		
 		
-		this.dragonPartArray = new MultiPartEntityPart[] {this.dragonPartHead, this.dragonPartBody, this.dragonPartTail, this.dragonPartThroat};
-//				, this.dragonPartNeck, this.dragonPartBody, this.dragonPartTail1, this.dragonPartTail2, this.dragonPartTail3, this.dragonPartWing1, this.dragonPartWing2};		
+		this.dragonPartArray = new MultiPartEntityPart[] {this.dragonPartHead, this.dragonPartBody, this.dragonPartTail, this.dragonPartThroat};	
 		
         // override EntityBodyHelper field, which is private and has no setter
         // required to fixate body while sitting. also slows down rotation while standing.
@@ -1462,30 +1461,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	
 	@Override
 	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
-        if (target.isEntityAlive()) {
-            if (target instanceof EntityWolf) {
-                EntityWolf entitywolf = (EntityWolf)target;
-
-                if (entitywolf.isTamed() && entitywolf.getOwner() == owner) {
-                    return false;
-                }
-            }
-            
-            if(target instanceof EntityTameableDragon) {
-            	EntityTameableDragon dragon = (EntityTameableDragon)target;
-            	if(dragon.getLifeStageHelper().getTicksSinceCreation() <= dragon.getAppropriateAgeForInteraction()) {
-            		return false;
-            	}
-            }
-
-            if (target instanceof EntityPlayer && owner instanceof EntityPlayer && !((EntityPlayer)owner).canAttackPlayer((EntityPlayer)target)) {
-                return false;
-            } else {
-                return !(target instanceof AbstractHorse) || !((AbstractHorse)target).isTame();
-            }
-        } else {
-            return false;
-        }
+        return !((EntityTameable)target).isTamed()  
+        		&& ((EntityTameableDragon)target).getLifeStageHelper().getTicksSinceCreation() 
+        		>= ((EntityTameableDragon)target).getAppropriateAgeForInteraction()
+        		&& !target.isChild();
     }
 	
     protected boolean canFitPassenger(Entity passenger) {
