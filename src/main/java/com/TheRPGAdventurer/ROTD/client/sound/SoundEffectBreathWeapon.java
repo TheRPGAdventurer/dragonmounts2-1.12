@@ -329,26 +329,26 @@ public class SoundEffectBreathWeapon {
                                          SoundEffectNames.ADULT_BREATHE_ICE_STOP};
 
     SoundEffectNames [] soundEffectNames;
-    boolean ice = dragon.getBreedType() == EnumDragonBreed.ICE;
+    boolean coldSound = dragon.getBreedType() == EnumDragonBreed.ICE || dragon.getBreedType() == EnumDragonBreed.SYLPHID;
     switch (lifeStage) {
       case HATCHLING: {
-    	if(ice) {soundEffectNames = adultice; break;} else {
+    	if(coldSound) {soundEffectNames = adultice; break;} else {
     		soundEffectNames = hatchling; break;
     	}
       }
       case JUVENILE: {
-    	  if(ice) {soundEffectNames = adultice; break;} else {
+    	  if(coldSound) {soundEffectNames = adultice; break;} else {
       		soundEffectNames = juvenile; break;
       	}
       }
       case ADULT: {
-    	  if(ice) {soundEffectNames = adultice; break;} else {
+    	  if(coldSound) {soundEffectNames = adultice; break;} else {
       		soundEffectNames = adult; break;
       	}
       }
       default: {
         System.err.println("Unknown lifestage:" + lifeStage + " in weaponSound()");
-        if(ice) {soundEffectNames = adultice; break;} else {
+        if(coldSound) {soundEffectNames = adultice; break;} else {
     		soundEffectNames = adult; break;
     	} // dummy
       }

@@ -63,6 +63,7 @@ public class BreathWeaponHydro extends BreathWeapon {
     }
     
     world.spawnParticle(EnumParticleTypes.WATER_SPLASH, blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0.0D, 0.0D, 0.0D);	
+
  
     if(block == Blocks.LAVA) {
     	world.setBlockState(blockPos, Blocks.OBSIDIAN.getDefaultState());
@@ -106,7 +107,13 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
 //    if (currentHitDensity.applyDamageThisTick()) {
       entity.attackEntityFrom(DragonMounts.DRAGON_BREATH.DROWN, DAMAGE_PER_HIT_DENSITY);
       entity.isWet();
-      ((EntityLivingBase)entity).knockBack(entity, hitDensity * DAMAGE_PER_HIT_DENSITY, 0, hitDensity / DAMAGE_PER_HIT_DENSITY);
+      double d1 = entity.posX - dragon.posX;
+      double d0;
+
+      for (d0 = entity.posZ - dragon.posZ; d1 * d1 + d0 * d0 < 1.0E-4D; d0 = (Math.random() - Math.random()) * 0.01D) {
+          d1 = (Math.random() - Math.random()) * 0.01D;
+      }
+      ((EntityLivingBase)entity).knockBack(entity, hitDensity, d1, d0);
       PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
       ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the entity 		
        //   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40*10, 2));

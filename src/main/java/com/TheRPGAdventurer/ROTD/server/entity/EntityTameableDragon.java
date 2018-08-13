@@ -1461,10 +1461,17 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	
 	@Override
 	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
-        return !((EntityTameable)target).isTamed()  
-        		&& ((EntityTameableDragon)target).getLifeStageHelper().getTicksSinceCreation() 
-        		>= ((EntityTameableDragon)target).getAppropriateAgeForInteraction()
-        		&& !target.isChild();
+		if(target instanceof EntityTameable) {
+			EntityTameable tamedEntity = (EntityTameable) target;
+			return !((EntityTameable)target).isTamed() && !target.isChild();
+		} else if(target instanceof EntityTameableDragon) {
+			EntityTameable targetDragon = (EntityTameable) target;
+			return ((EntityTameableDragon)target).getLifeStageHelper().getTicksSinceCreation() 
+			     >= ((EntityTameableDragon)target).getAppropriateAgeForInteraction();
+		} else {
+			return false; 
+		}	
+        
     }
 	
     protected boolean canFitPassenger(Entity passenger) {

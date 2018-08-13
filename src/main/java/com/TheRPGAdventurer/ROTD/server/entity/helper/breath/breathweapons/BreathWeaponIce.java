@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Random;
 
+import com.TheRPGAdventurer.ROTD.DragonMounts;
 import com.TheRPGAdventurer.ROTD.DragonMountsConfig;
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
 import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.BreathAffectedBlock;
@@ -105,10 +106,11 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     float hitDensity = currentHitDensity.getHitDensity();
     
 //    if (currentHitDensity.applyDamageThisTick()) {
+    entity.attackEntityFrom(DragonMounts.DRAGON_BREATH.DROWN, DAMAGE_PER_HIT_DENSITY);
     entity.isWet();
-    entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY);
-          PotionEffect iceeffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
-        	  ((EntityLivingBase) entity).addPotionEffect(iceeffect); // Apply a copy of the PotionEffect to the player
+    ((EntityLivingBase)entity).knockBack(entity, hitDensity * DAMAGE_PER_HIT_DENSITY, 0, hitDensity / DAMAGE_PER_HIT_DENSITY);
+    PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
+    ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the player
   		
        //   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40*10, 2));
   //  }

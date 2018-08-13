@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderHydroBreathFX extends Render<HydroBreathFX> {
 	
-    private static final ResourceLocation DRAGON_FIREBALL_TEXTURE = new ResourceLocation(DragonMounts.MODID, "textures/entities/breath_ice.png");
+    private static final ResourceLocation DRAGON_FIREBALL_TEXTURE = new ResourceLocation(DragonMounts.MODID, "textures/entities/breath_hydro.png");
 
     public RenderHydroBreathFX(RenderManager renderManagerIn) {
         super(renderManagerIn); 

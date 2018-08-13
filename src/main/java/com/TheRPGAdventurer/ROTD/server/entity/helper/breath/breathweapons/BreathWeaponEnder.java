@@ -13,7 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAreaEffectCloud;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
@@ -99,7 +101,14 @@ public class BreathWeaponEnder extends BreathWeapon {
     final float DAMAGE_PER_HIT_DENSITY = 4.9F;
 
     float hitDensity = currentHitDensity.getHitDensity();
-    entity.attackEntityFrom(DragonMounts.DRAGON_BREATH, DAMAGE_PER_HIT_DENSITY);
+    if(entity instanceof EntityTameable) {
+    	EntityTameable entityTameable = (EntityTameable) entity;
+    	if(entityTameable.isTamed()) {
+    		entityTameable.attackEntityFrom(DragonMounts.DRAGON_BREATH.IN_FIRE, DAMAGE_PER_HIT_DENSITY + hitDensity);
+    	}
+    } else {
+       entity.attackEntityFrom(DragonMounts.DRAGON_BREATH.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY + hitDensity);
+    }
 
     return currentHitDensity;
   }
