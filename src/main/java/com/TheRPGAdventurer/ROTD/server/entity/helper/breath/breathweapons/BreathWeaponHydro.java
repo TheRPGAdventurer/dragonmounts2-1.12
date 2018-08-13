@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -105,7 +106,14 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     float hitDensity = currentHitDensity.getHitDensity();
     
 //    if (currentHitDensity.applyDamageThisTick()) {
-      entity.attackEntityFrom(DamageSource.DROWN, DAMAGE_PER_HIT_DENSITY);
+    if(entity instanceof EntityTameable) {
+    	EntityTameable entityTameable = (EntityTameable) entity;
+    	if(entityTameable.isTamed()) {
+    		entityTameable.attackEntityFrom(DamageSource.DROWN, 0);
+    	}
+    } else {
+       entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY + hitDensity);
+    }
       entity.isWet();
       double d1 = entity.posX - dragon.posX;
       double d0;

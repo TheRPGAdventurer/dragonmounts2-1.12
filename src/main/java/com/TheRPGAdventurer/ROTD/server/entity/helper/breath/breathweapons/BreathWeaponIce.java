@@ -14,6 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -106,7 +107,14 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     float hitDensity = currentHitDensity.getHitDensity();
     
 //    if (currentHitDensity.applyDamageThisTick()) {
-    entity.attackEntityFrom(DamageSource.DROWN, DAMAGE_PER_HIT_DENSITY + hitDensity);
+    if(entity instanceof EntityTameable) {
+    	EntityTameable entityTameable = (EntityTameable) entity;
+    	if(entityTameable.isTamed()) {
+    		entityTameable.attackEntityFrom(DamageSource.DROWN, 0);
+    	}
+    } else {
+       entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY + hitDensity);
+    }
     entity.isWet();
     PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
     ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the player

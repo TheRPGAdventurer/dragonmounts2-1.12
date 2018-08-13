@@ -258,7 +258,7 @@ public class BreathWeaponNether extends BreathWeapon {
     } else if(entity instanceof EntityTameable) {
     	EntityTameable entityTameable = (EntityTameable) entity;
     	if(entityTameable.isTamed()) {
-    		entityTameable.attackEntityFrom(DamageSource.IN_FIRE, DAMAGE_PER_HIT_DENSITY + hitDensity);
+    		entityTameable.attackEntityFrom(DamageSource.DROWN, 0);
     	}
     } else {
        entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY + hitDensity);
