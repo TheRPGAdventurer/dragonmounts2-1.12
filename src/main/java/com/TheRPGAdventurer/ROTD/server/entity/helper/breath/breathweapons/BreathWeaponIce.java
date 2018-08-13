@@ -106,9 +106,8 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     float hitDensity = currentHitDensity.getHitDensity();
     
 //    if (currentHitDensity.applyDamageThisTick()) {
-    entity.attackEntityFrom(DragonMounts.DRAGON_BREATH.DROWN, DAMAGE_PER_HIT_DENSITY);
+    entity.attackEntityFrom(DamageSource.DROWN, DAMAGE_PER_HIT_DENSITY);
     entity.isWet();
-    ((EntityLivingBase)entity).knockBack(entity, hitDensity * DAMAGE_PER_HIT_DENSITY, 0, hitDensity / DAMAGE_PER_HIT_DENSITY);
     PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
     ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the player
   		
