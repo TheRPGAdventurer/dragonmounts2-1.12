@@ -245,7 +245,7 @@ public class BreathWeaponNether extends BreathWeapon {
 
     final float CATCH_FIRE_THRESHOLD = 1.4F;
     final float BURN_SECONDS_PER_HIT_DENSITY = 1.0F;
-    final float DAMAGE_PER_HIT_DENSITY = 5.8F;
+    final float DAMAGE_PER_HIT_DENSITY = 4.2F;
 
     float hitDensity = currentHitDensity.getHitDensity();
     if(dragon.getControllingPlayer() != null && entity != dragon.getControllingPlayer()) {

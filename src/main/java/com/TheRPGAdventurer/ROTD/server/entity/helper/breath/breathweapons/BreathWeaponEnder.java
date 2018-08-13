@@ -97,7 +97,7 @@ public class BreathWeaponEnder extends BreathWeapon {
       return null;
     }
     
-    final float DAMAGE_PER_HIT_DENSITY = 4.9F;
+    final float DAMAGE_PER_HIT_DENSITY = 4.3F;
 
     float hitDensity = currentHitDensity.getHitDensity();
     if(entity instanceof EntityTameable) {

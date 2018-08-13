@@ -1461,7 +1461,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	
 	@Override
 	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
-		if(target instanceof EntityTameable) {
+		if(getControllingPassenger() != null) {
+			return false;
+		} else if(target instanceof EntityTameable) {
 			EntityTameable tamedEntity = (EntityTameable) target;
 			return !((EntityTameable)target).isTamed() && !target.isChild();
 		} else if(target instanceof EntityTameableDragon) {
@@ -1496,8 +1498,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		this.doBlockCollisions();
         List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().grow(0.20000000298023224D, -0.009999999776482582D, 0.20000000298023224D), EntitySelectors.getTeamCollisionPredicate(this));
 
-        if (!list.isEmpty())
-        {
+        if (!list.isEmpty()) {
             boolean flag = !this.world.isRemote; //&& !(this.getControllingPassenger() instanceof EntityPlayer)
 
             for (int j = 0; j < list.size(); ++j)

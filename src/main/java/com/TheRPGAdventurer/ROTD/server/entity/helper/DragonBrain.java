@@ -25,12 +25,10 @@ import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonHunt;
 import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonMate;
 import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonWatchIdle;
 import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonWatchLiving;
-import com.TheRPGAdventurer.ROTD.server.entity.ai.targeting.EntityAIBreathAttack;
 import com.TheRPGAdventurer.ROTD.server.util.EntityClassPredicate;
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;

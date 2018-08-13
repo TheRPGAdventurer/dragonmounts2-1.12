@@ -100,7 +100,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
       return null;
     }
     
-    final float DAMAGE_PER_HIT_DENSITY = 2.7F;
+    final float DAMAGE_PER_HIT_DENSITY = 2.5F;
 
     float hitDensity = currentHitDensity.getHitDensity();
     
@@ -113,7 +113,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
       for (d0 = entity.posZ - dragon.posZ; d1 * d1 + d0 * d0 < 1.0E-4D; d0 = (Math.random() - Math.random()) * 0.01D) {
           d1 = (Math.random() - Math.random()) * 0.01D;
       }
-      ((EntityLivingBase) entity).knockBack(dragon, 0.5F, dragon.posX - entity.posX, dragon.posZ - entity.posZ);
+      ((EntityLivingBase) entity).knockBack(entity, 0.2F, dragon.posX - entity.posX, dragon.posZ - entity.posZ);
       PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
       ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the entity 		
        //   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40*10, 2));

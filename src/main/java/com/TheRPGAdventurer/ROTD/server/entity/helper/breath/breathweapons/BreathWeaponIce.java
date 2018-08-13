@@ -101,12 +101,12 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
       return null;
     }
     
-    final float DAMAGE_PER_HIT_DENSITY = 5.7F;
+    final float DAMAGE_PER_HIT_DENSITY = 3.5F;
 
     float hitDensity = currentHitDensity.getHitDensity();
     
 //    if (currentHitDensity.applyDamageThisTick()) {
-    entity.attackEntityFrom(DamageSource.DROWN, DAMAGE_PER_HIT_DENSITY);
+    entity.attackEntityFrom(DamageSource.DROWN, DAMAGE_PER_HIT_DENSITY + hitDensity);
     entity.isWet();
     PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
     ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the player
