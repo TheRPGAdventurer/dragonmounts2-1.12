@@ -733,23 +733,28 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	 * 
 	 * @author TheRPGAdventurer
 	 */
-	@Override
-	public EntityLivingBase getOwner() {
+	public EntityLivingBase getOtherPlayers() {
 		if(DragonMountsConfig.allowOtherPlayerControl) {
 		    for (int i = 0; i < world.playerEntities.size();) {
 			    EntityPlayer entityplayer = world.playerEntities.get(i);
 			    return entityplayer;
 		    }
-		} else {
-			try {
-	            UUID uuid = this.getOwnerId();
-	            return uuid == null ? null : this.world.getPlayerEntityByUUID(uuid);
-	        } catch (IllegalArgumentException var2) {
-	            return null;
-	        }		
-		}
-		
-		return null;
+		}		return null;
+	}
+	
+	/**
+	 * I made this method so any player can make the dragon sit, possibly be used
+	 * for other interactions,
+	 * 
+	 * @author TheRPGAdventurer
+	 */
+	public EntityLivingBase getLastRidingPlayer() {
+		if(DragonMountsConfig.allowOtherPlayerControl) {
+		    for (int i = 0; i < world.playerEntities.size();) {
+			    EntityPlayer entityplayer = world.playerEntities.get(i);
+			    return entityplayer;
+		    }
+		}		return null;
 	}
 
 	/**
