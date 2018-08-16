@@ -284,7 +284,7 @@ public class BreathWeapon {
 	    		entity.attackEntityFrom(DamageSource.IN_FIRE, DAMAGE_PER_HIT_DENSITY + hitDensity);
 	    	}
 	    } else if(entity instanceof EntityTameable) {
-	    	EntityTameable entityTameable = (EntityTameable) entity;
+	    	EntityTameable entityTameable = (EntityTameable) entity;	    	
 	    	if(entityTameable.isTamed()) {
 	    		entityTameable.attackEntityFrom(DamageSource.IN_FIRE, 0);
 	    	}

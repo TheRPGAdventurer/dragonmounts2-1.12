@@ -16,10 +16,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
@@ -101,7 +103,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
       return null;
     }
     
-    final float DAMAGE_PER_HIT_DENSITY = 2.5F;
+    final float DAMAGE_PER_HIT_DENSITY = 1.7F;
 
     float hitDensity = currentHitDensity.getHitDensity();
     
@@ -112,7 +114,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
     		entityTameable.attackEntityFrom(DamageSource.DROWN, 0);
     	}
     } else {
-       entity.attackEntityFrom(DamageSource.causeMobDamage(dragon), DAMAGE_PER_HIT_DENSITY + hitDensity);
+       entity.attackEntityFrom(DamageSource.causeMobDamage(dragon),  DAMAGE_PER_HIT_DENSITY);
     }
       entity.isWet();
       double d1 = entity.posX - dragon.posX;
@@ -124,8 +126,7 @@ public BreathAffectedEntity affectEntity(World world, Integer entityID, BreathAf
       ((EntityLivingBase) entity).knockBack(entity, 0.2F, dragon.posX - entity.posX, dragon.posZ - entity.posZ);
       PotionEffect iceEffect = new PotionEffect(MobEffects.SLOWNESS, 50*10);      
       ((EntityLivingBase) entity).addPotionEffect(iceEffect); // Apply a copy of the PotionEffect to the entity 		
-       //   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40*10, 2));
-  //  }
+      entity.playSound(SoundEvents.ENTITY_GENERIC_SPLASH, 1.0f, 1.0f);
 
     return currentHitDensity;
   }
