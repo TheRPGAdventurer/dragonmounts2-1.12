@@ -38,6 +38,7 @@ import com.TheRPGAdventurer.ROTD.client.initialization.ModTools;
 import com.TheRPGAdventurer.ROTD.client.message.MessageDragonBreath;
 import com.TheRPGAdventurer.ROTD.client.model.anim.DragonAnimator;
 import com.TheRPGAdventurer.ROTD.client.sound.ModSounds;
+import com.TheRPGAdventurer.ROTD.server.entity.ai.ground.EntityAIDragonSit;
 import com.TheRPGAdventurer.ROTD.server.entity.ai.path.PathNavigateFlying;
 import com.TheRPGAdventurer.ROTD.server.entity.breeds.DragonBreed;
 import com.TheRPGAdventurer.ROTD.server.entity.breeds.EnumDragonBreed;
@@ -250,7 +251,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		}
 
 		moveHelper = new DragonMoveHelper(this);
-		aiSit = new EntityAISit(this);
+		aiSit = new EntityAIDragonSit(this);
 
 		// init helpers
 		helpers.values().forEach(DragonHelper::applyEntityAttributes);
@@ -729,13 +730,14 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		return getBreed().getCreatureAttribute();
 	}
 	
-	@Override
-	public EntityLivingBase getOwner() {
-		for (int i = 0; i < world.playerEntities.size();) {
+    @Nullable
+    public EntityLivingBase getOwner2() {
+    	for (int i = 0; i < world.playerEntities.size();) {
 			EntityPlayer entityplayer = world.playerEntities.get(i);
 			return entityplayer;
-		}   return null;
-	}
+		}
+		return null;
+    }
 
 	/**
 	 * Called when a player interacts with a mob. e.g. gets milk from a cow, gets
@@ -1446,21 +1448,26 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	
 	@Override
 	public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
-		if(getControllingPassenger() != null) {
-			return false;
-		} else if(target instanceof EntityTameable) {
+	   if(!target.isChild()) {
+	      if(target instanceof EntityTameable) {
 			EntityTameable tamedEntity = (EntityTameable) target;
-			return !((EntityTameable)target).isTamed() && !target.isChild();
-		} else if(target instanceof EntityTameableDragon) {
+			if(((EntityTameable) target).isTamed()) {
+				return false;
+		   }			
+		}  
+	    
+	    if(target instanceof EntityTameableDragon) {
 			EntityTameable targetDragon = (EntityTameable) target;
 			return ((EntityTameableDragon)target).getLifeStageHelper().getTicksSinceCreation() 
 			     >= ((EntityTameableDragon)target).getAppropriateAgeForInteraction();
-		} else if (target.hasCustomName()){
+		} 
+      
+	    if (target.hasCustomName()) {
 			return false;  
-		} else {
-		    return false;
-		}
-        
+		   } 
+		
+		} 
+	      return true;         
     }
 	
     protected boolean canFitPassenger(Entity passenger) {
