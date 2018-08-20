@@ -160,43 +160,44 @@ public class DragonReproductionHelper extends DragonHelper  {
         EntityTameableDragon parent1 = dragon;
         EntityTameableDragon parent2 = (EntityTameableDragon) mate;
         EntityTameableDragon baby = new EntityTameableDragon(dragon.world);
+        
+     //   if(parent1.isMale() && parent2.isFemale() || parent1.isFemale() && parent2.isMale()) {
 
-        // mix the custom names in case both parents have one
-        if (parent1.hasCustomName() && parent2.hasCustomName()) {
-            String p1Name = parent1.getCustomNameTag();
-            String p2Name = parent2.getCustomNameTag();
-            String babyName;
+            // mix the custom names in case both parents have one
+            if (parent1.hasCustomName() && parent2.hasCustomName()) {
+                String p1Name = parent1.getCustomNameTag();
+                String p2Name = parent2.getCustomNameTag();
+                String babyName;
 
-            if (p1Name.contains(" ") || p2Name.contains(" ")) {
-                // combine two words with space
-                // "Tempor Invidunt Dolore" + "Magna"
-                // = "Tempor Magna" or "Magna Tempor"
-                String[] p1Names = p1Name.split(" ");
-                String[] p2Names = p2Name.split(" ");
+                if (p1Name.contains(" ") || p2Name.contains(" ")) {
+                    // combine two words with space
+                    // "Tempor Invidunt Dolore" + "Magna"
+                    // = "Tempor Magna" or "Magna Tempor"
+                    String[] p1Names = p1Name.split(" ");
+                    String[] p2Names = p2Name.split(" ");
 
-                p1Name = fixChildName(p1Names[rand.nextInt(p1Names.length)]);
-                p2Name = fixChildName(p2Names[rand.nextInt(p2Names.length)]);
+                    p1Name = fixChildName(p1Names[rand.nextInt(p1Names.length)]);
+                    p2Name = fixChildName(p2Names[rand.nextInt(p2Names.length)]);
 
-                babyName = rand.nextBoolean() ? p1Name + " " + p2Name : p2Name + " " + p1Name;
-            } else {
-                // scramble two words
-                // "Eirmod" + "Voluptua"
-                // = "Eirvolu" or "Volueir" or "Modptua" or "Ptuamod" or ...
-                if (rand.nextBoolean()) {
-                    p1Name = p1Name.substring(0, (p1Name.length() - 1) / 2);
+                    babyName = rand.nextBoolean() ? p1Name + " " + p2Name : p2Name + " " + p1Name;
                 } else {
+                 // scramble two words
+                 // "Eirmod" + "Voluptua"
+                 // = "Eirvolu" or "Volueir" or "Modptua" or "Ptuamod" or ...
+                 if (rand.nextBoolean()) {
+                      p1Name = p1Name.substring(0, (p1Name.length() - 1) / 2);
+                 } else {
                     p1Name = p1Name.substring((p1Name.length() - 1) / 2);
-                }
+                 }
 
-                if (rand.nextBoolean()) {
-                    p2Name = p2Name.substring(0, (p2Name.length() - 1) / 2);
-                } else {
-                    p2Name = p2Name.substring((p2Name.length() - 1) / 2);
-                }
+                 if (rand.nextBoolean()) {
+                     p2Name = p2Name.substring(0, (p2Name.length() - 1) / 2);
+                 } else {
+                     p2Name = p2Name.substring((p2Name.length() - 1) / 2);
+                 }
 
-                p2Name = fixChildName(p2Name);
-
-                babyName = rand.nextBoolean() ? p1Name + p2Name : p2Name + p1Name;
+                 p2Name = fixChildName(p2Name);
+                 babyName = rand.nextBoolean() ? p1Name + p2Name : p2Name + p1Name;
             }
 
             baby.setCustomNameTag(babyName);
@@ -209,7 +210,8 @@ public class DragonReproductionHelper extends DragonHelper  {
         // increase reproduction counter
         parent1.getReproductionHelper().addReproduced();
         parent2.getReproductionHelper().addReproduced();
-
+     
+    //  }
         return baby;
     }
     

@@ -168,6 +168,8 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 			.<Boolean>createKey(EntityTameableDragon.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> ALLOW_OTHERPLAYERS = EntityDataManager
 			.<Boolean>createKey(EntityTameableDragon.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> IS_MALE = EntityDataManager
+			.<Boolean>createKey(EntityTameableDragon.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Integer> ARMOR = EntityDataManager
 			.<Integer>createKey(EntityTameableDragon.class, DataSerializers.VARINT);
 	private static final DataParameter<Optional<UUID>> DATA_BREEDER = EntityDataManager
@@ -189,6 +191,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	private static final String NBT_SHEARED   = "Sheared";
 	private static final String NBT_CHESTED   = "Chested";
 	private static final String NBT_BREATHING = "Breathing";
+	private static final String NBT_ISMALE    = "IsMale";
 
 	// server/client delegates
 	private final Map<Class, DragonHelper> helpers = new HashMap<>();
@@ -276,6 +279,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		dataManager.register(DATA_BREATHING, false);
 		dataManager.register(DATA_SADDLED, false);
 		dataManager.register(CHESTED, false);
+		dataManager.register(IS_MALE, false);
         dataManager.register(DRAGON_SCALES, Byte.valueOf((byte)0));		
 		dataManager.register(ARMOR, 0);
 	}
@@ -297,6 +301,41 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		getEntityAttribute(FOLLOW_RANGE).setBaseValue(BASE_FOLLOW_RANGE);
 		getEntityAttribute(KNOCKBACK_RESISTANCE).setBaseValue(RESISTANCE);
 		getEntityAttribute(ARMOR_TOUGHNESS).setBaseValue(BASE_TOUGHNESS);
+	}
+	
+	/**
+	 * (abstract) Protected helper method to write subclass entity data to NBT.
+	 */
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setBoolean(NBT_SADDLED, isSaddled());
+		nbt.setInteger(NBT_ARMOR, this.getArmor());
+		nbt.setBoolean(NBT_CHESTED, this.isChested());
+        nbt.setBoolean(NBT_SHEARED, this.getSheared());
+     //   nbt.setBoolean(NBT_ISMALE, this.isMale());
+        nbt.setBoolean(NBT_BREATHING, this.isBreathing());
+//        nbt.setBoolean("OnGround2", this.onGround2);
+        writeDragonInventory(nbt);
+		helpers.values().forEach(helper -> helper.writeToNBT(nbt));
+	}
+
+	/**
+	 * (abstract) Protected helper method to read subclass entity data from NBT.
+	 */
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		this.setSaddled(nbt.getBoolean(NBT_SADDLED));
+		this.setChested(nbt.getBoolean(NBT_CHESTED));
+        this.setSheared(nbt.getBoolean(NBT_SHEARED));
+   //     this.setTrueIfMale(nbt.getBoolean(NBT_ISMALE));
+        this.setBreathing(nbt.getBoolean(NBT_BREATHING));
+//        this.onGround2 = nbt.getBoolean("OnGround2");
+		helpers.values().forEach(helper -> helper.readFromNBT(nbt));
+		this.setArmor(nbt.getInteger(NBT_ARMOR));
+		readDragonInventory(nbt);
+
 	}
 
 	/**
@@ -394,40 +433,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 
 	public int getTicksSinceLastAttack() {
 		return ticksSinceLastAttack;
-	}
-
-	/**
-	 * (abstract) Protected helper method to write subclass entity data to NBT.
-	 */
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbt) {
-		super.writeEntityToNBT(nbt);
-		nbt.setBoolean(NBT_SADDLED, isSaddled());
-		nbt.setInteger(NBT_ARMOR, this.getArmor());
-		nbt.setBoolean(NBT_CHESTED, this.isChested());
-        nbt.setBoolean(NBT_SHEARED, this.getSheared());
-        nbt.setBoolean(NBT_BREATHING, this.isBreathing());
-        nbt.setBoolean("OnGround2", this.onGround2);
-//		nbt.setBoolean(NBT_CHESTED_RIGHT, this.isChestedInRight());
-        writeDragonInventory(nbt);
-		helpers.values().forEach(helper -> helper.writeToNBT(nbt));
-	}
-
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbt) {
-		super.readEntityFromNBT(nbt);
-		this.setSaddled(nbt.getBoolean(NBT_SADDLED));
-		this.setChested(nbt.getBoolean(NBT_CHESTED));
-        this.setSheared(nbt.getBoolean(NBT_SHEARED));
-        this.setBreathing(nbt.getBoolean(NBT_BREATHING));
-        this.onGround2 = nbt.getBoolean("OnGround2");
-		helpers.values().forEach(helper -> helper.readFromNBT(nbt));
-		this.setArmor(nbt.getInteger(NBT_ARMOR));
-		readDragonInventory(nbt);
-
 	}
 
 	/**
@@ -881,10 +886,13 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	/**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        return attackEntityFromPart(this.dragonPartBody, source, amount);
-    }
+//    public boolean attackEntityFrom(DamageSource source, float amount) {
+//        return attackEntityFromPart(this.dragonPartBody, source, amount);
+ //   }
 
+	/**
+     * Called when an entity attacks
+     */
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean attacked = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this),
 				(float) getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
@@ -1823,4 +1831,24 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	public Entity[] getParts() {
 		return dragonPartArray;
 	}
+	
+//	/**
+//	 * Gets the gender since booleans return only 2 values (true or false) true == MALE, false == FEMALE
+//	 * 2 genders only dont call me sexist and dont talk to me about political correctness
+//	 */
+//	public boolean isMale() {
+//		return dataManager.get(IS_MALE);
+//	}
+	
+//	public boolean isFemale() {
+//		return !isMale();
+//	}
+	
+//	/**
+//	 * false if female
+//	 * @param male
+//	 */
+//	public void setTrueIfMale(boolean male) {
+//		dataManager.set(IS_MALE, male);		
+//	}
 }
