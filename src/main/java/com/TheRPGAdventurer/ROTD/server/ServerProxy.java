@@ -82,7 +82,7 @@ public class ServerProxy {
     private void registerEntities() {
         EntityRegistry.registerModEntity(new ResourceLocation(DragonMounts.MODID, "dragon"), EntityTameableDragon.class, "DragonMount",
                 ENTITY_ID, DragonMounts.instance, ENTITY_TRACKING_RANGE, ENTITY_UPDATE_FREQ,
-                ENTITY_SEND_VELO_UPDATES);
+                ENTITY_SEND_VELO_UPDATES, 0Xc30c0c, 0X220e21);
     } 
     
 	public void render() {}

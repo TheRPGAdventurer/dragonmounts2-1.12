@@ -95,6 +95,7 @@ import net.minecraft.inventory.ContainerHorseChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IInventoryChangedListener;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -235,7 +236,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		stepHeight = 1;
 
 		// create entity delegates
-		addHelper(new DragonBreedHelper(this, DATA_BREED));
+		addHelper(new DragonBreedHelper(this, DATA_BREED)); 
 		addHelper(new DragonLifeStageHelper(this, DATA_TICKS_SINCE_CREATION));
 		addHelper(new DragonReproductionHelper(this, DATA_BREEDER, DATA_REPRO_COUNT));
 		addHelper(new DragonBreathHelper(this, DATA_BREATH_WEAPON));
@@ -1412,14 +1413,34 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 35 * 20));
 	}
 	
+	public static EnumDragonBreed getRandomBreed(EnumDragonBreed type) {
+		Random random = new Random();
+		int i = random.nextInt(40);		
+		
+		if(i < 5) {
+			type = EnumDragonBreed.AETHER;
+		} else if(i < 10) {
+			type = EnumDragonBreed.END;
+		} else if(i < 15) {
+			type = EnumDragonBreed.FOREST;
+		} else if(i < 20) {
+			type = EnumDragonBreed.ICE;
+		} else if(i < 25) {
+			type = EnumDragonBreed.NETHER;
+		} else if(i < 30) {
+			type = EnumDragonBreed.SKELETON;
+		} else if(i < 35) {
+			type = EnumDragonBreed.SYLPHID;
+		} else if(i < 40) {
+			type = EnumDragonBreed.WITHER;
+		}
+		return type;
+		
+	}
+	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-		Biome biome = this.world.getBiome(new BlockPos(this));
-
-		 if (world.provider.getDimension() == 0) {
-			 this.setBreedType(EnumDragonBreed.AETHER);
-		 }
-		
+		Biome biome = this.world.getBiome(new BlockPos(this));		
 		return null;
 	}
 
@@ -1504,15 +1525,14 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
                     if (flag && this.getPassengers().size() < 2 && !entity.isRiding() && entity.width < this.width && entity instanceof EntityLivingBase && !(entity instanceof EntityWaterMob) && !(entity instanceof EntityPlayer))
                     {
                         entity.startRiding(this);
-                    }
-                    else
-                    {
+                    } else { 
                         this.applyEntityCollision(entity);
                     }
                 }
             }
         }
     }
+	
 	
     /**
      * Updates the state of the enderdragon's current endercrystal.
@@ -1730,13 +1750,6 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	public World getWorld() {		
 		return world; 
 	}
-	
-    /**
-     * Provides a way to cause damage to an ender dragon.
-     */
-    protected boolean attackDragonFrom(DamageSource source, float amount) {
-        return super.attackEntityFrom(source, amount);
-    }
 
 	@Override
 	public boolean attackEntityFromPart(MultiPartEntityPart dragonPart, DamageSource source, float damage) {		
@@ -1765,7 +1778,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
             damage = damage + 4.0F + Math.min(damage, 1.0F);
         }
             
-        this.attackDragonFrom(source, damage);
+        this.attackEntityFrom(source, damage);
         
 		return true;
 	}

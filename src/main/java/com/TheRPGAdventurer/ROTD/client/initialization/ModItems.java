@@ -1,6 +1,9 @@
 package com.TheRPGAdventurer.ROTD.client.initialization;
 
 import com.TheRPGAdventurer.ROTD.client.items.ItemDragonScales;
+import com.TheRPGAdventurer.ROTD.client.items.ItemDragonSpawner;
+import com.TheRPGAdventurer.ROTD.client.items.ItemStructureSpawner;
+import com.TheRPGAdventurer.ROTD.server.entity.breeds.EnumDragonBreed;
 
 import net.minecraft.item.Item;
 
@@ -14,6 +17,16 @@ public class ModItems {
 	public static final Item NetherDragonScales;
 	public static final Item EnderDragonScales;
 	
+	public static final Item SpawnForest;
+	public static final Item SpawnFire;
+	public static final Item SpawnIce;
+	public static final Item SpawnWater;
+	public static final Item SpawnSkeleton;
+	public static final Item SpawnWither;
+	public static final Item SpawnEnd;
+	public static final Item SpawnNether;
+	public static final Item structure_spawner;
+	
 	
 	public static final Item[] ITEMS = {
 		ForestDragonScales = new ItemDragonScales("forest_dragonscales", EnumItemBreedTypes.FOREST, 16),
@@ -23,5 +36,16 @@ public class ModItems {
 		AetherDragonScales = new ItemDragonScales("aether_dragonscales", EnumItemBreedTypes.AETHER, 16),
 		NetherDragonScales = new ItemDragonScales("nether_dragonscales", EnumItemBreedTypes.NETHER, 16),
 		EnderDragonScales = new ItemDragonScales("ender_dragonscales", EnumItemBreedTypes.END, 16),
+		
+		SpawnForest = new ItemDragonSpawner(EnumItemBreedTypes.FOREST, EnumDragonBreed.FOREST),
+		SpawnFire = new ItemDragonSpawner(EnumItemBreedTypes.FIRE, EnumDragonBreed.FIRE),
+		SpawnIce = new ItemDragonSpawner(EnumItemBreedTypes.ICE, EnumDragonBreed.ICE),
+		SpawnWater = new ItemDragonSpawner(EnumItemBreedTypes.WATER, EnumDragonBreed.SYLPHID),
+		SpawnSkeleton = new ItemDragonSpawner(EnumItemBreedTypes.SKELETON, EnumDragonBreed.SKELETON),
+		SpawnWither = new ItemDragonSpawner(EnumItemBreedTypes.WITHER, EnumDragonBreed.WITHER),
+		SpawnEnd = new ItemDragonSpawner(EnumItemBreedTypes.END, EnumDragonBreed.END),
+		SpawnNether = new ItemDragonSpawner(EnumItemBreedTypes.NETHER, EnumDragonBreed.NETHER),
+		
+		structure_spawner = new ItemStructureSpawner("structure_spawner"),
 	};
 }

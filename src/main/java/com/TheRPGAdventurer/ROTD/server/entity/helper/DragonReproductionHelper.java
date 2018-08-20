@@ -9,12 +9,14 @@
  */
 package com.TheRPGAdventurer.ROTD.server.entity.helper;
 
+import java.util.Random;
 import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.TheRPGAdventurer.ROTD.server.entity.EntityTameableDragon;
+import com.TheRPGAdventurer.ROTD.server.entity.breeds.EnumDragonBreed;
 import com.google.common.base.Optional;
 
 import net.minecraft.entity.EntityAgeable;
@@ -198,10 +200,11 @@ public class DragonReproductionHelper extends DragonHelper  {
             }
 
             baby.setCustomNameTag(babyName);
-        }
+        }       
         
         // inherit the baby's breed from its parents
-        baby.getBreedHelper().inheritBreed(parent1, parent2);
+//      dragon.getBreedHelper().inheritBreed(parent1, parent2)
+        baby.setBreedType(inheritRandombreed(parent1, parent2));
         
         // increase reproduction counter
         parent1.getReproductionHelper().addReproduced();
@@ -228,5 +231,18 @@ public class DragonReproductionHelper extends DragonHelper  {
         }
         
         return nameNew;
+    }
+    
+    public EnumDragonBreed inheritRandombreed(EntityTameableDragon parent1, EntityTameableDragon parent2) {
+        Random rand = new Random();
+        EnumDragonBreed babyBreed = null;
+        int i = rand.nextInt(10);
+        if(i < 5) {
+        	return babyBreed = parent1.getBreedType();
+        } else if(i < 10) {
+        	return babyBreed = parent2.getBreedType();
+        }
+        
+		return babyBreed;
     }
 }
