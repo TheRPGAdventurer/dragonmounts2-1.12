@@ -15,7 +15,6 @@ import static net.minecraft.entity.SharedMonsterAttributes.FOLLOW_RANGE;
 import static net.minecraft.entity.SharedMonsterAttributes.KNOCKBACK_RESISTANCE;
 import static net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED;
 
-import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +56,6 @@ import com.TheRPGAdventurer.ROTD.server.entity.helper.breath.DragonBreathHelper;
 import com.TheRPGAdventurer.ROTD.server.network.MessageDragonArmor;
 import com.TheRPGAdventurer.ROTD.server.util.ItemUtils;
 import com.TheRPGAdventurer.ROTD.util.PrivateFields;
-import com.TheRPGAdventurer.ROTD.util.Utils;
 import com.google.common.base.Optional;
 
 import net.minecraft.block.Block;
@@ -72,21 +70,17 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.IEntityMultiPart;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.MultiPartEntityPart;
-import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityEnderCrystal;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityWaterMob;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -95,7 +89,6 @@ import net.minecraft.inventory.ContainerHorseChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IInventoryChangedListener;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -106,7 +99,6 @@ import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -121,6 +113,12 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.BiomeProperties;
+import net.minecraft.world.biome.BiomeHills;
+import net.minecraft.world.biome.BiomeProvider;
+import net.minecraft.world.biome.BiomeStoneBeach;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -473,7 +471,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public void updateBreathingClient() {
+	public void updateBreathing() {
 		Minecraft mc = Minecraft.getMinecraft();
 		if(getControllingPlayer() != null) {
 			boolean isBreathing = ModKeys.KEY_BREATH.isKeyDown();
@@ -481,11 +479,20 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		}
 	}
 	
+	public boolean isHoveringCancelled() {
+		boolean isHoveringCancelled = false;
+		Minecraft mc = Minecraft.getMinecraft();
+		if(getControllingPlayer() != null && ModKeys.KEY_HOVERCANCEL.isKeyDown()) {
+			isHoveringCancelled = true;			
+		}
+		return isHoveringCancelled;
+	}
+	
     @Override
     public void onUpdate() {
         super.onUpdate();
         if (world.isRemote) {
-            this.updateBreathingClient();
+            this.updateBreathing();
         }
     }
 
@@ -561,6 +568,13 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 			}
 			hasChestVarChanged = false;
 		}
+		
+        if(getBreedType() == EnumDragonBreed.SYLPHID) {
+        	PotionEffect watereffect = new PotionEffect(MobEffects.WATER_BREATHING, 20*10);
+        	if (!isPotionActive(watereffect.getPotion()) && isInWater()) { // If the Potion isn't currently active,
+        		addPotionEffect(watereffect); // Apply a copy of the PotionEffect to the player
+    		}
+        }
 		
 		updateMultipleBoundingBox();
 		updateShearing();
@@ -813,6 +827,10 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 
         if (isSitting()) {
             eyeHeight *= 0.8f;
+        }
+        
+        if(isEgg()) {
+        	eyeHeight = 2.4f;
         }
 
         return eyeHeight;
@@ -1421,34 +1439,24 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 35 * 20));
 	}
 	
-	public static EnumDragonBreed getRandomBreed(EnumDragonBreed type) {
-		Random random = new Random();
-		int i = random.nextInt(40);		
-		
-		if(i < 5) {
-			type = EnumDragonBreed.AETHER;
-		} else if(i < 10) {
-			type = EnumDragonBreed.END;
-		} else if(i < 15) {
-			type = EnumDragonBreed.FOREST;
-		} else if(i < 20) {
-			type = EnumDragonBreed.ICE;
-		} else if(i < 25) {
-			type = EnumDragonBreed.NETHER;
-		} else if(i < 30) {
-			type = EnumDragonBreed.SKELETON;
-		} else if(i < 35) {
-			type = EnumDragonBreed.SYLPHID;
-		} else if(i < 40) {
-			type = EnumDragonBreed.WITHER;
-		}
-		return type;
-		
-	}
-	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-		Biome biome = this.world.getBiome(new BlockPos(this));		
+		Biome biome = this.world.getBiome(new BlockPos(this));
+		if(biome == Biomes.EXTREME_HILLS || biome == Biomes.EXTREME_HILLS_EDGE || biome == Biomes.MUTATED_EXTREME_HILLS) {
+			int i = 10;
+			if(i > 5) {
+			   setBreedType(EnumDragonBreed.FIRE);
+			} else if(i > 10) {
+				setBreedType(EnumDragonBreed.AETHER);
+			}
+		} else if(biome == Biomes.MUTATED_EXTREME_HILLS_WITH_TREES) {
+			setBreedType(EnumDragonBreed.FOREST);
+		} else if(biome == Biomes.STONE_BEACH || biome == Biomes.BEACH) {
+			setBreedType(EnumDragonBreed.SYLPHID);
+		} else if(BiomeDictionary.hasType(biome, Type.COLD)) {
+			setBreedType(EnumDragonBreed.ICE);
+		}
+		
 		return null;
 	}
 
@@ -1486,9 +1494,9 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		}  
 	    
 	    if(target instanceof EntityTameableDragon) {
-			EntityTameable targetDragon = (EntityTameable) target;
-			return ((EntityTameableDragon)target).getLifeStageHelper().getTicksSinceCreation() 
-			     >= ((EntityTameableDragon)target).getAppropriateAgeForInteraction();
+	    	EntityTameableDragon targetDragon = (EntityTameableDragon) target;
+			return targetDragon.getLifeStageHelper().getTicksSinceCreation() 
+			     >= targetDragon.getAppropriateAgeForInteraction();
 		} 
       
 	    if (target.hasCustomName()) {
@@ -1496,7 +1504,7 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 		   } 
 		
 		} 
-	      return true;         
+	      return false;         
     }
 	
     protected boolean canFitPassenger(Entity passenger) {
@@ -1831,6 +1839,8 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 	public Entity[] getParts() {
 		return dragonPartArray;
 	}
+
+}
 	
 //	/**
 //	 * Gets the gender since booleans return only 2 values (true or false) true == MALE, false == FEMALE
@@ -1851,4 +1861,4 @@ public class EntityTameableDragon extends EntityTameable implements IShearable, 
 //	public void setTrueIfMale(boolean male) {
 //		dataManager.set(IS_MALE, male);		
 //	}
-}
+//}
